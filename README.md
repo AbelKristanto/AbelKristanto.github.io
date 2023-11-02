@@ -26,6 +26,12 @@
 
 iLAB (Innovation and Elaboration) is coming up as free learning about skill preparing. We have already conducted more 14 classes; more than 600+ alumni class and 15 more topics skill. We delivered "through harmony to create our combination with learning and innovation in Indonesia 5.0" that can first media to learn more with iLAB. Nowadays, iLAB has changed the name to ESPLOOR. I am creating a real-time dashboard for registrants using **Tableau**. We wait you to join with us.
 
+### Speech Therapy Aid
+Did you know? Speech delay is one of the most significant issues affecting children. More than 5 out of 10 children experience speech delay (Tan et al, 2019). This has driven me to create a tool that can be used at home or in collaboration with speech therapists. Currently, I am working with a hospital in Semarang on the development of the tool based on the identification work that has already been done. If you would like to learn more about this project, please contact me through social media.
+
+### Ergonomic Pillow
+This is one of my initial projects, an ergonomic pillow designed to enhance the quality of human sleep. I believe that sleep is a crucial indicator of well-being. Having an ergonomic pillow can provide comfort during rest and improve human resilience. If you'd like to learn more about this project, please contact me through social media.
+
 ## Talks & Lectures
 - AI & Machine Learning - Erlangga, 2023
 - Introduction to Machine Learning - BTN, 2022
