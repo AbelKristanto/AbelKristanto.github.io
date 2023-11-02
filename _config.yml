@@ -1,6 +1,9 @@
 title: Abel K Widodo
+# logo: /assets/img/headshot_circle.png
 theme: jekyll-theme-minimal
-# first_name: Abel
-# middle_name: K.
-# last_name: Widodo
-# email: abelkrw@gmail.com
+first_name: Abel
+middle_name: K.
+last_name: Widodo
+email: abelkrw@gmail.com
+#description: text below image
+show_downloads: true
