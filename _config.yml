@@ -9,17 +9,17 @@ theme: jekyll-theme-chirpy
 lang: en
 
 # Change to your timezone › https://kevinnovak.github.io/Time-Zone-Picker
-timezone:
+timezone: Asia/Tokyo
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
 title: Abel K Widodo # the main title
 
-tagline: A text-focused Jekyll theme # it will display as the sub-title
+tagline: Data Scientist | AI Engineer # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
-  Data Scientist | AI Engineer
+  Blog, Github, Machine Learning, Python, Data Science
 
 # Fill in the protocol & hostname for your site.
 # e.g. 'https://username.github.io', note that it does not end with a '/'.
@@ -40,9 +40,7 @@ social:
     # The first element serves as the copyright owner's link
     - https://twitter.com/abelkrw # change to your twitter homepage
     - https://github.com/AbelKristanto # change to your github homepage
-    # Uncomment below to add more social links
-    # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
+    - https://www.linkedin.com/in/abelkrw/ # change to your linkedin homepage
 
 google_site_verification: # fill in to your verification string
 
@@ -70,10 +68,10 @@ theme_mode: # [light|dark]
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn: /assets/img/PN.png
+img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar:
+avatar: /assets/img/PN.png
 
 # boolean type, the global switch for TOC in posts.
 toc: true
