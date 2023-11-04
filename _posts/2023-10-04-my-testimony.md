@@ -2,11 +2,11 @@
 title: Life Testimony
 date: 2023-10-03 20:14 +0300
 categories: [Blogging, Testimony]
-tags: [github-pages, blog, my testimony, jekyll]
+tags: [github-pages, blog, jekyll]
 author: Abelkrw
 ---
 
-# My Testimony
+# Life Testimony
 
 Many people say that I am very lucky to be where I am today. I am grateful for God's blessings in my life. I have been given many unexpected blessings, and His plan is beautiful for my life. This page is dedicated to sharing my testimony with all of you, that God always looks after His children. May this serve as a reminder to all of us. There is no ivory without cracks; let us learn from each other and correct one another.
 
