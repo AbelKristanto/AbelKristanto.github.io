@@ -3,18 +3,18 @@
 #### Technical Skills: Python, SQL, Tableau, Power BI, Figma
 
 ## Education
-- Summer Course | The University of Washington at Washington (_January 2021_)
-- Summer Course | Sebelas Maret University at Solo (_August 2020_)		        		
-- B.E., Industrial | Diponegoro University at Semarang (_August 2016_)
+- Summer Course - The University of Washington at Washington (_January 2021_)
+- Summer Course - Sebelas Maret University at Solo (_August 2020_)		        		
+- B.E., Industrial - Diponegoro University at Semarang (_August 2016_)
 
 ## Work Experience
-**Data Science Community Leader @ Kementrian BUMN (_July 2023 - Present_)**
+**Data Science Community Leader @ The state-owned enterprises (BUMN) (_July 2023 - Present_)**
 - Showcase the development of data science to over 3,000 individuals within the state-owned enterprises (BUMN) sector
 - Discuss the vision for the future of the Data Science Community at the Ministry of State-Owned Enterprises and how we plan to realize it
 
 **Manager @ Financial Services (_October 2021 - Present_)**
 - Creating an integrated transaction monitoring dashboard that reduces the previous processing time by 4 hours
-- Leading more than 10 employees and fostering employee engagement
+- Streamlined the workflow process from 4 minutes to 1 minute for disputing transactions using Robotic Process Automation
 
 **Data Science Mentor @ DQLab Academy (_July 2021 - Present_)**
 - Guidance and support to more than 100 individuals looking to enhance their understanding of fundamental and advanced concepts in Data Science
