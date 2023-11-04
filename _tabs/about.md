@@ -44,7 +44,7 @@ This is one of my initial projects, an ergonomic pillow designed to enhance the 
 - AI & Machine Learning - Erlangga, 2023
 - Introduction to Machine Learning - BTN, 2022
 - DQCamp for Good 10 Days Intensive Data Science Learning - Online, 2021
-- [UI/UX Basic Class - Introduction UI/UX & Persona]([https://www.youtube.com/channel/UCa9gErQ9AE5jT2DZLjXBIdA](https://youtu.be/FF0KfJynh78?si=R-wxy_U81Or1a03I))
+- [UI/UX Basic Class - Introduction UI/UX & Persona](https://youtu.be/FF0KfJynh78?si=R-wxy_U81Or1a03I)
 
 ## Publications
 1. M. M. Ulkhaq, **A. K. Widodo**, M. F. A. Yulianto, Widhiyaningrum, A. Mustikasari and P. Y. Akshinta. A logistic regression approach to model the willingness of consumers to adopt renewable energy sources. [Link](https://iopscience.iop.org/article/10.1088/1755-1315/127/1/012007/pdf)
@@ -52,7 +52,7 @@ This is one of my initial projects, an ergonomic pillow designed to enhance the 
 3. M. M. Ulkhaq, **A. K. Widodo**, Widhiyaningrum, M. F. A. Yulianto, and M. O. Gracia. An integrated M-S-QUAL and importance-performance analysis approach for assessing service quality of mobile commerce application. [Link](https://doi.org/10.1063/1.5112472)
 4. **A. K. Widodo**, A. F. A. Rahmawan, M. Mahachandra. Ergonomic Pillow for Indonesian Anthropometry: A Project Pilot Study. [Link](https://dl.acm.org/citation.cfm?id=3290834)
 5. **A. K. Widodo**, P. Y. Naufalista, M. F. Hidayah, S. R. U. S. N. Andayani, M. A. Putra. Assessing Service Quality of Bank using Combined SERVQUAL Scale and Importance-Performance Analysis: A Case Study. [Link](https://ieeexplore.ieee.org/document/8714944)
-6. **A. K. Widodo**, M. Mahachandra, Widhiyaningrum, M. R. Tahqiqi. Formulating a Strategic Management of Social E-Commerce through a Combination of SWOT and PESTLE Analysis : Case Study. [Link](http://www.ieomsociety.org/ieom2019/papers/668.pdf)
+6. **A. K. Widodo**, M. Mahachandra, Widhiyaningrum, M. R. Tahqiqi. Formulating a Strategic Management of Social E-Commerce through a Combination of SWOT and PESTLE Analysis : Case Study. [Link](https://www.ieomsociety.org/ieom2019/papers/668.pdf)
 7. **A. K. Widodo**, O. Selvina, Widhiyaningrum, O. E. R. Siregar. In Corporating the E-S-QUAL Scale and Importance-Performance Analysis for Assessing Electronic Service Quality. [Link](https://dl.acm.org/citation.cfm?id=3357327)
 8. N. L. Muna, A. A. Mu’alimah, D. B Pridiana, **A. K. Widodo**, S. R. Adiyar, E. H. Elinda. The Production of Biodiesel from Waste Cooking Oil (Simultaneous Esterification and Transesterification using Fe/Zeolite Catalysts from Waste Geothermal). [Link](https://www.scientific.net/Paper/Preview/556021)
 9. **A. K. Widodo**, D. B. Pridiana, N. Arrizqi, M. N. Fajrina, D. Setyawan, D. A. Laksono. Combining Cellulose and ZnO for Extend The Shelf Life of Fruit. [Link](https://www.scientific.net/Paper/Preview/555777)
