@@ -3,7 +3,7 @@ title: Life Testimony
 date: 2023-10-03 20:14 +0300
 categories: [Blogging, Testimony]
 tags: [Stories, Blog, My Testimony]
-author: Abelkrw
+author: abelkrw
 ---
 
 # Life Testimony
