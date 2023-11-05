@@ -1,6 +1,6 @@
 ---
 title: Life Testimony
-date: 2023-10-03 20:14 +0300
+date: 2023-01-03 20:14 +0300
 categories: [Blogging, Testimony]
 tags: [Stories, Blog, My Testimony]
 author: abelkrw
@@ -23,7 +23,6 @@ In 2019, I felt compelled to write my first testimony in a book (softcopy) to sh
 ## 2020: The Year of Unity and Acceleration
 
 In 2020, I also wrote reflections on strengthening called "The year of Unity and Acceleration." I believe that there is acceleration in God's unity. Let's prepare ourselves to face the extraordinary turmoil happening in this era, especially since there is a tremendous upheaval. Get used to approaching Him. If you want to read online in 2020, [click here](https://drive.google.com/drive/u/1/folders/1yuOifuRhrvppEhBDcfNTlrCg7n80lwS0).
-
 
 ## 2021: The Year of Praise and Provision
 
