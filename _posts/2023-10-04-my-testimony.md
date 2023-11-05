@@ -25,3 +25,36 @@ In 2019, I felt compelled to write my first testimony in a book (softcopy) to sh
 In 2020, I also wrote reflections on strengthening called "The year of Unity and Acceleration." I believe that there is acceleration in God's unity. Let's prepare ourselves to face the extraordinary turmoil happening in this era, especially since there is a tremendous upheaval. Get used to approaching Him. If you want to read online in 2020, [click here](https://drive.google.com/drive/u/1/folders/1yuOifuRhrvppEhBDcfNTlrCg7n80lwS0).
 
 
+## 2021: The Year of Praise and Provision
+
+In 2021, I embarked on a journey to comprehend the depths of human existence, finding myself in a year that I'd like to refer to as "The Year of Praise and Provision." This was a time of profound introspection and exploration, where I contemplated the significance of our existence and how we can radiate our light in this vast world.
+
+The year 2021 was not just another passing year; it was a period of profound self-discovery. It was a year where I pondered the grand tapestry of life and our roles within it. I set out to understand the essence of our presence in this world and the remarkable ways in which we impact the world around us.
+
+I firmly believe that every one of us has a unique purpose. It is this purpose that gives meaning to our lives and sets us on a course of fulfillment and contentment. Understanding this purpose and living in alignment with it is the key to making a meaningful difference in the world.
+
+"The Year of Praise and Provision" signifies not only acknowledging our unique purpose but also expressing gratitude for the blessings and opportunities that come our way. It's a year where we not only reflect on what we can achieve but also celebrate the victories, large and small, that shape our lives. Praise becomes a way of life, a constant reminder of the goodness that surrounds us.
+
+As I look back on the past year, I am filled with appreciation for the lessons learned, the challenges faced, and the growth experienced. It's a year that has reinforced the idea that life is a dynamic journey, with each day offering a chance to embrace new opportunities, make a positive impact, and express gratitude for the abundance that life provides.
+
+2021 has been a year of personal growth and self-discovery. It's been a year where I've strived to shine my light and make a positive difference in the world. I've realized that our ability to shine is directly linked to our understanding of our purpose. When we are aligned with our purpose, our actions are infused with passion and authenticity, and our impact on the world is profound.
+
+Moreover, "The Year of Praise and Provision" has taught me the importance of celebrating the present moment. It's easy to get caught up in the pursuit of future goals and aspirations, but it's equally important to acknowledge and celebrate the here and now. Each day is a gift, an opportunity to offer praise and gratitude for the blessings we have in our lives.
+
+As we transition into a new year, the lessons from "The Year of Praise and Provision" remain etched in my heart. I carry with me a deep sense of purpose and an unwavering commitment to live a life that radiates positivity, gratitude, and authentic living. I believe that by embracing our purpose, expressing praise, and being open to the provisions of life, we can create a world that is abundant in love, kindness, and fulfillment.
+
+So, as we step into the future, I invite you to join me on this journey of purpose, praise, and provision. Let's celebrate the uniqueness of our existence and make every day a testament to the blessings that surround us.
+
+If you want to delve deeper into the insights and reflections of "The Year of Praise and Provision," you can read more online by clicking [here](https://drive.google.com/drive/u/1/folders/1FR0a_bsozjMqLNy4PdOb4dnw06lfPNXq).
+
+## 2022: The Year of Miracles and Giving
+
+In the year 2022, I came to realize that there are extraordinary things beyond our imagination. It is for this reason that I have chosen to label 2022 as "The Year of Miracles and Giving." God is always involved in every journey of our lives, and there is a beautiful plan being prepared. We need to actively participate in God's work by sharing with others.
+
+If you wish to read more online in 2022, [click here](https://drive.google.com/drive/u/0/folders/1IG5u56CB27BHhpaHbd6R6hLXxOMP-0n0).
+
+## Prayer
+
+If you require prayers or assistance, we stand ready to support you. Please feel free to share your requests below, and we will be here to offer our help and guidance.
+
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe0e2cxQGt7zAYwfq1p6dKhFDubs5s_VYIsJuCgu9gDZHmIMw/viewform?embedded=true" width="640" height="1203" frameborder="0" marginheight="0" marginwidth="0"></iframe>
