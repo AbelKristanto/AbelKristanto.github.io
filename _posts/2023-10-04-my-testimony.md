@@ -58,7 +58,7 @@ In 2023, understanding the meaning of life in the world is a reflective journey 
 
 These reflections encapsulate a journey of spiritual growth, emphasizing the importance of understanding one's purpose, responding to God's call, seeking forgiveness, cultivating positive relationships, embracing faith, and experiencing the transformative power of love and salvation. Each passage offers valuable insights into living a meaningful and purposeful life grounded in spiritual principles.
 
-If you wish to read more online in 2022, [click here](https://drive.google.com/drive/u/1/folders/1oErREs_qLklpgtzy5wOh7uG-EY-wRek-).
+If you wish to read more online in 2023, [click here](https://drive.google.com/drive/u/1/folders/1oErREs_qLklpgtzy5wOh7uG-EY-wRek-).
 
 ## Prayer
 
