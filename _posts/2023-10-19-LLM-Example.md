@@ -1,6 +1,6 @@
 ---
 title: LLM Modelling
-date: 2023-11-19 20:14 +0300
+date: 2023-10-19 20:14 +0300
 categories: [Blogging, Portofolio]
 tags: [Data Science, Blog, My Portofolio]
 author: abelkrw
