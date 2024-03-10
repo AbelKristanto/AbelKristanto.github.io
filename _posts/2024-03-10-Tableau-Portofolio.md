@@ -14,4 +14,4 @@ vehicle-related factors that impact insurance claims. The following dashboard ai
 of insurance claim patterns based on various demographic factors and vehicle attributes. Please review the dataset 
 provided [here](https://onyxdata.ck.page/8cbde7b71b) and explore the dashboard below
 
-<iframe src="https://public.tableau.com/app/profile/abel.kristanto/viz/CarInsuranceAnalysis_17100849784940/Dashboard1?:showVizHome=no&:embed=true" width="645" height="955"></iframe>
+<iframe src="https://public.tableau.com/app/profile/abel.kristanto/viz/CarInsuranceAnalysis_17100849784940/Dashboard1?:showAppBanner=false&:showVizHome=no&:embed=true&:origin=viz_share_link" width="845" height="955"></iframe>
