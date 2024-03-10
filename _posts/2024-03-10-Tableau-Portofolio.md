@@ -15,3 +15,17 @@ of insurance claim patterns based on various demographic factors and vehicle att
 provided [here](https://onyxdata.ck.page/8cbde7b71b) and explore the dashboard below (open in [TableauPublic](https://public.tableau.com/app/profile/abel.kristanto/viz/CarInsuranceAnalysis_17100849784940/Dashboard1?publish=yes))
 
 <img src="../assets/img/additional/cia.png" alt="Car Insurance Analysis">
+
+# Spotify Analysis
+
+In today's digital music landscape, understanding the dynamics behind song popularity and engagement is crucial for 
+artists, record labels, and streaming platforms alike. With the proliferation of streaming services like Spotify, 
+providing valuable insights into listener preferences and trends.
+
+Our analysis delves into a comprehensive dataset encompassing various attributes of songs, including track name, 
+artist(s) name, release date, streaming metrics, presence on playlists and charts across different platforms, musical 
+features like tempo, key, mode, danceability, energy, and more. Please review the dataset
+provided [here](https://www.kaggle.com/datasets/nelgiriyewithana/top-spotify-songs-2023) and explore the dashboard below 
+(open in [TableauPublic](https://public.tableau.com/app/profile/abel.kristanto/viz/SpotifyAnalysis_17101537680360/SpotifyAnalysis?publish=yes))
+
+<img src="../assets/img/additional/sa.png" alt="Spotify Analysis">
