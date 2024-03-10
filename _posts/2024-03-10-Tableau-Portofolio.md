@@ -12,6 +12,6 @@ The insurance industry relies heavily on data analysis to understand patterns an
 context, creating an effective dashboard is crucial for insurance companies to gain insights into customer behavior and 
 vehicle-related factors that impact insurance claims. The following dashboard aims to provide a comprehensive overview 
 of insurance claim patterns based on various demographic factors and vehicle attributes. Please review the dataset 
-provided [here](https://onyxdata.ck.page/8cbde7b71b) and explore the dashboard below
+provided [here](https://onyxdata.ck.page/8cbde7b71b) and explore the dashboard below (open in [TableauPublic](https://public.tableau.com/app/profile/abel.kristanto/viz/CarInsuranceAnalysis_17100849784940/Dashboard1?publish=yes))
 
-<iframe src="https://public.tableau.com/app/profile/abel.kristanto/viz/CarInsuranceAnalysis_17100849784940/Dashboard1?:showAppBanner=false&:showVizHome=no&:embed=true&:origin=viz_share_link" width="845" height="955"></iframe>
+<img src="../assets/img/additional/cia.png" alt="Car Insurance Analysis">
