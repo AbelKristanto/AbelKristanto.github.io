@@ -14,7 +14,7 @@ vehicle-related factors that impact insurance claims. The following dashboard ai
 of insurance claim patterns based on various demographic factors and vehicle attributes. Please review the dataset 
 provided [here](https://onyxdata.ck.page/8cbde7b71b) and explore the dashboard below (open in [TableauPublic](https://public.tableau.com/app/profile/abel.kristanto/viz/CarInsuranceAnalysis_17100849784940/Dashboard1?publish=yes))
 
-<img src="../assets/img/additional/cia.png" alt="Car Insurance Analysis">
+<a href="https://public.tableau.com/app/profile/abel.kristanto/viz/CarInsuranceAnalysis_17100849784940/Dashboard1"><img src="../assets/img/additional/cia.png" alt="Car Insurance Analysis"></a>
 
 # Spotify Analysis
 
@@ -28,7 +28,7 @@ features like tempo, key, mode, danceability, energy, and more. Please review th
 provided [here](https://www.kaggle.com/datasets/nelgiriyewithana/top-spotify-songs-2023) and explore the dashboard below 
 (open in [TableauPublic](https://public.tableau.com/app/profile/abel.kristanto/viz/SpotifyAnalysis_17101537680360/SpotifyAnalysis?publish=yes))
 
-<img src="../assets/img/additional/sa.png" alt="Spotify Analysis">
+<a href ="https://public.tableau.com/app/profile/abel.kristanto/viz/SpotifyAnalysis_17101537680360/SpotifyAnalysis"><img src="../assets/img/additional/sa.png" alt="Spotify Analysis"></a>
 
 # Hotel Reservations Analysis
 
@@ -41,5 +41,5 @@ shaping the dynamics of the hotel industry.
 Please review the dataset provided [here](https://onyxdata.co.uk/data-dna-dataset-challenge/) and explore the dashboard 
 below(open in [TableauPublic](https://public.tableau.com/app/profile/abel.kristanto/viz/HotelAnalysis_17101747388490/HotelAnalysis?publish=yes))
 
-<img src="../assets/img/additional/hra.png" alt="Hotel Reservations Analysis">
+<a href="https://public.tableau.com/app/profile/abel.kristanto/viz/HotelAnalysis_17101747388490/HotelAnalysis"><img src="../assets/img/additional/hra.png" alt="Hotel Reservations Analysis"></a>
 
