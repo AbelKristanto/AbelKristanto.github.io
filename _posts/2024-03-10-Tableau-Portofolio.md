@@ -29,3 +29,17 @@ provided [here](https://www.kaggle.com/datasets/nelgiriyewithana/top-spotify-son
 (open in [TableauPublic](https://public.tableau.com/app/profile/abel.kristanto/viz/SpotifyAnalysis_17101537680360/SpotifyAnalysis?publish=yes))
 
 <img src="../assets/img/additional/sa.png" alt="Spotify Analysis">
+
+# Hotel Reservations Analysis
+
+The hospitality industry thrives on meticulous data analysis to comprehend booking patterns and guest behavior, crucial 
+for optimizing operations and enhancing customer experience. This dataset offers a comprehensive glimpse into the 
+intricacies of hotel bookings, encompassing various factors influencing reservations and stay experiences. From the type 
+of hotel and booking channels to guest demographics and reservation status, each attribute plays a pivotal role in 
+shaping the dynamics of the hotel industry.
+
+Please review the dataset provided [here](https://onyxdata.co.uk/data-dna-dataset-challenge/) and explore the dashboard 
+below(open in [TableauPublic](https://public.tableau.com/app/profile/abel.kristanto/viz/HotelAnalysis_17101747388490/HotelAnalysis?publish=yes))
+
+<img src="../assets/img/additional/hra.png" alt="Hotel Reservations Analysis">
+
