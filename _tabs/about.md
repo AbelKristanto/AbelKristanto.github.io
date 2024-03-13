@@ -15,7 +15,7 @@ order: 4
 - Summer Course | Sebelas Maret University at Solo
 - B.E., Industrial | Diponegoro University at Semarang 
 
-## Work Experience
+## Current Activities
 **Data Science Community Leader @ The state-owned enterprises (BUMN) (_July 2023 - Present_)**
 - Showcase the development of data science to over 3,000 individuals within the state-owned enterprises (BUMN) sector
 - Discuss the vision for the future of the Data Science Community at the Ministry of State-Owned Enterprises and how we plan to realize it
