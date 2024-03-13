@@ -58,6 +58,7 @@ This is one of my initial projects, an ergonomic pillow designed to enhance the 
 9. **A. K. Widodo**, D. B. Pridiana, N. Arrizqi, M. N. Fajrina, D. Setyawan, D. A. Laksono. Combining Cellulose and ZnO for Extend The Shelf Life of Fruit. [Link](https://www.scientific.net/Paper/Preview/555777)
 10. **A. K. Widodo**, S. Saptadi. Designing to Improvements of Posture and The Working Environment of Employees. [Link](https://aip.scitation.org/doi/abs/10.1063/5.0000584)
 11. F. Husnayani, B. A. Widyaztuti, C. A. Kadafi, **A. K. Widodo**, D. Apriesti, M. M. Ulkhaq. Zone of Tolerance Analysis: A Case in Indonesian Train Station. [Link](https://pubs.aip.org/aip/acp/article-abstract/2409/1/020022/750174/Zone-of-tolerance-analysis-A-case-in-Indonesian?redirectedFrom=fulltext)
-12. M Mahachandra, **A. K. Widodo**, W Budiawan. Designing to Speech Therapy of Augmented Reality Technology: Needs Identification. [Link](https://ejournal2.undip.ac.id/index.php/jbiomes/article/view/14027)
+12. M Mahachandra, **A. K. Widodo**, W. Budiawan. Designing to Speech Therapy of Augmented Reality Technology: Needs Identification. [Link](https://ejournal2.undip.ac.id/index.php/jbiomes/article/view/14027)
+13. **A. K. Widodo**, A. S. Suryowati, T. F. Santoso, K. W. Prasetyo, D. Nurjannah. Assessing the Influence of Social Media Platforms on Academic Performance: A Case Study. [Link](https://dl.acm.org/doi/abs/10.1145/3625704.3625741)
 
 - [Data Science Blog](https://medium.com/@abelkrw)
