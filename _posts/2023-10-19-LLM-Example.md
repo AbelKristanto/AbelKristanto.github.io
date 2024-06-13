@@ -8,4 +8,4 @@ author: abelkrw
 
 I've crafted several captivating use cases within the realm of Artificial Intelligence using ChatBot and integrate Large Language Modelling. 
 
-<iframe src="https://faktasehat.streamlit.app/?embed=true" height="700" style="width:100%;border:none;"></iframe>
+<iframe src="https://llama2.streamlit.app/?embed=true" height="700" style="width:100%;border:none;"></iframe>
