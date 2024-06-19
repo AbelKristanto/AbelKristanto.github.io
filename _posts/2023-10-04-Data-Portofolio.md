@@ -10,4 +10,5 @@ I've crafted several captivating use cases within the realm of data science. It 
 
 <iframe src="https://dashboardabelkrw.streamlit.app/?embed=true" height="2400" style="width:100%;border:none;"></iframe>
 
-<iframe src="https://prophet.streamlit.app/?embed=true" height="2400" style="width:100%;border:none;"></iframe>
+[//]: # (<iframe src="https://prophet.streamlit.app/?embed=true" height="2400" style="width:100%;border:none;"></iframe>)
+
