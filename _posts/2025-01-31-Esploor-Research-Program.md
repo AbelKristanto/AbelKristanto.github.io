@@ -30,6 +30,7 @@ Semua rangkaian program **gratis** ✨
 
 <!---
 Password > ESP1pertemuan1
+https://jstrieb.github.io/link-lock/create/
 -->
 
 ### **📌 Pertemuan 2: Menentukan Topik Riset dan Masalah yang Akan Diselesaikan**
@@ -39,6 +40,11 @@ Password > ESP1pertemuan1
 **📝 Resources:**  
 📂 **[Download PPTX](#)** | 🎥 **[Watch on YouTube](#)**
 
+<!---
+Password > ESP1pertemuan2a
+https://jstrieb.github.io/link-lock/create/
+-->
+
 ### **📌 Pertemuan 3: Pencarian Literatur dan Baseline Paper**
 - Teknik pencarian literatur akademik 📚
 - Memahami **tren riset terkini** dalam Data Science
@@ -46,12 +52,22 @@ Password > ESP1pertemuan1
 **📝 Resources:**  
 📂 **[Download PPTX](#)** | 🎥 **[Watch on YouTube](#)**
 
+<!---
+Password > ESP1pertemuan3b
+https://jstrieb.github.io/link-lock/create/
+-->
+
 ### **📌 Pertemuan 4: Menulis dan Mempublikasikan Hasil Riset**
 - Menulis **publikasi ilmiah** dengan struktur yang jelas
 - Tips submit ke **Scopus & Non-Scopus**
 
 **📝 Resources:**  
 📂 **[Download PPTX](#)** | 🎥 **[Watch on YouTube](#)**
+
+<!---
+Password > ESP1pertemuan4d
+https://jstrieb.github.io/link-lock/create/
+-->
 
 ### **📌 Pertemuan 5: Pengumpulan dan Persiapan Data**
 - Cara **mengumpulkan, membersihkan, dan mempersiapkan data** sebelum analisis
