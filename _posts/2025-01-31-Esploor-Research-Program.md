@@ -84,8 +84,7 @@ Password > ESP1pertemuan1
 
 ## **📢 Stay Connected!**
 📌 Ikuti perkembangan program ini dan update materi terbaru dengan mengikuti kami di:  
-🔗 **Website:** [Coming Soon]  
-📺 **YouTube Channel:** [Subscribe Here](#)  
-📩 **Contact Us:** [Email](mailto:esploorresearch@domain.com)
+📺 **Youtube Esploor:** [Subscribe Here](https://www.youtube.com/@Esploor?sub_confirmation=1)   
+📩 **Contact Us:** [Email](mailto:esploor@gmail.com)
 
 🚀 **Siap berinovasi dan berkontribusi dalam riset AI & Big Data? Let's get started!**  
