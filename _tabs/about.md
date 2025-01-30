@@ -62,3 +62,5 @@ This is one of my initial projects, an ergonomic pillow designed to enhance the 
 13. **A. K. Widodo**, A. S. Suryowati, T. F. Santoso, K. W. Prasetyo, D. Nurjannah. Assessing the Influence of Social Media Platforms on Academic Performance: A Case Study. [Link](https://dl.acm.org/doi/abs/10.1145/3625704.3625741)
 
 - [Data Science Blog](https://medium.com/@abelkrw)
+- 📺 **YouTube @abelkrw:** [Subscribe Here](https://www.youtube.com/@abelkrw?sub_confirmation=1)  
+
