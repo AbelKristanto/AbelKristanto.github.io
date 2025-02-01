@@ -38,7 +38,7 @@ https://jstrieb.github.io/link-lock/create/
 - Merumuskan masalah dalam proyek Data Science
 
 **📝 Resources:**  
-📂 **[Download PPTX](#)** | 🎥 **[Watch on YouTube](#)**
+📂 **[Download PPTX](https://jstrieb.github.io/link-lock/#eyJ2IjoiMC4wLjEiLCJlIjoidUV1MFQ1OTF1S3g1NmI2Qm5lY2FyRyt2ZzFFaUc1bVZYWFZSZ3NtM3lzMXFISnNrZ0xsdnltcWVOOGZIOWlpalBsQk96RklXUDZ5eGFlUjE3K1YyaVpyOVEwWC9ES29GanhLOElvNkdabVFTZlRwYjQvRldDS3lvelNQdzdCY3RiSUU9IiwicyI6IndJalpPSEpsN2E5MlNjemZSbHVqdlE9PSIsImkiOiJsbjVhL05FWjg1RnVUUWk4In0=)** | 🎥 **[Watch on YouTube](#)**
 
 <!---
 Password > ESP1pertemuan2a
