@@ -62,10 +62,10 @@ https://jstrieb.github.io/link-lock/create/
 - Tips submit ke **Scopus & Non-Scopus**
 
 **📝 Resources:**  
-📂 **[Download PPTX](#)** | 🎥 **[Watch on YouTube](#)**
+📂 **[Download PPTX](https://jstrieb.github.io/link-lock/#eyJ2IjoiMC4wLjEiLCJlIjoiZE1LcVVTWEJhVUQzTm5oSEJKY2lJV2c3QVNPUVFHR0I5MVF5cG91RW84UG95YnN3TG1QUzBuSnhianhGMDJ4Z1MvNFZWKzF6UDlQdXBzSVVicU9maW1ycDEvcDQvc0pTUW5xdTBTampIT0hxNFYrNW9OdThBWTlHdTh3MzZPYkVjL1k9IiwicyI6IlJKRUxkcnVTTWE4WmpFWTJtWTVQTkE9PSIsImkiOiIwTG5HYWZuZEtnNnRPelNjIn0=)** | 🎥 **[Watch on YouTube](#)**
 
 <!---
-Password > ESP1pertemuan4d
+Password > ESP1pe3temuan4d
 https://jstrieb.github.io/link-lock/create/
 -->
 
