@@ -38,7 +38,7 @@ https://jstrieb.github.io/link-lock/create/
 - Merumuskan masalah dalam proyek Data Science
 
 **📝 Resources:**  
-📂 **[Download PPTX](https://jstrieb.github.io/link-lock/#eyJ2IjoiMC4wLjEiLCJlIjoidUV1MFQ1OTF1S3g1NmI2Qm5lY2FyRyt2ZzFFaUc1bVZYWFZSZ3NtM3lzMXFISnNrZ0xsdnltcWVOOGZIOWlpalBsQk96RklXUDZ5eGFlUjE3K1YyaVpyOVEwWC9ES29GanhLOElvNkdabVFTZlRwYjQvRldDS3lvelNQdzdCY3RiSUU9IiwicyI6IndJalpPSEpsN2E5MlNjemZSbHVqdlE9PSIsImkiOiJsbjVhL05FWjg1RnVUUWk4In0=)** | 🎥 **[Watch on YouTube](#)**
+📂 **[Download PPTX](https://jstrieb.github.io/link-lock/#eyJ2IjoiMC4wLjEiLCJlIjoidUV1MFQ1OTF1S3g1NmI2Qm5lY2FyRyt2ZzFFaUc1bVZYWFZSZ3NtM3lzMXFISnNrZ0xsdnltcWVOOGZIOWlpalBsQk96RklXUDZ5eGFlUjE3K1YyaVpyOVEwWC9ES29GanhLOElvNkdabVFTZlRwYjQvRldDS3lvelNQdzdCY3RiSUU9IiwicyI6IndJalpPSEpsN2E5MlNjemZSbHVqdlE9PSIsImkiOiJsbjVhL05FWjg1RnVUUWk4In0=)** | 🎥 **[Watch on YouTube](https://jstrieb.github.io/link-lock/#eyJ2IjoiMC4wLjEiLCJlIjoiU1h1T2REWlVVd2xvSjFwYzJuSndCTklNVjVZaHdIeE9mMExLaEdkRG1Ha3hZT2czWFFhaU1QRjZNYVZaSkd3d1pGMmtNMUdJWkY4SkVqST0iLCJzIjoiZnVMY2U5MHJXckQ0alJHNmc0V2kvQT09IiwiaSI6InRGanVqTThhYmN4OTRZcnQifQ==)**
 
 <!---
 Password > ESP1pertemuan2a
@@ -50,7 +50,7 @@ https://jstrieb.github.io/link-lock/create/
 - Memahami **tren riset terkini** dalam Data Science
 
 **📝 Resources:**  
-📂 **[Download PPTX](#)** | 🎥 **[Watch on YouTube](#)**
+📂 **[Download PPTX](https://jstrieb.github.io/link-lock/#eyJ2IjoiMC4wLjEiLCJlIjoiM2ZOVVhTUC81S0RIaUlIRy93bm1nVEVoVk00aWNrbFdKT0xiU3l2NHhIbEVGaEVQeEhETGhMSzY2TUlMRUpudFZKNUNZdTdBSTRPbW8rOXk4RjhsTDNhT0x5UktFRHhOSitieDdQWDVJUjBjNmhaY0NtR01YTnNuODVqT2JhdXZDbFk9IiwicyI6ImJDOFF4TEFiZkYyei94anFGZVQyaVE9PSIsImkiOiJuRlBYdHNZMkJSRW5MYzVtIn0=)** | 🎥 **[Watch on YouTube](#)**
 
 <!---
 Password > ESP1pertemuan3b
