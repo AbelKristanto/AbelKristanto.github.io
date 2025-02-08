@@ -50,7 +50,7 @@ https://jstrieb.github.io/link-lock/create/
 - Memahami **tren riset terkini** dalam Data Science
 
 **📝 Resources:**  
-📂 **[Download PPTX](https://jstrieb.github.io/link-lock/#eyJ2IjoiMC4wLjEiLCJlIjoiM2ZOVVhTUC81S0RIaUlIRy93bm1nVEVoVk00aWNrbFdKT0xiU3l2NHhIbEVGaEVQeEhETGhMSzY2TUlMRUpudFZKNUNZdTdBSTRPbW8rOXk4RjhsTDNhT0x5UktFRHhOSitieDdQWDVJUjBjNmhaY0NtR01YTnNuODVqT2JhdXZDbFk9IiwicyI6ImJDOFF4TEFiZkYyei94anFGZVQyaVE9PSIsImkiOiJuRlBYdHNZMkJSRW5MYzVtIn0=)** | 🎥 **[Watch on YouTube](#)**
+📂 **[Download PPTX](https://jstrieb.github.io/link-lock/#eyJ2IjoiMC4wLjEiLCJlIjoiM2ZOVVhTUC81S0RIaUlIRy93bm1nVEVoVk00aWNrbFdKT0xiU3l2NHhIbEVGaEVQeEhETGhMSzY2TUlMRUpudFZKNUNZdTdBSTRPbW8rOXk4RjhsTDNhT0x5UktFRHhOSitieDdQWDVJUjBjNmhaY0NtR01YTnNuODVqT2JhdXZDbFk9IiwicyI6ImJDOFF4TEFiZkYyei94anFGZVQyaVE9PSIsImkiOiJuRlBYdHNZMkJSRW5MYzVtIn0=)** | 🎥 **[Watch on YouTube](https://jstrieb.github.io/link-lock/#eyJ2IjoiMC4wLjEiLCJlIjoidEsxUVU0Q21BTmt6WWFUbk95K1Y4ZEZKblhOdXhkUGVDNzkzNTdwaE9oZzBMbEg1d2pidDdRaGRISnB0cDAvYXZTaFpoTjdHWXNDV1VqMD0iLCJzIjoib28zMkNGZ3I0YUwyUHZ6NGQvS2dodz09IiwiaSI6Ikd4NzJReCszMHA0WTVLOFQifQ==)**
 
 <!---
 Password > ESP1pertemuan3b
