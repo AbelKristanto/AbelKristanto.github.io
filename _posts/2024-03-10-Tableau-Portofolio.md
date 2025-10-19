@@ -43,3 +43,11 @@ below(open in [TableauPublic](https://public.tableau.com/app/profile/abel.krista
 
 <a href="https://public.tableau.com/app/profile/abel.kristanto/viz/HotelAnalysis_17101747388490/HotelAnalysis"><img src="../assets/img/additional/hra.png" alt="Hotel Reservations Analysis"></a>
 
+# Mobile Sales Insight 2024
+
+This dashboard provides a comprehensive overview of mobile sales performance in 2024, combining key metrics such as total 
+revenue, total units sold, brand performance, regional distribution, and buyer demographics.
+
+Please review the dashboard below (open in [TableauPublic](https://public.tableau.com/app/profile/abel.kristanto/viz/Exploration_17471529452820/Overview))
+
+![img.png](img.png)
