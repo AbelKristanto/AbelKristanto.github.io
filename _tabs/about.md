@@ -15,21 +15,21 @@ He focuses on turning data into actionable insights and empowering others throug
 
 **Skills:** Python, SQL, KNIME Analytics, Tableau, Power BI, Figma, UiPath
 
-[My Data Science Blog](https://medium.com/@abelkrw) | [My YouTube Channel](https://www.youtube.com/@abelkrw?sub_confirmation=1)
+[My Data Science Blog](https://medium.com/@abelkrw) & [My YouTube Channel](https://www.youtube.com/@abelkrw?sub_confirmation=1)
 
 ## Education
-- Engineering | Institute Technology of Bandung at Bandung
-- B.E, Industrial Engineering | Diponegoro University at Semarang
-- Fintech - Summer Course | Sebelas Maret University at Solo
-- Summer Course | The University of Washington at Washington
+- Engineering - Institute Technology of Bandung at Bandung
+- B.E, Industrial Engineering - Diponegoro University at Semarang
+- Fintech Summer Course - Sebelas Maret University at Solo
+- Summer Course - The University of Washington at Washington
 
 ## Certifications
-- REFramework Specialist | UiPath - Issued on Apr 20, 2025
-- Tableau Desktop Specialist | Tableau - Issued on Mar 10, 2025
-- Business Intelligence Analyst | Indonesia Professional Association (BNSP) - Issued on Aug 19, 2024
-- Data Scientist | Indonesia Professional Association (BNSP) - Issued on Aug 19, 2024
-- Azure AI Fundamentals | Microsoft - Issued on Jun 10, 2023
-- D-Link Network Associate | D-Link - Issued on Mar 15, 2023
+- REFramework Specialist - UiPath, issued on Apr 20, 2025
+- Tableau Desktop Specialist - Tableau, issued on Mar 10, 2025
+- Business Intelligence Analyst - Indonesia Professional Association (BNSP), issued on Aug 19, 2024
+- Data Scientist - Indonesia Professional Association (BNSP), issued on Aug 19, 2024
+- Azure AI Fundamentals - Microsoft, issued on Jun 10, 2023
+- D-Link Network Associate - D-Link, issued on Mar 15, 2023
 
 ## Current Activities
 **Data Science Community Leader @ The state-owned enterprises (BP BUMN) (_July 2023 - Present_)**
