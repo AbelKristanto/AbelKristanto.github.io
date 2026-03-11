@@ -1,0 +1,29 @@
+<!-- Simplified Top Bar -->
+
+{% assign current_title = page.title | default: site.title %}
+{% if page.layout == 'home' %}
+  {% assign current_title = 'Overview' %}
+{% endif %}
+
+<header id="topbar-wrapper" aria-label="Top Bar">
+  <div id="topbar" class="d-flex align-items-center justify-content-between px-lg-3 h-100">
+    <div class="topbar-copy">
+      <p class="topbar-kicker">
+        {% if page.layout == 'home' %}
+          Personal website
+        {% else %}
+          Explore
+        {% endif %}
+      </p>
+      <div id="topbar-title">{{ current_title }}</div>
+    </div>
+
+    <div class="topbar-actions">
+      <a href="{{ '/portfolio/' | relative_url }}" class="btn btn-outline-primary btn-sm">Portfolio</a>
+      <a href="{{ '/contact/' | relative_url }}" class="btn btn-primary btn-sm">Contact</a>
+      <button type="button" id="sidebar-trigger" class="btn btn-link" aria-label="Open navigation">
+        <i class="fas fa-bars fa-fw"></i>
+      </button>
+    </div>
+  </div>
+</header>

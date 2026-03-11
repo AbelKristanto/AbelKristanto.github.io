@@ -64,4 +64,4 @@ If you wish to read more online in 2023, [click here](https://drive.google.com/d
 
 If you require prayers or assistance, we stand ready to support you. Please feel free to share your requests below, and we will be here to offer our help and guidance.
 
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe0e2cxQGt7zAYwfq1p6dKhFDubs5s_VYIsJuCgu9gDZHmIMw/viewform?embedded=true" width="640" height="1203" frameborder="0" marginheight="0" marginwidth="0"></iframe>
+[Open the prayer request form](https://docs.google.com/forms/d/e/1FAIpQLSe0e2cxQGt7zAYwfq1p6dKhFDubs5s_VYIsJuCgu9gDZHmIMw/viewform?embedded=true){: target="_blank" rel="noopener noreferrer" .btn .btn-primary }
