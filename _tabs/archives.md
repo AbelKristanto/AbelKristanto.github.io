@@ -2,6 +2,7 @@
 title: Insights
 icon: fas fa-pen-nib
 order: 2
+permalink: /insights/
 ---
 
 This section collects Abel's articles, portfolio write-ups, and program notes. The goal is to make the content easier to browse, especially for visitors who want a quick sense of his interests and expertise.

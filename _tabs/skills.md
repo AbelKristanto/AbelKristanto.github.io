@@ -2,6 +2,7 @@
 title: Skills
 icon: fas fa-layer-group
 order: 3
+permalink: /skills/
 ---
 
 Abel's skill set is built around one outcome: helping people make better decisions with data. That includes technical work, communication, and the ability to package insights in a way others can understand.

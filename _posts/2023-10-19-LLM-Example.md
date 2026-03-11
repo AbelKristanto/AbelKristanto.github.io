@@ -1,6 +1,7 @@
 ---
 title: AI Chatbot Prototype
 date: 2023-10-19 20:14 +0300
+permalink: /posts/ai-chatbot-prototype/
 categories: [Blogging, Portofolio]
 tags: [Data Science, Blog, My Portofolio]
 author: abelkrw

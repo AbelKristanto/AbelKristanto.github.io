@@ -2,6 +2,7 @@
 title: Portfolio
 icon: fas fa-briefcase
 order: 1
+permalink: /portfolio/
 ---
 
 Abel's portfolio combines analytics, automation, research, and education. The projects below highlight how he applies data and AI to real business, community, and social-impact problems.

@@ -1,6 +1,7 @@
 ---
 title: Interactive Data Portfolio
 date: 2023-10-03 20:14 +0300
+permalink: /posts/interactive-data-portfolio/
 categories: [Blogging, Portofolio]
 tags: [Data Science, Blog, My Portofolio]
 author: abelkrw

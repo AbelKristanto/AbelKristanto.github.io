@@ -1,6 +1,7 @@
 ---
 title: Esploor Research Program
 date: 2025-01-29 17:56 +0300
+permalink: /posts/esploor-research-program/
 categories: [Blogging]
 tags: [Data Science, Blog]
 author: abelkrw

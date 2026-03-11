@@ -1,6 +1,7 @@
 ---
 title: Life Testimony
 date: 2023-01-03 20:14 +0300
+permalink: /posts/life-testimony/
 categories: [Blogging, Testimony]
 tags: [Stories, Blog, My Testimony]
 author: abelkrw

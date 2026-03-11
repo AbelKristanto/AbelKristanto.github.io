@@ -2,6 +2,7 @@
 title: Contact
 icon: fas fa-envelope
 order: 5
+permalink: /contact/
 ---
 
 If you want to collaborate, invite Abel to speak, discuss a project, or simply connect, the channels below are the best place to start.
