@@ -11,7 +11,7 @@ layout: compress
   {% capture prefer_mode %}data-mode="{{ site.theme_mode }}"{% endcapture %}
 {% endif %}
 
-<html lang="{{ site.alt_lang | default: site.lang }}" {{ prefer_mode }}>
+<html lang="{{ site.alt_lang | default: site.lang }}" data-ui-lang="en" {{ prefer_mode }}>
   {% include head.html %}
 
   <body class="{% if page.layout == 'home' %}landing-page{% endif %}">
@@ -65,6 +65,7 @@ layout: compress
       {% include mermaid.html %}
     {% endif %}
 
+    {% include lang-switcher.html %}
     {% include_cached search-loader.html %}
   </body>
 </html>

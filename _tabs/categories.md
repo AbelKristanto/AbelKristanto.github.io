@@ -1,74 +1,79 @@
 ---
-title: Portfolio
+title: Projects
+title_id: Proyek
 icon: fas fa-briefcase
-order: 1
-permalink: /portfolio/
+order: 3
+permalink: /projects/
+redirect_from:
+  - /portfolio/
 ---
 
-Abel's portfolio combines analytics, automation, research, and education. The projects below highlight how he applies data and AI to real business, community, and social-impact problems.
-
-## Featured Work
+<p class="lead-paragraph">
+  <span class="lang-en">This page highlights projects where analytics, AI, automation, research, and education create practical value.</span>
+  <span class="lang-id">Halaman ini menampilkan proyek-proyek di mana analitik, AI, otomasi, riset, dan pendidikan menghasilkan nilai yang praktis.</span>
+</p>
 
 <div class="project-grid">
   <article class="project-card">
-    <img src="{{ '/assets/img/additional/cia.png' | relative_url }}" alt="Car insurance dashboard preview">
+    <img src="{{ '/assets/img/additional/cia.png' | relative_url }}" alt="Dashboard portfolio preview">
     <div>
-      <p class="project-kicker">Analytics dashboards</p>
-      <h3>Tableau Dashboard Collection</h3>
-      <p>A set of public dashboards that turn dense datasets into visual summaries for decision-making in insurance, hospitality, music, and retail.</p>
-      <p><strong>Value:</strong> helps stakeholders spot trends, compare performance, and act faster.</p>
-      <a href="{{ '/posts/tableau-dashboard-collection/' | relative_url }}" class="btn btn-outline-primary btn-sm">View dashboards</a>
+      <p class="project-kicker"><span class="lang-en">Analytics</span><span class="lang-id">Analitik</span></p>
+      <h3><span class="lang-en">Tableau dashboard collection</span><span class="lang-id">Koleksi dashboard Tableau</span></h3>
+      <p><span class="lang-en">Public dashboards that turn dense datasets into visual stories for insurance, hospitality, music, and retail.</span><span class="lang-id">Dashboard publik yang mengubah dataset yang padat menjadi cerita visual untuk industri asuransi, hospitality, musik, dan ritel.</span></p>
+      <p><strong><span class="lang-en">Value:</span><span class="lang-id">Nilai:</span></strong> <span class="lang-en">helps stakeholders compare performance and act faster.</span><span class="lang-id">membantu pemangku kepentingan membandingkan performa dan bertindak lebih cepat.</span></p>
+      <a href="{{ '/posts/tableau-dashboard-collection/' | relative_url }}" class="btn btn-outline-primary btn-sm"><span class="lang-en">View project</span><span class="lang-id">Lihat proyek</span></a>
     </div>
   </article>
+
   <article class="project-card">
     <div>
-      <p class="project-kicker">Education and community</p>
-      <h3>ESPLOOR Learning Platform</h3>
-      <p>Started as iLAB and evolved into ESPLOOR, a free learning initiative that has delivered more than 14 classes to 600+ alumni across practical skill topics.</p>
-      <p><strong>Value:</strong> makes data and innovation learning more accessible for students and early-career professionals.</p>
+      <p class="project-kicker"><span class="lang-en">Education</span><span class="lang-id">Pendidikan</span></p>
+      <h3><span class="lang-en">ESPLOOR learning platform</span><span class="lang-id">Platform belajar ESPLOOR</span></h3>
+      <p><span class="lang-en">A free learning initiative that evolved from classes into broader community and research support.</span><span class="lang-id">Inisiatif belajar gratis yang berkembang dari kelas menjadi dukungan komunitas dan riset yang lebih luas.</span></p>
+      <p><strong><span class="lang-en">Value:</span><span class="lang-id">Nilai:</span></strong> <span class="lang-en">expands access to practical digital and data skills.</span><span class="lang-id">memperluas akses terhadap keterampilan digital dan data yang praktis.</span></p>
       <div class="cta-row">
-        <a href="{{ '/posts/esploor-research-program/' | relative_url }}" class="btn btn-outline-primary btn-sm">Program details</a>
-        <a href="https://www.instagram.com/esploorcom" class="btn btn-ghost btn-sm" target="_blank" rel="noopener noreferrer">Visit ESPLOOR</a>
+        <a href="{{ '/posts/esploor-research-program/' | relative_url }}" class="btn btn-outline-primary btn-sm"><span class="lang-en">Program overview</span><span class="lang-id">Ringkasan program</span></a>
+        <a href="https://www.instagram.com/esploorcom" class="btn btn-ghost btn-sm" target="_blank" rel="noopener noreferrer">ESPLOOR</a>
       </div>
     </div>
   </article>
+
   <article class="project-card">
     <div>
-      <p class="project-kicker">AI prototype</p>
-      <h3>AI Chatbot Prototype</h3>
-      <p>A large language model experiment built to explore conversational AI in a practical, user-facing format.</p>
-      <p><strong>Value:</strong> demonstrates how AI interfaces can support information access and rapid prototyping.</p>
-      <a href="{{ '/posts/ai-chatbot-prototype/' | relative_url }}" class="btn btn-outline-primary btn-sm">Read the overview</a>
+      <p class="project-kicker"><span class="lang-en">AI</span><span class="lang-id">AI</span></p>
+      <h3><span class="lang-en">AI chatbot prototype</span><span class="lang-id">Prototipe chatbot AI</span></h3>
+      <p><span class="lang-en">An LLM-based experiment that explores conversational interfaces for practical assistance.</span><span class="lang-id">Eksperimen berbasis LLM yang mengeksplorasi antarmuka percakapan untuk bantuan yang praktis.</span></p>
+      <p><strong><span class="lang-en">Value:</span><span class="lang-id">Nilai:</span></strong> <span class="lang-en">shows how AI ideas can become accessible user experiences.</span><span class="lang-id">menunjukkan bagaimana ide AI bisa menjadi pengalaman pengguna yang lebih mudah diakses.</span></p>
+      <a href="{{ '/posts/ai-chatbot-prototype/' | relative_url }}" class="btn btn-outline-primary btn-sm"><span class="lang-en">Read overview</span><span class="lang-id">Baca ringkasan</span></a>
     </div>
   </article>
+
   <article class="project-card">
     <div>
-      <p class="project-kicker">Healthcare concept</p>
-      <h3>Speech Therapy Aid</h3>
-      <p>An applied project developed with hospital collaboration in Semarang to support children with speech delay through home and therapist-assisted usage.</p>
-      <p><strong>Value:</strong> turns research into a practical tool that can support therapy access and consistency.</p>
+      <p class="project-kicker"><span class="lang-en">Healthcare concept</span><span class="lang-id">Konsep kesehatan</span></p>
+      <h3><span class="lang-en">Speech therapy aid</span><span class="lang-id">Alat bantu terapi wicara</span></h3>
+      <p><span class="lang-en">An applied collaboration to support children with speech delay through therapist-assisted and home use.</span><span class="lang-id">Kolaborasi terapan untuk mendukung anak dengan speech delay melalui penggunaan bersama terapis dan di rumah.</span></p>
     </div>
   </article>
+
   <article class="project-card">
     <div>
-      <p class="project-kicker">Product design</p>
-      <h3>Ergonomic Pillow Study</h3>
-      <p>An early product and research initiative focused on sleep quality, anthropometry, and ergonomic comfort for Indonesian users.</p>
-      <p><strong>Value:</strong> shows Abel's long-term interest in designing solutions around human needs, not just technical systems.</p>
+      <p class="project-kicker"><span class="lang-en">Product design</span><span class="lang-id">Desain produk</span></p>
+      <h3><span class="lang-en">Ergonomic pillow study</span><span class="lang-id">Studi bantal ergonomis</span></h3>
+      <p><span class="lang-en">An early research project on sleep quality, anthropometry, and ergonomic comfort for Indonesian users.</span><span class="lang-id">Proyek riset awal tentang kualitas tidur, antropometri, dan kenyamanan ergonomis untuk pengguna Indonesia.</span></p>
     </div>
   </article>
+
   <article class="project-card">
     <div>
-      <p class="project-kicker">Operations automation</p>
-      <h3>Financial Services Workflow Automation</h3>
-      <p>A series of automation and monitoring initiatives that simplify repetitive operational work and improve management visibility.</p>
-      <p><strong>Value:</strong> reduces manual effort, shortens turnaround time, and improves consistency across processes.</p>
+      <p class="project-kicker"><span class="lang-en">Operations</span><span class="lang-id">Operasional</span></p>
+      <h3><span class="lang-en">Workflow automation in financial services</span><span class="lang-id">Otomasi alur kerja di layanan keuangan</span></h3>
+      <p><span class="lang-en">A series of internal automation and monitoring efforts that reduce repetitive work and improve visibility.</span><span class="lang-id">Serangkaian upaya otomasi dan monitoring internal yang mengurangi pekerjaan berulang dan meningkatkan visibilitas.</span></p>
     </div>
   </article>
 </div>
 
-## How to read this portfolio
-
-- Some projects are public and link to dashboards or articles.
-- Some projects are summarized here because the full work is internal or collaborative.
-- If you want to discuss a case study, speaking session, or collaboration, use the <a href="{{ '/contact/' | relative_url }}">Contact</a> page.
+<p>
+  <span class="lang-en">Some work is public and linked here. Some projects are summarized because the detailed implementation is internal.</span>
+  <span class="lang-id">Beberapa karya bersifat publik dan ditautkan di sini. Beberapa proyek diringkas karena detail implementasinya bersifat internal.</span>
+</p>

@@ -20,7 +20,10 @@
     <h1 class="site-title">
       <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
     </h1>
-    <p class="site-subtitle mb-0">{{ site.tagline }}</p>
+    <p class="site-subtitle mb-0">
+      <span class="lang-en">Analytics, AI, automation, and education for practical decisions.</span>
+      <span class="lang-id">Analitik, AI, otomasi, dan pendidikan untuk keputusan yang lebih baik.</span>
+    </p>
   </header>
 
   <nav class="flex-column flex-grow-1 w-100 ps-0">
@@ -28,7 +31,8 @@
       <li class="nav-item{% if page.layout == 'home' %}{{ " active" }}{% endif %}">
         <a href="{{ '/' | relative_url }}" class="nav-link">
           <i class="fa-fw fas fa-house"></i>
-          <span>{{ site.data.locales[include.lang].tabs.home | default: "Home" }}</span>
+          <span class="lang-en">Home</span>
+          <span class="lang-id">Beranda</span>
         </a>
       </li>
 
@@ -36,7 +40,12 @@
         <li class="nav-item{% if tab.url == page.url %}{{ " active" }}{% endif %}">
           <a href="{{ tab.url | relative_url }}" class="nav-link">
             <i class="fa-fw {{ tab.icon }}"></i>
-            <span>{{ tab.title | default: page.title }}</span>
+            {% if tab.title_id %}
+              <span class="lang-en">{{ tab.title }}</span>
+              <span class="lang-id">{{ tab.title_id }}</span>
+            {% else %}
+              <span>{{ tab.title | default: page.title }}</span>
+            {% endif %}
           </a>
         </li>
       {% endfor %}
@@ -44,7 +53,10 @@
   </nav>
 
   <div class="sidebar-note">
-    <p>Open to collaboration in analytics, automation, mentoring, and speaking.</p>
+    <p>
+      <span class="lang-en">Open to collaboration in analytics, AI automation, mentoring, and speaking.</span>
+      <span class="lang-id">Terbuka untuk kolaborasi di bidang analitik, otomasi AI, mentoring, dan sesi berbicara.</span>
+    </p>
   </div>
 
   <div class="sidebar-bottom d-flex flex-wrap align-items-center w-100">

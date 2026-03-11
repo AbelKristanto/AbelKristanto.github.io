@@ -38,6 +38,11 @@ body {
   font-family: var(--body-font);
 }
 
+html[data-ui-lang='en'] .lang-id,
+html[data-ui-lang='id'] .lang-en {
+  display: none !important;
+}
+
 h1,
 h2,
 h3,
@@ -53,6 +58,12 @@ li,
 .content {
   font-size: 1.02rem;
   line-height: 1.75;
+}
+
+.lead-paragraph {
+  color: var(--site-primary-strong);
+  font-size: 1.1rem;
+  margin-bottom: 1.2rem;
 }
 
 a {
@@ -164,6 +175,30 @@ main > article,
   gap: 0.65rem;
 }
 
+.language-switcher {
+  background: rgba(23, 107, 109, 0.08);
+  border: 1px solid rgba(23, 107, 109, 0.12);
+  border-radius: 999px;
+  display: inline-flex;
+  padding: 0.2rem;
+}
+
+.lang-button {
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  color: var(--site-muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.45rem 0.85rem;
+}
+
+.lang-button.is-active {
+  background: #fff;
+  box-shadow: 0 8px 18px rgba(17, 40, 46, 0.08);
+  color: var(--site-primary-strong);
+}
+
 #main-wrapper .container > .row,
 #tail-wrapper {
   margin-top: 1rem;
@@ -177,6 +212,26 @@ main > article,
   background: var(--site-surface);
   border: 1px solid rgba(19, 34, 40, 0.08);
   box-shadow: var(--shadow-soft);
+}
+
+.section-card,
+.project-card,
+.hero-panel,
+.cta-banner,
+.btn,
+.nav-link {
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+.section-card:hover,
+.project-card:hover {
+  box-shadow: 0 24px 60px rgba(17, 40, 46, 0.12);
+  transform: translateY(-4px);
 }
 
 main > article {
@@ -263,6 +318,10 @@ main > article {
 }
 
 .home-section {
+  background: linear-gradient(180deg, rgba(255, 251, 245, 0.78), rgba(255, 251, 245, 0.92));
+  border: 1px solid rgba(19, 34, 40, 0.07);
+  border-radius: 28px;
+  box-shadow: var(--shadow-soft);
   margin-bottom: 1.5rem;
 }
 
@@ -270,7 +329,8 @@ main > article {
 .section-card-grid,
 .project-grid,
 .contact-grid,
-.cta-row {
+.cta-row,
+.service-grid {
   display: grid;
   gap: 1rem;
 }
@@ -298,7 +358,8 @@ main > article {
 
 .section-card-grid,
 .project-grid,
-.contact-grid {
+.contact-grid,
+.service-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
@@ -306,6 +367,24 @@ main > article {
 .project-card {
   height: 100%;
   padding: 1.25rem;
+}
+
+.service-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.service-icon {
+  align-items: center;
+  background: rgba(23, 107, 109, 0.1);
+  border-radius: 18px;
+  color: var(--site-primary-strong);
+  display: inline-flex;
+  font-size: 1.2rem;
+  height: 3rem;
+  justify-content: center;
+  margin-bottom: 0.9rem;
+  width: 3rem;
 }
 
 .section-card h3,
@@ -371,6 +450,10 @@ main > article {
   background: linear-gradient(180deg, rgba(248, 240, 230, 0.98), rgba(255, 252, 247, 0.98));
 }
 
+.intro-card {
+  background: linear-gradient(180deg, rgba(255, 252, 247, 0.98), rgba(247, 242, 233, 0.98));
+}
+
 .cta-row {
   align-items: center;
   grid-auto-flow: column;
@@ -415,13 +498,21 @@ main > article {
   color: var(--site-text);
 }
 
+.btn-ghost:hover,
+.btn-ghost:focus {
+  background: rgba(23, 107, 109, 0.08);
+  border-color: rgba(23, 107, 109, 0.2);
+  color: var(--site-primary-strong);
+}
+
 .content > p,
 .content > ul,
 .content > ol,
 .content > .section-card-grid,
 .content > .project-grid,
 .content > .contact-grid,
-.content > .quick-facts {
+.content > .quick-facts,
+.content > .service-grid {
   margin-bottom: 1.3rem;
 }
 
@@ -451,6 +542,13 @@ main > article {
   box-shadow: var(--shadow-soft);
 }
 
+.footer-links {
+  align-items: center;
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
 .post-navigation .btn {
   border-radius: 16px;
 }
@@ -465,7 +563,8 @@ main > article {
   .section-card-grid,
   .project-grid,
   .contact-grid,
-  .quick-facts {
+  .quick-facts,
+  .service-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -496,17 +595,33 @@ main > article {
   .section-card-grid,
   .project-grid,
   .contact-grid,
-  .cta-row {
+  .cta-row,
+  .service-grid {
     grid-template-columns: 1fr;
   }
 
-  .topbar-actions .btn {
+  .topbar-actions .btn-outline-primary {
     display: none;
+  }
+
+  .language-switcher {
+    order: -1;
+    width: 100%;
+  }
+
+  .lang-button {
+    flex: 1;
   }
 
   .cta-row {
     grid-auto-flow: row;
     width: 100%;
+  }
+
+  .topbar-actions {
+    align-items: stretch;
+    flex-wrap: wrap;
+    justify-content: flex-end;
   }
 
   .cta-row .btn {
