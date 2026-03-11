@@ -38,35 +38,27 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v5
-
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.3"
           bundler-cache: true
 
-      - name: Compute site directory
-        id: site-dir
-        run: echo "path=_site${{ steps.pages.outputs.base_path }}" >> "$GITHUB_OUTPUT"
-
       - name: Build site
-        run: bundle exec jekyll b -d "${{ steps.site-dir.outputs.path }}"
+        run: bundle exec jekyll b -d "_site"
         env:
           JEKYLL_ENV: "production"
 
       - name: Test site
         run: |
-          bundle exec htmlproofer "${{ steps.site-dir.outputs.path }}" \
+          bundle exec htmlproofer _site \
             --disable-external=true \
             --ignore-urls "/^http:\/\/127.0.0.1/,/^http:\/\/0.0.0.0/,/^http:\/\/localhost/"
 
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: "${{ steps.site-dir.outputs.path }}"
+          path: "_site"
 
   deploy:
     environment:
