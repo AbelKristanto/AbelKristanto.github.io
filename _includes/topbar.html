@@ -1,41 +1,57 @@
 <!-- Simplified Top Bar -->
 
 <header id="topbar-wrapper" aria-label="Top Bar">
-  <div id="topbar" class="d-flex align-items-center justify-content-between px-lg-3 h-100">
-    <div class="topbar-copy">
-      <p class="topbar-kicker">
-        <span class="lang-en">{% if page.layout == 'home' %}Personal website{% else %}Explore{% endif %}</span>
-        <span class="lang-id">{% if page.layout == 'home' %}Situs pribadi{% else %}Jelajahi{% endif %}</span>
-      </p>
-      <div id="topbar-title">
-        {% if page.layout == 'home' %}
-          <span class="lang-en">Overview</span>
-          <span class="lang-id">Beranda</span>
-        {% elsif page.title_id %}
-          <span class="lang-en">{{ page.title }}</span>
-          <span class="lang-id">{{ page.title_id }}</span>
-        {% else %}
-          {{ page.title | default: site.title }}
-        {% endif %}
+  <div id="topbar" class="px-lg-3">
+    <div class="topbar-main">
+      <div class="topbar-copy">
+        <p class="topbar-kicker">
+          <span class="lang-en">{% if page.layout == 'home' %}Personal website{% else %}Explore{% endif %}</span>
+          <span class="lang-id">{% if page.layout == 'home' %}Situs pribadi{% else %}Jelajahi{% endif %}</span>
+        </p>
+        <div id="topbar-title">
+          {% if page.layout == 'home' %}
+            <span class="lang-en">Overview</span>
+            <span class="lang-id">Beranda</span>
+          {% elsif page.title_id %}
+            <span class="lang-en">{{ page.title }}</span>
+            <span class="lang-id">{{ page.title_id }}</span>
+          {% else %}
+            {{ page.title | default: site.title }}
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="topbar-actions">
+        <div class="language-switcher" aria-label="Language switcher">
+          <button type="button" class="lang-button" data-lang-button="en" aria-pressed="true">English</button>
+          <button type="button" class="lang-button" data-lang-button="id" aria-pressed="false">Bahasa Indonesia</button>
+        </div>
+        <a href="{{ '/contact/' | relative_url }}" class="btn btn-primary btn-sm topbar-cta">
+          <span class="lang-en">Contact</span>
+          <span class="lang-id">Kontak</span>
+        </a>
+        <button type="button" id="sidebar-trigger" class="btn btn-link topbar-menu" aria-label="Open profile panel">
+          <i class="fas fa-bars fa-fw"></i>
+        </button>
       </div>
     </div>
 
-    <div class="topbar-actions">
-      <div class="language-switcher" aria-label="Language switcher">
-        <button type="button" class="lang-button" data-lang-button="en" aria-pressed="true">English</button>
-        <button type="button" class="lang-button" data-lang-button="id" aria-pressed="false">Bahasa Indonesia</button>
-      </div>
-      <a href="{{ '/projects/' | relative_url }}" class="btn btn-outline-primary btn-sm">
-        <span class="lang-en">Projects</span>
-        <span class="lang-id">Proyek</span>
+    <nav class="topbar-nav" aria-label="Primary navigation">
+      <a href="{{ '/' | relative_url }}" class="topbar-nav-link{% if page.layout == 'home' %} is-active{% endif %}">
+        <span class="lang-en">Home</span>
+        <span class="lang-id">Beranda</span>
       </a>
-      <a href="{{ '/contact/' | relative_url }}" class="btn btn-primary btn-sm">
-        <span class="lang-en">Contact</span>
-        <span class="lang-id">Kontak</span>
-      </a>
-      <button type="button" id="sidebar-trigger" class="btn btn-link" aria-label="Open navigation">
-        <i class="fas fa-bars fa-fw"></i>
-      </button>
-    </div>
+
+      {% for tab in site.tabs %}
+        <a href="{{ tab.url | relative_url }}" class="topbar-nav-link{% if tab.url == page.url %} is-active{% endif %}">
+          {% if tab.title_id %}
+            <span class="lang-en">{{ tab.title }}</span>
+            <span class="lang-id">{{ tab.title_id }}</span>
+          {% else %}
+            <span>{{ tab.title | default: page.title }}</span>
+          {% endif %}
+        </a>
+      {% endfor %}
+    </nav>
   </div>
 </header>
