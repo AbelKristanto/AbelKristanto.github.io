@@ -83,9 +83,23 @@ a:hover {
 }
 
 #sidebar {
+  align-items: stretch !important;
   background: rgba(250, 246, 238, 0.9);
   border-right: 1px solid var(--site-line);
   backdrop-filter: blur(18px);
+}
+
+#sidebar .profile-wrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  text-align: center;
+}
+
+#sidebar .site-title,
+#sidebar .site-subtitle {
+  text-align: center;
 }
 
 #sidebar .site-subtitle {
@@ -93,6 +107,9 @@ a:hover {
   font-style: normal;
   font-size: 0.96rem;
   line-height: 1.55;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 15rem;
 }
 
 a:focus-visible,
@@ -117,24 +134,22 @@ button:focus-visible,
 }
 
 .sidebar-note {
+  background: rgba(255, 252, 247, 0.42);
+  border: 1px solid var(--site-line);
+  border-radius: 0;
   color: var(--site-muted);
   font-size: 0.92rem;
-  width: 100%;
-}
-
-.sidebar-panel {
-  background: rgba(255, 252, 247, 0.72);
-  border: 1px solid rgba(19, 34, 40, 0.08);
-  border-radius: 22px;
-  box-shadow: 0 10px 26px rgba(17, 40, 46, 0.05);
-  margin-top: 1rem;
-  padding: 1rem 1.1rem;
+  line-height: 1.7;
+  margin-top: auto;
+  padding: 1rem 1rem 1.1rem;
   width: 100%;
 }
 
 #sidebar .sidebar-bottom {
+  justify-content: center;
   gap: 0.8rem;
-  margin-top: 1.1rem;
+  margin-top: 1.3rem;
+  padding-bottom: 2rem;
 }
 
 #topbar-wrapper,
@@ -154,7 +169,9 @@ main > article,
   background: rgba(255, 252, 247, 0.86);
   border: 1px solid rgba(19, 34, 40, 0.08);
   box-shadow: var(--shadow-soft);
+  height: auto;
   margin-top: 1.25rem;
+  overflow: visible;
   backdrop-filter: blur(20px);
 }
 
@@ -248,6 +265,7 @@ main > article,
   border: 1px solid rgba(23, 107, 109, 0.12);
   border-radius: 999px;
   display: inline-flex;
+  min-width: 5rem;
   padding: 0.2rem;
 }
 
@@ -256,9 +274,10 @@ main > article,
   border: 0;
   border-radius: 999px;
   color: var(--site-muted);
-  font-size: 0.82rem;
+  font-size: 0.76rem;
   font-weight: 700;
-  padding: 0.45rem 0.85rem;
+  min-width: 2.25rem;
+  padding: 0.45rem 0.7rem;
 }
 
 .lang-button.is-active {
@@ -317,7 +336,9 @@ main > article {
   display: grid;
   gap: 1.5rem;
   grid-template-columns: minmax(0, 1.6fr) minmax(280px, 0.95fr);
-  margin: 1.6rem 0 2.35rem;
+  margin: 2rem 0 2.5rem;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-copy,
@@ -419,7 +440,7 @@ main > article {
 .cta-row,
 .service-grid {
   display: grid;
-  gap: 1rem;
+  gap: 1.15rem;
 }
 
 .quick-facts {
@@ -432,6 +453,9 @@ main > article {
 .fact-card {
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.14);
+  display: grid;
+  gap: 0.55rem;
+  min-height: 100%;
   padding: 1.1rem;
 }
 
@@ -439,8 +463,16 @@ main > article {
   display: block;
   font-family: var(--heading-font);
   font-size: clamp(1.75rem, 1.45rem + 1vw, 2.15rem);
+  letter-spacing: -0.03em;
   line-height: 1;
   margin-bottom: 0.5rem;
+}
+
+.fact-card span {
+  display: block;
+  font-size: 0.92rem;
+  line-height: 1.58;
+  max-width: 16ch;
 }
 
 .section-card-grid,
@@ -550,6 +582,12 @@ main > article {
   width: fit-content;
 }
 
+.hero-copy .cta-row {
+  margin-top: 1.2rem;
+  position: relative;
+  z-index: 1;
+}
+
 .cta-banner {
   align-items: center;
   display: grid;
@@ -604,7 +642,7 @@ main > article {
 .content > .quick-facts,
 .content > .service-grid {
   margin-bottom: 1.45rem;
-  max-width: 46rem;
+  max-width: 42rem;
 }
 
 .content {
@@ -652,6 +690,13 @@ main > article {
 .home-section > p,
 .sidebar-note p {
   margin-bottom: 0;
+}
+
+.section-card p,
+.project-card p,
+.hero-panel p,
+.cta-banner p {
+  max-width: 38rem;
 }
 
 .hero-panel,
@@ -715,6 +760,11 @@ main > article {
   .topbar-actions {
     width: 100%;
   }
+
+  #sidebar .profile-wrapper {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
 
 @media (max-width: 767px) {
@@ -749,7 +799,6 @@ main > article {
   .section-card-grid,
   .project-grid,
   .contact-grid,
-  .cta-row,
   .service-grid {
     grid-template-columns: 1fr;
   }
@@ -765,6 +814,14 @@ main > article {
   .cta-row {
     grid-auto-flow: row;
     width: 100%;
+  }
+
+  .hero-copy .cta-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .quick-facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .topbar-actions {
@@ -808,6 +865,21 @@ main > article {
   .lead-paragraph,
   .hero-lead {
     max-width: none;
+  }
+
+  .fact-card span,
+  .section-card p,
+  .project-card p,
+  .hero-panel p,
+  .cta-banner p {
+    max-width: none;
+  }
+}
+
+@media (max-width: 575px) {
+  .hero-copy .cta-row,
+  .quick-facts {
+    grid-template-columns: 1fr;
   }
 }
 
