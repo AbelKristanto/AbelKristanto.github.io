@@ -295,6 +295,11 @@ main > article {
   padding: 1.9rem;
 }
 
+main > article > .content {
+  display: grid;
+  gap: 1.55rem;
+}
+
 .dynamic-title {
   font-size: clamp(2.1rem, 3.7vw, 3.1rem);
   line-height: 1.12;
@@ -453,6 +458,9 @@ main > article {
 
 .section-card,
 .project-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
   height: 100%;
   padding: 1.35rem;
 }
@@ -509,6 +517,14 @@ main > article {
   display: grid;
   gap: 1.05rem;
   grid-template-columns: minmax(0, 1fr);
+}
+
+.project-card > div {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 0.8rem;
+  min-height: 100%;
 }
 
 .project-card img {
@@ -618,6 +634,10 @@ main > article {
   padding: 0;
 }
 
+.content > * {
+  margin-bottom: 0;
+}
+
 .content ul,
 .content ol {
   padding-left: 1.3rem;
@@ -632,6 +652,26 @@ main > article {
   line-height: 1.2;
   margin-bottom: 1rem;
   margin-top: 2.4rem;
+  padding-top: 1.6rem;
+  position: relative;
+}
+
+.content h2::before {
+  background: linear-gradient(90deg, rgba(23, 107, 109, 0.3), rgba(23, 107, 109, 0));
+  content: '';
+  height: 1px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: min(8rem, 100%);
+}
+
+.content > h2:first-of-type {
+  margin-top: 0.25rem;
+}
+
+.content > h2:first-of-type::before {
+  display: none;
 }
 
 .content h3 {
@@ -649,7 +689,16 @@ main > article {
 .content > .contact-grid,
 .content > .quick-facts,
 .content > .service-grid {
+  align-items: stretch;
   max-width: none;
+}
+
+.content > .quick-facts,
+.content > .section-card-grid,
+.content > .project-grid,
+.content > .service-grid,
+.content > .contact-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .project-card p,
@@ -666,6 +715,52 @@ main > article {
 .hero-panel p,
 .cta-banner p {
   max-width: 38rem;
+}
+
+.section-card > *,
+.project-card > * {
+  margin-bottom: 0;
+}
+
+.section-card ul,
+.project-card ul {
+  margin: 0.15rem 0 0;
+  padding-left: 1.15rem;
+}
+
+.project-card .btn,
+.project-card .cta-row {
+  margin-top: auto;
+}
+
+.project-card .cta-row,
+.content > .contact-grid .cta-row {
+  align-items: stretch;
+}
+
+.content > .contact-grid .section-card {
+  gap: 1rem;
+}
+
+.content > .contact-grid .btn,
+.content > .contact-grid .cta-row {
+  margin-top: auto;
+}
+
+.content > .contact-grid .btn {
+  text-align: center;
+  width: 100%;
+}
+
+.content > .contact-grid .cta-row {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  justify-content: stretch;
+  width: 100%;
+}
+
+.content > .contact-grid .cta-row .btn,
+.project-card .cta-row .btn {
+  width: 100%;
 }
 
 .hero-panel,
@@ -770,6 +865,10 @@ main > article {
     padding: 1.15rem;
   }
 
+  main > article > .content {
+    gap: 1.25rem;
+  }
+
   .hero-copy h1 {
     font-size: 2.45rem;
   }
@@ -844,6 +943,11 @@ main > article {
   .hero-panel p,
   .cta-banner p {
     max-width: none;
+  }
+
+  .content h2 {
+    margin-top: 1rem;
+    padding-top: 1.25rem;
   }
 }
 
