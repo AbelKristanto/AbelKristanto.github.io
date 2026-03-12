@@ -6,14 +6,7 @@ layout: default
 
 <article class="px-1">
   {% if page.layout == 'page' or page.collection == 'tabs' %}
-    <h1 class="dynamic-title">
-      {% if page.title_id %}
-        <span class="lang-en">{{ page.title }}</span>
-        <span class="lang-id">{{ page.title_id }}</span>
-      {% else %}
-        {{ page.title }}
-      {% endif %}
-    </h1>
+    <h1 class="dynamic-title">{{ page.title }}</h1>
     <div class="content">
       {{ content }}
     </div>

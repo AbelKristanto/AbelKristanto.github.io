@@ -42,11 +42,6 @@ body.landing-page #main-content {
   padding-bottom: 1rem;
 }
 
-html[data-ui-lang='en'] .lang-id,
-html[data-ui-lang='id'] .lang-en {
-  display: none !important;
-}
-
 h1,
 h2,
 h3,
@@ -257,32 +252,6 @@ main > article,
   background: rgba(23, 107, 109, 0.14);
   border-color: rgba(23, 107, 109, 0.22);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
-  color: var(--site-primary-strong);
-}
-
-.language-switcher {
-  background: rgba(23, 107, 109, 0.08);
-  border: 1px solid rgba(23, 107, 109, 0.12);
-  border-radius: 999px;
-  display: inline-flex;
-  min-width: 5rem;
-  padding: 0.2rem;
-}
-
-.lang-button {
-  background: transparent;
-  border: 0;
-  border-radius: 999px;
-  color: var(--site-muted);
-  font-size: 0.76rem;
-  font-weight: 700;
-  min-width: 2.25rem;
-  padding: 0.45rem 0.7rem;
-}
-
-.lang-button.is-active {
-  background: #fff;
-  box-shadow: 0 8px 18px rgba(17, 40, 46, 0.08);
   color: var(--site-primary-strong);
 }
 
@@ -733,6 +702,16 @@ main > article {
   flex-wrap: wrap;
 }
 
+.site-footer {
+  background: transparent !important;
+  border-top: 0;
+  font-size: 0.88rem;
+}
+
+.site-footer p {
+  line-height: 1.6;
+}
+
 .post-navigation .btn {
   border-radius: 16px;
 }
@@ -801,14 +780,6 @@ main > article {
   .contact-grid,
   .service-grid {
     grid-template-columns: 1fr;
-  }
-
-  .language-switcher {
-    width: 100%;
-  }
-
-  .lang-button {
-    flex: 1;
   }
 
   .cta-row {

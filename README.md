@@ -1,5 +1,32 @@
 # Data Scientist | AI Engineer
 
+## Local Development
+
+This site is configured to build with:
+
+- Ruby `3.1.6`
+- Bundler `2.6.x`
+- Jekyll via `jekyll-theme-chirpy 6.2.3`
+
+Recommended local setup on macOS:
+
+```sh
+rbenv install 3.1.6
+rbenv local 3.1.6
+gem install bundler -v 2.6.9
+bundle _2.6.9_ config set --local path vendor/bundle
+bundle _2.6.9_ install
+bundle _2.6.9_ exec jekyll build
+bundle _2.6.9_ exec htmlproofer _site --disable-external=true
+```
+
+Notes:
+
+- Use the `rbenv` Ruby, not the macOS system Ruby.
+- `ffi 1.17.x` is pinned so Apple Silicon machines can use the precompiled `arm64-darwin` gem instead of compiling the older `ffi 1.16.x` native path.
+- `bundle exec jekyll serve` should work from the same environment after `bundle install` succeeds.
+- Keep the `test` group installed if you want local HTML verification with `html-proofer`.
+
 #### Technical Skills: Python, SQL, Tableau, Power BI, Figma
 
 ## Education

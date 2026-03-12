@@ -11,7 +11,7 @@ layout: compress
   {% capture prefer_mode %}data-mode="{{ site.theme_mode }}"{% endcapture %}
 {% endif %}
 
-<html lang="{{ site.alt_lang | default: site.lang }}" data-ui-lang="en" {{ prefer_mode }}>
+<html lang="{{ site.alt_lang | default: site.lang }}" {{ prefer_mode }}>
   {% include head.html %}
 
   <body class="{% if page.layout == 'home' %}landing-page{% endif %}">
@@ -23,7 +23,7 @@ layout: compress
         {% include topbar.html lang=lang %}
 
         <div class="row flex-grow-1">
-          <main id="main-content" aria-label="Main Content" class="col-12 col-xl-10 px-md-4">
+          <main id="main-content" aria-label="Main Content" class="col-12 px-md-4">
             {% if layout.refactor or layout.layout == 'default' %}
               {% include refactor-content.html content=content lang=lang %}
             {% else %}
@@ -33,7 +33,7 @@ layout: compress
         </div>
 
         <div class="row">
-          <div id="tail-wrapper" class="col-12 col-xl-10 px-md-4">
+          <div id="tail-wrapper" class="col-12 px-md-4">
             {% for _include in layout.tail_includes %}
               {% assign _include_path = _include | append: '.html' %}
               {% include {{ _include_path }} lang=lang %}
@@ -65,7 +65,6 @@ layout: compress
       {% include mermaid.html %}
     {% endif %}
 
-    {% include lang-switcher.html %}
     {% include scroll-reveal.html %}
     {% include_cached search-loader.html %}
   </body>
