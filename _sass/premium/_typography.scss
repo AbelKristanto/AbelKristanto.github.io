@@ -156,3 +156,25 @@ em,
 i {
   font-style: italic;
 }
+
+// ---------------------------------------------------------------------------
+// Skip-link — visually hidden until focused (keyboard accessibility)
+// ---------------------------------------------------------------------------
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.75rem 1rem;
+  background: var(--color-surface);
+  color: var(--color-primary);
+  border-radius: var(--radius-button);
+  box-shadow: var(--shadow-card);
+  text-decoration: none;
+  font-weight: 600;
+  transition: top 200ms ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}

@@ -4,78 +4,81 @@ icon: fas fa-info-circle
 order: 1
 ---
 
+{% assign s = site.data[site.active_lang].strings %}
+{% assign f = site.data.en.strings %}
+
 <p class="lead-paragraph">
-  I am an Indonesian data professional working at the intersection of analytics, AI, automation, and education.
+  {{ s.about_lead | default: f.about_lead }}
 </p>
 
 <p>
-  My work is centered on one simple goal: make technical work easier to understand, easier to use, and more valuable for the people behind the decisions.
+  {{ s.about_goal | default: f.about_goal }}
 </p>
 
 <div class="quick-facts">
   <div class="fact-card">
     <strong>3,000+</strong>
-    <span>professionals reached through community initiatives</span>
+    <span>{{ s.stat_professionals | default: f.stat_professionals }}</span>
   </div>
   <div class="fact-card">
     <strong>1,000+</strong>
-    <span>learners mentored in data and analytics</span>
+    <span>{{ s.stat_learners | default: f.stat_learners }}</span>
   </div>
   <div class="fact-card">
     <strong>10+</strong>
-    <span>automation initiatives delivered each year</span>
+    <span>{{ s.stat_automation | default: f.stat_automation }}</span>
   </div>
   <div class="fact-card">
     <strong>13</strong>
-    <span>publications across research and applied projects</span>
+    <span>{{ s.stat_publications | default: f.stat_publications }}</span>
   </div>
 </div>
 
-## What people usually come to me for
+## {{ s.about_what_people_need | default: f.about_what_people_need }}
 
-- Turning raw data into dashboards, reports, and explanations that managers can actually use.
-- Improving workflows with automation, monitoring, and practical AI experimentation.
-- Teaching data and AI topics in a way that feels structured, approachable, and relevant.
+- {{ s.about_need_1 | default: f.about_need_1 }}
+- {{ s.about_need_2 | default: f.about_need_2 }}
+- {{ s.about_need_3 | default: f.about_need_3 }}
 
-## Experience snapshot
+## {{ s.about_experience_title | default: f.about_experience_title }}
 
 <div class="section-card-grid">
   <div class="section-card">
-    <h3>Manager, Financial Services</h3>
-    <p>Builds monitoring dashboards and automation workflows to improve speed, visibility, and consistency.</p>
+    <h3>{{ s.about_exp_finance_title | default: f.about_exp_finance_title }}</h3>
+    <p>{{ s.about_exp_finance_desc | default: f.about_exp_finance_desc }}</p>
     <ul>
-      <li>Reduced manual process time by more than 90 percent through RPA.</li>
-      <li>Led more than 10 automation initiatives each year.</li>
+      <li>{{ s.about_exp_finance_1 | default: f.about_exp_finance_1 }}</li>
+      <li>{{ s.about_exp_finance_2 | default: f.about_exp_finance_2 }}</li>
     </ul>
   </div>
   <div class="section-card">
-    <h3>Community Leader, BUMN Ecosystem</h3>
-    <p>Supports large-scale learning and community growth around data science and AI.</p>
+    <h3>{{ s.about_exp_community_title | default: f.about_exp_community_title }}</h3>
+    <p>{{ s.about_exp_community_desc | default: f.about_exp_community_desc }}</p>
     <ul>
-      <li>Reached more than 3,000 professionals.</li>
-      <li>Helped shape practical capability-building programs.</li>
+      <li>{{ s.about_exp_community_1 | default: f.about_exp_community_1 }}</li>
+      <li>{{ s.about_exp_community_2 | default: f.about_exp_community_2 }}</li>
     </ul>
   </div>
   <div class="section-card">
-    <h3>Mentor and Educator</h3>
-    <p>Guides learners from fundamentals to applied analytics and machine learning.</p>
+    <h3>{{ s.about_exp_mentor_title | default: f.about_exp_mentor_title }}</h3>
+    <p>{{ s.about_exp_mentor_desc | default: f.about_exp_mentor_desc }}</p>
     <ul>
-      <li>Mentored more than 1,000 learners.</li>
-      <li>Known for practical and beginner-friendly explanations.</li>
+      <li>{{ s.about_exp_mentor_1 | default: f.about_exp_mentor_1 }}</li>
+      <li>{{ s.about_exp_mentor_2 | default: f.about_exp_mentor_2 }}</li>
     </ul>
   </div>
 </div>
 
-## Education and credentials
+## {{ s.about_education_title | default: f.about_education_title }}
 
-- Engineering studies at Bandung Institute of Technology.
-- B.E. in Industrial Engineering from Diponegoro University.
-- Certified in UiPath REFramework, Tableau Desktop, BNSP Data Scientist, and Azure AI Fundamentals.
+- {{ s.about_edu_1 | default: f.about_edu_1 }}
+- {{ s.about_edu_2 | default: f.about_edu_2 }}
+- {{ s.about_edu_3 | default: f.about_edu_3 }}
 
-## Research and publications
+## {{ s.about_research_title | default: f.about_research_title }}
 
 <p>
-  I have contributed to 13 publications across analytics, service quality, ergonomics, and applied technology.
+  {{ s.about_research_desc | default: f.about_research_desc }}
 </p>
 
 <ul>
@@ -85,5 +88,5 @@ order: 1
 </ul>
 
 <p>
-  If you want a faster view of my services, go to <a href="{{ '/what-i-do/' | relative_url }}">What I Do</a>. If you want work samples, go to <a href="{{ '/projects/' | relative_url }}">Projects</a>.
+  If you want a faster view of my services, go to <a href="{{ '/what-i-do/' | relative_url }}">{{ s.section_services_title | default: f.section_services_title }}</a>. If you want work samples, go to <a href="{{ '/projects/' | relative_url }}">Projects</a>.
 </p>

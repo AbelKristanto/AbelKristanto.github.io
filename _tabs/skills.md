@@ -7,15 +7,18 @@ redirect_from:
   - /skills/
 ---
 
+{% assign s = site.data[site.active_lang].strings %}
+{% assign f = site.data.en.strings %}
+
 <p class="lead-paragraph">
-  My work sits in four connected areas: analytics, AI automation, mentoring, and speaking.
+  {{ s.skills_lead | default: f.skills_lead }}
 </p>
 
 <div class="service-grid">
   <article class="section-card service-card">
     <div class="service-icon"><i class="fas fa-chart-pie"></i></div>
-    <h3>Analytics and dashboards</h3>
-    <p>I design dashboards and reporting views that help teams understand performance, patterns, and priorities.</p>
+    <h3>{{ s.skills_analytics_title | default: f.skills_analytics_title }}</h3>
+    <p>{{ s.skills_analytics_desc | default: f.skills_analytics_desc }}</p>
     <ul>
       <li>Tableau</li>
       <li>Power BI</li>
@@ -25,8 +28,8 @@ redirect_from:
   </article>
   <article class="section-card service-card">
     <div class="service-icon"><i class="fas fa-gears"></i></div>
-    <h3>AI and automation</h3>
-    <p>I use automation and practical AI to reduce repetitive work and make information easier to access.</p>
+    <h3>{{ s.skills_ai_title | default: f.skills_ai_title }}</h3>
+    <p>{{ s.skills_ai_desc | default: f.skills_ai_desc }}</p>
     <ul>
       <li>Python</li>
       <li>UiPath</li>
@@ -36,8 +39,8 @@ redirect_from:
   </article>
   <article class="section-card service-card">
     <div class="service-icon"><i class="fas fa-user-group"></i></div>
-    <h3>Mentoring and learning design</h3>
-    <p>I help learners and teams understand data topics through practical guidance, examples, and structured sessions.</p>
+    <h3>{{ s.skills_mentoring_title | default: f.skills_mentoring_title }}</h3>
+    <p>{{ s.skills_mentoring_desc | default: f.skills_mentoring_desc }}</p>
     <ul>
       <li>Beginner-friendly explanations</li>
       <li>Hands-on learning support</li>
@@ -46,8 +49,8 @@ redirect_from:
   </article>
   <article class="section-card service-card">
     <div class="service-icon"><i class="fas fa-person-chalkboard"></i></div>
-    <h3>Speaking and workshops</h3>
-    <p>I speak about analytics, machine learning, SQL, Python, AI, and practical digital capability building.</p>
+    <h3>{{ s.skills_speaking_title | default: f.skills_speaking_title }}</h3>
+    <p>{{ s.skills_speaking_desc | default: f.skills_speaking_desc }}</p>
     <ul>
       <li>Corporate sessions</li>
       <li>Community talks</li>
@@ -56,20 +59,20 @@ redirect_from:
   </article>
 </div>
 
-## How I usually work
+## {{ s.skills_how_title | default: f.skills_how_title }}
 
 <div class="section-card-grid">
   <div class="section-card">
-    <h3>1. Understand the goal</h3>
-    <p>I start from the business or learning need, not from the tool.</p>
+    <h3>{{ s.skills_how_1_title | default: f.skills_how_1_title }}</h3>
+    <p>{{ s.skills_how_1_desc | default: f.skills_how_1_desc }}</p>
   </div>
   <div class="section-card">
-    <h3>2. Simplify the path</h3>
-    <p>I focus on outputs that are useful, readable, and sustainable.</p>
+    <h3>{{ s.skills_how_2_title | default: f.skills_how_2_title }}</h3>
+    <p>{{ s.skills_how_2_desc | default: f.skills_how_2_desc }}</p>
   </div>
   <div class="section-card">
-    <h3>3. Make the result understandable</h3>
-    <p>The final result should help people act, not just admire the technique.</p>
+    <h3>{{ s.skills_how_3_title | default: f.skills_how_3_title }}</h3>
+    <p>{{ s.skills_how_3_desc | default: f.skills_how_3_desc }}</p>
   </div>
 </div>
 
