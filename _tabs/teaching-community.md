@@ -23,7 +23,7 @@ permalink: /teaching-community/
   </div>
   <div class="fact-card">
     <strong>14+</strong>
-    <span>learning classes delivered through community initiatives</span>
+    <span>{{ s.teaching_stat_classes | default: f.teaching_stat_classes }}</span>
   </div>
 </div>
 
@@ -58,5 +58,5 @@ permalink: /teaching-community/
 - {{ s.teaching_value_3 | default: f.teaching_value_3 }}
 
 <p>
-  If you want to discuss a class, workshop, or speaking invitation, use the <a href="{{ '/contact/' | relative_url }}">Contact</a> page.
+  {{ s.teaching_closing | default: f.teaching_closing }} <a href="{{ '/contact/' | relative_url }}">{{ s.teaching_closing_page | default: f.teaching_closing_page }}</a>.
 </p>

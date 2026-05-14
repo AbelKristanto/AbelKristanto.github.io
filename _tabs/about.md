@@ -82,11 +82,11 @@ order: 1
 </p>
 
 <ul>
-  <li>Renewable energy adoption modelling using logistic regression. <a href="https://iopscience.iop.org/article/10.1088/1755-1315/127/1/012007/pdf">Link</a></li>
-  <li>Commuter rail operations analysis in Jakarta Metropolitan Area. <a href="https://doi.org/10.1051/matecconf/201927201034">Link</a></li>
-  <li>Augmented reality speech therapy needs identification. <a href="https://ejournal2.undip.ac.id/index.php/jbiomes/article/view/14027">Link</a></li>
+  <li>Renewable energy adoption modelling using logistic regression. <a href="https://iopscience.iop.org/article/10.1088/1755-1315/127/1/012007/pdf">{{ s.about_pub_link | default: f.about_pub_link }}</a></li>
+  <li>Commuter rail operations analysis in Jakarta Metropolitan Area. <a href="https://doi.org/10.1051/matecconf/201927201034">{{ s.about_pub_link | default: f.about_pub_link }}</a></li>
+  <li>Augmented reality speech therapy needs identification. <a href="https://ejournal2.undip.ac.id/index.php/jbiomes/article/view/14027">{{ s.about_pub_link | default: f.about_pub_link }}</a></li>
 </ul>
 
 <p>
-  If you want a faster view of my services, go to <a href="{{ '/what-i-do/' | relative_url }}">{{ s.section_services_title | default: f.section_services_title }}</a>. If you want work samples, go to <a href="{{ '/projects/' | relative_url }}">Projects</a>.
+  {{ s.about_closing | default: f.about_closing }} <a href="{{ '/what-i-do/' | relative_url }}">{{ s.section_services_title | default: f.section_services_title }}</a>. {{ s.about_closing_2 | default: f.about_closing_2 }} <a href="{{ '/projects/' | relative_url }}">{{ s.nav_projects_label | default: f.nav_projects_label }}</a>.
 </p>

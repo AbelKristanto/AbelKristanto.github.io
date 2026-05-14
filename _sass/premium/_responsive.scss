@@ -65,3 +65,88 @@ html {
     min-height: 44px;
   }
 }
+
+// =============================================================================
+// Mobile-specific improvements for readability
+// =============================================================================
+@media (max-width: $breakpoint-md - 1px) {
+  // Ensure content doesn't overflow
+  html, body {
+    overflow-x: hidden;
+  }
+
+  // Better padding on mobile
+  #main-content,
+  .content,
+  article {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  // Cards stack nicely
+  .service-grid,
+  .section-card-grid,
+  .quick-facts {
+    grid-template-columns: 1fr !important;
+  }
+
+  // Smaller headings on mobile
+  #main-content h1,
+  .home-intro h1,
+  .dynamic-title {
+    font-size: var(--text-2xl) !important;
+  }
+
+  #main-content h2 {
+    font-size: var(--text-xl) !important;
+  }
+
+  // Nav brand shorter on mobile
+  .premium-nav__brand {
+    font-size: var(--text-base);
+    max-width: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  // Nav inner compact
+  .premium-nav__inner {
+    padding: 0 1rem;
+    height: 52px;
+    gap: 0.75rem;
+  }
+
+  // Actions compact on mobile
+  .premium-nav__actions {
+    gap: 0.25rem;
+  }
+
+  // Embed containers smaller on mobile
+  .embed-container--app .embed-container__iframe,
+  .embed-container--document .embed-container__iframe {
+    min-height: 350px;
+  }
+
+  // Better spacing for cards
+  .section-card,
+  .project-card,
+  .fact-card {
+    padding: 1.25rem !important;
+  }
+
+  // CTA buttons full width on mobile
+  .cta-row {
+    flex-direction: column;
+
+    .btn {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  // Images responsive
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}

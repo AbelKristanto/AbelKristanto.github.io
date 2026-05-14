@@ -33,8 +33,8 @@ redirect_from:
     <ul>
       <li>Python</li>
       <li>UiPath</li>
-      <li>Workflow automation</li>
-      <li>LLM prototyping</li>
+      <li>{{ s.skills_ai_item_workflow | default: f.skills_ai_item_workflow }}</li>
+      <li>{{ s.skills_ai_item_llm | default: f.skills_ai_item_llm }}</li>
     </ul>
   </article>
   <article class="section-card service-card">
@@ -42,9 +42,9 @@ redirect_from:
     <h3>{{ s.skills_mentoring_title | default: f.skills_mentoring_title }}</h3>
     <p>{{ s.skills_mentoring_desc | default: f.skills_mentoring_desc }}</p>
     <ul>
-      <li>Beginner-friendly explanations</li>
-      <li>Hands-on learning support</li>
-      <li>Training and class facilitation</li>
+      <li>{{ s.skills_mentoring_item_1 | default: f.skills_mentoring_item_1 }}</li>
+      <li>{{ s.skills_mentoring_item_2 | default: f.skills_mentoring_item_2 }}</li>
+      <li>{{ s.skills_mentoring_item_3 | default: f.skills_mentoring_item_3 }}</li>
     </ul>
   </article>
   <article class="section-card service-card">
@@ -52,9 +52,9 @@ redirect_from:
     <h3>{{ s.skills_speaking_title | default: f.skills_speaking_title }}</h3>
     <p>{{ s.skills_speaking_desc | default: f.skills_speaking_desc }}</p>
     <ul>
-      <li>Corporate sessions</li>
-      <li>Community talks</li>
-      <li>Beginner to intermediate workshops</li>
+      <li>{{ s.skills_speaking_item_1 | default: f.skills_speaking_item_1 }}</li>
+      <li>{{ s.skills_speaking_item_2 | default: f.skills_speaking_item_2 }}</li>
+      <li>{{ s.skills_speaking_item_3 | default: f.skills_speaking_item_3 }}</li>
     </ul>
   </article>
 </div>
@@ -77,5 +77,5 @@ redirect_from:
 </div>
 
 <p>
-  For examples of this work in action, visit <a href="{{ '/projects/' | relative_url }}">Projects</a>.
+  {{ s.skills_closing | default: f.skills_closing }} <a href="{{ '/projects/' | relative_url }}">{{ s.nav_projects_label | default: f.nav_projects_label }}</a>.
 </p>

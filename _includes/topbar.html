@@ -22,12 +22,14 @@
           </a>
         </li>
         {% for tab in site.tabs %}
+          {% if tab.order %}
           <li>
             <a href="{{ tab.url | relative_url }}" class="premium-nav__link{% if tab.url == page.url %} is-active{% endif %}">
               {% assign tab_key = 'nav_' | append: tab.title | downcase %}
               {{ site.data[site.active_lang].strings[tab_key] | default: site.data.en.strings[tab_key] | default: tab.title }}
             </a>
           </li>
+          {% endif %}
         {% endfor %}
       </ul>
     </nav>
@@ -66,12 +68,14 @@
           </a>
         </li>
         {% for tab in site.tabs %}
+          {% if tab.order %}
           <li>
             <a href="{{ tab.url | relative_url }}" class="premium-nav__mobile-link{% if tab.url == page.url %} is-active{% endif %}">
               {% assign tab_key = 'nav_' | append: tab.title | downcase %}
               {{ site.data[site.active_lang].strings[tab_key] | default: site.data.en.strings[tab_key] | default: tab.title }}
             </a>
           </li>
+          {% endif %}
         {% endfor %}
       </ul>
     </nav>

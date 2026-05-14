@@ -120,3 +120,23 @@ teaching_value_3: "对仍在建立信心的人给予鼓励。"
 learning_title: "数据科学学习资源库"
 learning_desc: "在下方浏览完整的学习材料，或"
 learning_open_tab: "在新标签页中打开"
+
+# Shared closing / link strings
+about_pub_link: "链接"
+about_closing: "如果您想快速了解我的服务，请访问"
+about_closing_2: "如果您想查看作品样本，请访问"
+skills_closing: "要查看这些工作的实际案例，请访问"
+teaching_closing: "如果您想讨论课程、工作坊或演讲邀请，请使用"
+teaching_closing_page: "联系"
+teaching_stat_classes: "通过社区活动开展的学习课程"
+nav_projects_label: "项目"
+
+# Skills page - service card items
+skills_ai_item_workflow: "工作流自动化"
+skills_ai_item_llm: "LLM原型开发"
+skills_mentoring_item_1: "对初学者友好的解释"
+skills_mentoring_item_2: "实践学习支持"
+skills_mentoring_item_3: "培训和课程引导"
+skills_speaking_item_1: "企业培训"
+skills_speaking_item_2: "社区演讲"
+skills_speaking_item_3: "初级到中级工作坊"

@@ -120,3 +120,23 @@ teaching_value_3: "Dorongan untuk orang-orang yang masih membangun kepercayaan d
 learning_title: "Repositori Pembelajaran Data Science"
 learning_desc: "Jelajahi materi pembelajaran lengkap di bawah ini, atau"
 learning_open_tab: "buka di tab baru"
+
+# Shared closing / link strings
+about_pub_link: "Tautan"
+about_closing: "Jika Anda ingin melihat ringkasan layanan saya, kunjungi"
+about_closing_2: "Jika Anda ingin melihat contoh karya, kunjungi"
+skills_closing: "Untuk contoh pekerjaan ini dalam aksi, kunjungi"
+teaching_closing: "Jika Anda ingin mendiskusikan kelas, workshop, atau undangan berbicara, gunakan halaman"
+teaching_closing_page: "Kontak"
+teaching_stat_classes: "kelas pembelajaran melalui inisiatif komunitas"
+nav_projects_label: "Proyek"
+
+# Skills page - service card items
+skills_ai_item_workflow: "Otomasi alur kerja"
+skills_ai_item_llm: "Prototipe LLM"
+skills_mentoring_item_1: "Penjelasan ramah pemula"
+skills_mentoring_item_2: "Dukungan belajar langsung"
+skills_mentoring_item_3: "Pelatihan dan fasilitasi kelas"
+skills_speaking_item_1: "Sesi korporat"
+skills_speaking_item_2: "Pembicaraan komunitas"
+skills_speaking_item_3: "Workshop pemula hingga menengah"

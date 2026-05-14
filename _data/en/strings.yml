@@ -120,3 +120,23 @@ teaching_value_3: "Encouragement for people who are still building confidence."
 learning_title: "Data Science Learning Repository"
 learning_desc: "Browse the complete learning materials directly below, or"
 learning_open_tab: "open in a new tab"
+
+# Shared closing / link strings
+about_pub_link: "Link"
+about_closing: "If you want a faster view of my services, go to"
+about_closing_2: "If you want work samples, go to"
+skills_closing: "For examples of this work in action, visit"
+teaching_closing: "If you want to discuss a class, workshop, or speaking invitation, use the"
+teaching_closing_page: "Contact"
+teaching_stat_classes: "learning classes delivered through community initiatives"
+nav_projects_label: "Projects"
+
+# Skills page - service card items
+skills_ai_item_workflow: "Workflow automation"
+skills_ai_item_llm: "LLM prototyping"
+skills_mentoring_item_1: "Beginner-friendly explanations"
+skills_mentoring_item_2: "Hands-on learning support"
+skills_mentoring_item_3: "Training and class facilitation"
+skills_speaking_item_1: "Corporate sessions"
+skills_speaking_item_2: "Community talks"
+skills_speaking_item_3: "Beginner to intermediate workshops"
