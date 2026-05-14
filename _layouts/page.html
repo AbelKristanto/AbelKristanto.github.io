@@ -7,7 +7,9 @@ layout: default
 <article class="px-1">
   {% include untranslated-notice.html %}
   {% if page.layout == 'page' or page.collection == 'tabs' %}
-    <h1 class="dynamic-title">{{ page.title }}</h1>
+    {% assign page_title_key = 'nav_' | append: page.title | downcase %}
+    {% assign localized_title = site.data[site.active_lang].strings[page_title_key] %}
+    <h1 class="dynamic-title">{{ localized_title | default: page.title }}</h1>
     <div class="content">
       {{ content }}
     </div>

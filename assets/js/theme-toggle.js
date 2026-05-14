@@ -9,7 +9,7 @@
  */
 document.addEventListener('DOMContentLoaded', function() {
   var STORAGE_KEY = 'site-theme';
-  var toggle = document.getElementById('theme-toggle');
+  var toggles = document.querySelectorAll('.js-theme-toggle');
 
   /**
    * Safely read from localStorage.
@@ -36,12 +36,14 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Toggle handler: click switches between light and dark
-  if (toggle) {
-    toggle.addEventListener('click', function() {
-      var current = document.documentElement.getAttribute('data-theme');
-      var next = current === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-      setStoredTheme(next);
+  if (toggles.length) {
+    toggles.forEach(function(toggle) {
+      toggle.addEventListener('click', function() {
+        var current = document.documentElement.getAttribute('data-theme');
+        var next = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        setStoredTheme(next);
+      });
     });
   }
 

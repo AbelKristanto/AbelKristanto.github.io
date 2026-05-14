@@ -1,8 +1,10 @@
 {% if site.active_lang != site.default_lang %}
-  {% assign page_lang = page.lang | default: site.default_lang %}
-  {% if page_lang != site.active_lang %}
+  {% if page.layout == 'post' %}
+    {% assign page_lang = page.lang | default: site.default_lang %}
+    {% if page_lang != site.active_lang %}
 <div class="untranslated-notice" role="alert">
   <p>{{ site.data[site.active_lang].strings.untranslated_notice | default: site.data.en.strings.untranslated_notice }}</p>
 </div>
+    {% endif %}
   {% endif %}
 {% endif %}

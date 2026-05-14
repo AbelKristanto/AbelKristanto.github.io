@@ -24,3 +24,124 @@
 #sidebar-trigger {
   display: none !important;
 }
+
+// =============================================================================
+// Dark Mode — Apply dark background to body and all Chirpy elements
+// =============================================================================
+// Chirpy theme sets its own background-color on body and containers.
+// We need to override them when [data-theme="dark"] is active.
+
+[data-theme="dark"] {
+  body,
+  html {
+    background-color: var(--color-bg) !important;
+    color: var(--color-text) !important;
+  }
+
+  #main-wrapper,
+  .container,
+  main,
+  #main-content,
+  article,
+  #tail-wrapper {
+    background-color: transparent !important;
+    color: var(--color-text) !important;
+  }
+
+  // Topbar/nav dark mode
+  .premium-nav,
+  #topbar-wrapper {
+    background: rgba(15, 20, 25, 0.85) !important;
+    border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+  }
+
+  // Cards dark mode
+  .section-card,
+  .project-card,
+  .fact-card,
+  .metric-card {
+    background-color: var(--color-surface) !important;
+    border-color: var(--card-border-color) !important;
+  }
+
+  // Text colors
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-text) !important;
+  }
+
+  p, li, span, td, th {
+    color: var(--color-text);
+  }
+
+  // Links
+  a:not(.btn):not(.premium-nav__link):not(.premium-nav__brand) {
+    color: var(--color-primary);
+  }
+
+  // Muted text
+  .text-muted,
+  .post-meta,
+  time {
+    color: var(--color-text-muted) !important;
+  }
+
+  // Footer
+  .site-footer,
+  .site-footer p {
+    color: var(--color-text-muted) !important;
+  }
+
+  // Untranslated notice
+  .untranslated-notice {
+    background-color: var(--color-surface) !important;
+    border-color: var(--card-border-color) !important;
+    color: var(--color-text-muted) !important;
+  }
+
+  // Buttons
+  .btn-outline-primary {
+    color: var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
+  }
+
+  // All button variants in dark mode
+  .btn {
+    color: var(--color-text) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+  }
+
+  .btn-primary {
+    background-color: var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
+    color: #ffffff !important;
+  }
+
+  .btn-outline-primary:hover,
+  .btn-outline-primary:focus {
+    background-color: var(--color-primary) !important;
+    color: #ffffff !important;
+  }
+
+  // Links inside cards/buttons that might be invisible
+  .section-card a,
+  .project-card a,
+  .card a {
+    color: var(--color-primary) !important;
+  }
+
+  // Specific fix for btn-outline-dark or btn-dark that becomes invisible
+  .btn-dark,
+  .btn-outline-dark {
+    color: var(--color-text) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+  }
+
+  // Fix for any link-styled buttons (text that looks like a button)
+  a.btn {
+    color: var(--color-primary) !important;
+  }
+
+  a.btn-primary {
+    color: #ffffff !important;
+  }
+}
