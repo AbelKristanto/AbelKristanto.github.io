@@ -19,8 +19,10 @@ permissions:
   id-token: write
 
 env:
-  # Force JavaScript actions onto the Node 24 runtime ahead of the runner default change.
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+  # Note: actions/upload-pages-artifact internally uses actions/upload-artifact
+  # which still targets Node.js 20. The deprecation warning is cosmetic and does
+  # not affect the build. It will resolve once GitHub updates the action to Node 24.
+  JEKYLL_ENV: "production"
 
 # Allow one concurrent deployment
 concurrency:

@@ -1,0 +1,45 @@
+// =============================================================================
+// Premium Design System — Glassmorphism
+// =============================================================================
+// Provides glass-effect styles using backdrop-filter blur, semi-transparent
+// backgrounds, and translucent borders. Includes fallback for browsers that
+// do not support backdrop-filter.
+
+// -----------------------------------------------------------------------------
+// Glassmorphism mixin (reusable)
+// -----------------------------------------------------------------------------
+@mixin glass-effect(
+  $bg: var(--glass-bg),
+  $blur: var(--glass-blur),
+  $border-color: var(--glass-border)
+) {
+  background: $bg;
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  border: 1px solid $border-color;
+
+  @supports not (backdrop-filter: blur(1px)) {
+    background: var(--color-surface);
+    opacity: 0.94;
+    border-color: rgba(0, 0, 0, 0.08);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Topbar glassmorphism with sticky positioning
+// -----------------------------------------------------------------------------
+#topbar-wrapper {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border-bottom: 1px solid var(--glass-border);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background var(--transition-slow), box-shadow var(--transition-slow);
+
+  @supports not (backdrop-filter: blur(1px)) {
+    background: var(--color-surface);
+    opacity: 0.94;
+  }
+}

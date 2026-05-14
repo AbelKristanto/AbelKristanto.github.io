@@ -192,3 +192,24 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
+
+# Multi-language (jekyll-polyglot)
+plugins:
+  - jekyll-polyglot
+
+languages: ["en", "id", "zh"]
+default_lang: "en"
+exclude_from_localization: ["assets", "images", "favicon", "feed.xml", "sitemap.xml"]
+parallel_localization: false
+
+# Language-specific SEO
+lang_vars:
+  en:
+    title: "Abel Kristanto Widodo"
+    description: "Personal website featuring work in data science, AI, automation, education, and portfolio projects."
+  id:
+    title: "Abel Kristanto Widodo"
+    description: "Situs pribadi yang menampilkan karya di bidang data science, AI, otomasi, pendidikan, dan proyek portofolio."
+  zh:
+    title: "Abel Kristanto Widodo"
+    description: "个人网站，展示数据科学、AI、自动化、教育和作品集项目。"

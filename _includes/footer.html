@@ -3,6 +3,7 @@
     {{ '©' }}
     <time>{{ 'now' | date: '%Y' }}</time>
     {{ site.social.name }}.
+    {{ site.data[site.active_lang].strings.footer_copyright | default: site.data.en.strings.footer_copyright }}
   </p>
 
   <p class="footer-links">

@@ -23,6 +23,6 @@ Even small demos can help non-technical audiences see what data science actually
 
 ## Open the interactive app
 
-[Launch the interactive data portfolio](https://dashboardabelkrw.streamlit.app/?embed=true){: target="_blank" rel="noopener noreferrer" .btn .btn-primary }
+{% include embed-container.html src="https://dashboardabelkrw.streamlit.app/?embed=true" type="app" title="Interactive Data Portfolio - Streamlit App" fallback_url="https://dashboardabelkrw.streamlit.app/?embed=true" %}
 
 If you would like a guided walkthrough or a tailored version for training or demonstration purposes, use the <a href="{{ '/contact/' | relative_url }}">Contact</a> page.

@@ -1,0 +1,106 @@
+<!-- Language Switcher Component
+     Requirements: 8.1, 8.2, 8.3, 8.4, 8.5, 8.6
+     - Dropdown with current language display and native script names
+     - Uses static_href block tag to prevent Polyglot URL relativization
+     - Keyboard accessible (Tab, Enter/Space, Escape)
+     - ARIA: aria-label, aria-expanded, role="listbox", role="option"
+     - 44x44px minimum touch targets on mobile
+-->
+<div class="lang-switcher" role="navigation" aria-label="{{ site.data[site.active_lang].strings.language_switcher_label | default: site.data.en.strings.language_switcher_label }}">
+  <button class="lang-switcher__trigger" aria-expanded="false" aria-haspopup="listbox" type="button">
+    <span class="lang-switcher__current">{{ site.data[site.active_lang].strings.lang_name_short | default: site.data.en.strings.lang_name_short }}</span>
+    <svg class="lang-switcher__chevron" width="12" height="12" aria-hidden="true" focusable="false">
+      <path d="M2 4l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.5"/>
+    </svg>
+  </button>
+  <ul class="lang-switcher__menu" role="listbox" aria-label="{{ site.data[site.active_lang].strings.language_switcher_label | default: site.data.en.strings.language_switcher_label }}">
+    {% for tongue in site.languages %}
+      <li role="option" {% if tongue == site.active_lang %}aria-selected="true"{% endif %}>
+        {% if tongue == site.active_lang %}
+          <span class="lang-switcher__option lang-switcher__option--active">
+            {{ site.data[tongue].strings.lang_name }}
+          </span>
+        {% else %}
+          <a class="lang-switcher__option"
+             {% static_href %}href="{% if tongue == site.default_lang %}{{ site.baseurl }}{{ page.url }}{% else %}{{ site.baseurl }}/{{ tongue }}{{ page.url }}{% endif %}"{% endstatic_href %}
+             hreflang="{{ tongue }}">
+            {{ site.data[tongue].strings.lang_name }}
+          </a>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<script>
+(function() {
+  var switcher = document.currentScript.previousElementSibling;
+  if (!switcher || !switcher.classList.contains('lang-switcher')) return;
+
+  var trigger = switcher.querySelector('.lang-switcher__trigger');
+  var menu = switcher.querySelector('.lang-switcher__menu');
+  if (!trigger || !menu) return;
+
+  function open() {
+    trigger.setAttribute('aria-expanded', 'true');
+    menu.classList.add('is-open');
+  }
+
+  function close() {
+    trigger.setAttribute('aria-expanded', 'false');
+    menu.classList.remove('is-open');
+  }
+
+  function toggle() {
+    var isOpen = trigger.getAttribute('aria-expanded') === 'true';
+    if (isOpen) {
+      close();
+    } else {
+      open();
+    }
+  }
+
+  // Click handler
+  trigger.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    toggle();
+  });
+
+  // Keyboard: Enter/Space to activate trigger, Escape to close
+  trigger.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggle();
+    } else if (e.key === 'Escape') {
+      close();
+      trigger.focus();
+    }
+  });
+
+  // Keyboard: Escape on menu items closes dropdown
+  menu.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      close();
+      trigger.focus();
+    }
+  });
+
+  // Close on outside click
+  document.addEventListener('click', function(e) {
+    if (!switcher.contains(e.target)) {
+      close();
+    }
+  });
+
+  // Close on focus leaving the switcher
+  switcher.addEventListener('focusout', function(e) {
+    // Use setTimeout to allow focus to move to the new element first
+    setTimeout(function() {
+      if (!switcher.contains(document.activeElement)) {
+        close();
+      }
+    }, 0);
+  });
+})();
+</script>

@@ -1,3 +1,23 @@
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+{% include head-fonts.html %}
+
+<!-- Translated hreflang meta tags for SEO -->
+{% for lang in site.languages %}
+  {% if lang == site.default_lang %}
+    <link rel="alternate" hreflang="{{ lang }}" href="{{ site.url }}{{ page.url }}" />
+  {% else %}
+    <link rel="alternate" hreflang="{{ lang }}" href="{{ site.url }}/{{ lang }}{{ page.url }}" />
+  {% endif %}
+{% endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.url }}" />
+
+<!-- FOUC prevention: set data-theme before first paint -->
+<script>
+(function() {
+  var STORAGE_KEY = 'site-theme';
+  var stored = null;
+  try { stored = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+  var preferred = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+  var theme = stored || preferred;
+  document.documentElement.setAttribute('data-theme', theme);
+})();
+</script>

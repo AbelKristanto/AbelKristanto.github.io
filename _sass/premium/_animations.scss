@@ -1,0 +1,172 @@
+// =============================================================================
+// Premium Design System — Animations & Transitions
+// =============================================================================
+// Defines micro-animations and transitions for cards, scroll-reveal, page
+// transitions, buttons/links, and reduced-motion accessibility compliance.
+
+// -----------------------------------------------------------------------------
+// 1. Card Hover Transitions
+// -----------------------------------------------------------------------------
+// Cards lift upward (-2px to -6px) with increased shadow on hover.
+// Transition completes in 200ms with ease timing.
+
+.card,
+.section-card,
+.project-card,
+.metric-card {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
+
+  &:hover,
+  &:focus-within {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-card-hover);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// 2. Scroll-Reveal Base Styles
+// -----------------------------------------------------------------------------
+// Elements start hidden (opacity 0, shifted down 20px) and transition to
+// visible (opacity 1, translateY 0) when `.is-visible` is applied by JS.
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 600ms ease-out,
+    transform 600ms ease-out;
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// 3. Page Fade Transition
+// -----------------------------------------------------------------------------
+// Main content area fades in on page load (150ms–300ms).
+
+.page-fade {
+  animation: pageFadeIn 250ms ease forwards;
+}
+
+#main-wrapper,
+main,
+.content {
+  animation: pageFadeIn 250ms ease forwards;
+}
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// 4. Button & Link Hover Transitions
+// -----------------------------------------------------------------------------
+// Buttons and links transition color and optional scale (1.0–1.05) in 150ms.
+
+a,
+button,
+.btn,
+.btn-primary,
+.btn-secondary {
+  transition:
+    color var(--transition-fast),
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.btn,
+.btn-primary,
+.btn-secondary {
+  &:hover,
+  &:focus-visible {
+    transform: scale(1.03);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--color-primary);
+}
+
+// -----------------------------------------------------------------------------
+// 5. Reduced Motion — Accessibility
+// -----------------------------------------------------------------------------
+// When the user prefers reduced motion, disable all transition and animation
+// durations EXCEPT opacity (required for content visibility per WCAG).
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0ms !important;
+    animation-duration: 0ms !important;
+    transition-delay: 0ms !important;
+    animation-delay: 0ms !important;
+  }
+
+  // Exception: allow opacity transitions for content visibility (scroll-reveal)
+  .reveal-on-scroll {
+    transition-property: opacity !important;
+    transition-duration: 1ms !important;
+    animation-duration: 1ms !important;
+  }
+
+  // Ensure scroll-reveal elements are immediately visible
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  // Disable page fade animation
+  #main-wrapper,
+  main,
+  .content,
+  .page-fade {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  // Disable card hover transforms
+  .card,
+  .section-card,
+  .project-card,
+  .metric-card {
+    transform: none !important;
+
+    &:hover,
+    &:focus-within {
+      transform: none !important;
+    }
+  }
+
+  // Disable button/link scale transforms
+  .btn,
+  .btn-primary,
+  .btn-secondary {
+    &:hover,
+    &:focus-visible,
+    &:active {
+      transform: none !important;
+    }
+  }
+}

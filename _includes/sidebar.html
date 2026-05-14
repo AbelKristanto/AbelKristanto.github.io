@@ -1,4 +1,6 @@
-<!-- The Side Bar -->
+<!-- The Side Bar — Polyglot compatible (uses site.active_lang) -->
+
+{% assign current_lang = site.active_lang | default: site.lang | default: "en" %}
 
 <aside aria-label="Sidebar" id="sidebar" class="d-flex flex-column align-items-end">
   <header class="profile-wrapper">
@@ -20,6 +22,9 @@
     <h1 class="site-title">
       <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
     </h1>
+    {% if site.tagline %}
+      <p class="site-subtitle fst-italic mb-0">{{ site.tagline }}</p>
+    {% endif %}
   </header>
 
   <div class="sidebar-bottom d-flex flex-wrap align-items-center w-100">

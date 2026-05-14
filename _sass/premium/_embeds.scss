@@ -1,0 +1,245 @@
+// =============================================================================
+// Premium Design System — Embed Containers
+// =============================================================================
+// Responsive iframe container system with three aspect ratio variants,
+// loading states, fallback cards, and fullscreen toggle.
+// Requirements: 14.1, 14.2, 14.4, 14.5, 10.3, 11.3
+
+// -----------------------------------------------------------------------------
+// Base embed container
+// -----------------------------------------------------------------------------
+.embed-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+  margin-bottom: 1.5rem;
+
+  // Iframe base styles
+  &__iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    transition: opacity var(--transition-slow);
+  }
+
+  // Loading spinner overlay
+  &__loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-surface);
+    z-index: 2;
+  }
+
+  // Spinner animation
+  &__spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--color-text-muted);
+    border-top-color: var(--color-primary);
+    border-radius: 50%;
+    animation: embed-spin 0.8s linear infinite;
+  }
+
+  // Fallback card (shown when embed fails to load)
+  &__fallback {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+    background: var(--color-surface);
+    z-index: 3;
+
+    p {
+      font-size: var(--text-base);
+      color: var(--color-text-muted);
+      margin-bottom: 1rem;
+      max-width: 400px;
+      line-height: 1.6;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: #fff;
+      background: var(--color-primary);
+      border: none;
+      border-radius: var(--radius-button);
+      text-decoration: none;
+      cursor: pointer;
+      transition: background var(--transition-fast), transform var(--transition-fast);
+
+      &:hover {
+        background: var(--color-secondary);
+        transform: translateY(-1px);
+      }
+
+      &:focus-visible {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 2px;
+      }
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Aspect ratio variants
+// -----------------------------------------------------------------------------
+
+// Video: 16:9 aspect ratio
+.embed-container--video {
+  padding-bottom: 56.25%;
+  height: 0;
+}
+
+// Dashboard: 4:3 aspect ratio
+.embed-container--dashboard {
+  padding-bottom: 75%;
+  height: 0;
+}
+
+// App & Document: fixed min-height (responsive)
+.embed-container--app,
+.embed-container--document {
+  min-height: 400px;
+  height: auto;
+  padding-bottom: 0;
+
+  .embed-container__iframe {
+    position: relative;
+    min-height: 400px;
+  }
+
+  .embed-container__loader,
+  .embed-container__fallback {
+    min-height: 400px;
+  }
+
+  @media (min-width: 768px) {
+    min-height: 600px;
+
+    .embed-container__iframe {
+      position: relative;
+      min-height: 600px;
+    }
+
+    .embed-container__loader,
+    .embed-container__fallback {
+      min-height: 600px;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Fullscreen toggle button
+// -----------------------------------------------------------------------------
+.embed-container__fullscreen-toggle {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-button);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+
+  &:hover {
+    background: var(--color-surface);
+    transform: scale(1.05);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  @supports not (backdrop-filter: blur(1px)) {
+    background: var(--color-surface);
+    opacity: 0.94;
+  }
+}
+
+// Fullscreen state
+.embed-container--fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  border-radius: 0;
+  padding-bottom: 0 !important;
+  min-height: 100vh;
+
+  .embed-container__iframe {
+    position: absolute;
+    min-height: 100vh;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Spinner keyframe animation
+// -----------------------------------------------------------------------------
+@keyframes embed-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Reduced motion: disable spinner animation
+// -----------------------------------------------------------------------------
+@media (prefers-reduced-motion: reduce) {
+  .embed-container__spinner {
+    animation-duration: 0ms;
+  }
+
+  .embed-container__iframe {
+    transition-duration: 0ms;
+  }
+
+  .embed-container__fullscreen-toggle {
+    transition-duration: 0ms;
+  }
+
+  .embed-container__fallback .btn-primary {
+    transition-duration: 0ms;
+  }
+}

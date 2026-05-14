@@ -1,0 +1,5 @@
+{% if page.lang != site.active_lang and page.rendered_lang != site.active_lang %}
+<div class="untranslated-notice" role="alert">
+  <p>{{ site.data[site.active_lang].strings.untranslated_notice | default: site.data.en.strings.untranslated_notice }}</p>
+</div>
+{% endif %}

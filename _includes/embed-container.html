@@ -1,0 +1,38 @@
+{% assign aspect_class = include.type | default: 'video' %}
+<div class="embed-container embed-container--{{ aspect_class }}" data-embed-src="{{ include.src }}">
+  <div class="embed-container__loader" aria-hidden="true">
+    <div class="embed-container__spinner"></div>
+  </div>
+  <iframe 
+    class="embed-container__iframe"
+    data-src="{{ include.src }}"
+    loading="lazy"
+    title="{{ include.title }}"
+    frameborder="0"
+    allowfullscreen
+    sandbox="allow-scripts allow-same-origin allow-popups"
+    style="opacity: 0;"
+  ></iframe>
+  <button 
+    class="embed-container__fullscreen-toggle"
+    type="button"
+    aria-label="{{ site.data[site.active_lang].strings.embed_fullscreen | default: site.data.en.strings.embed_fullscreen | default: 'Toggle fullscreen' }}"
+    tabindex="0"
+  >
+    <svg class="embed-container__fullscreen-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <path d="M3 3h5v2H5v3H3V3zm9 0h5v5h-2V5h-3V3zM3 12h2v3h3v2H3v-5zm12 3h-3v2h5v-5h-2v3z" fill="currentColor"/>
+    </svg>
+  </button>
+  <div class="embed-container__fallback" hidden>
+    <p>{{ include.fallback_text | default: site.data[site.active_lang].strings.embed_unavailable | default: site.data.en.strings.embed_unavailable | default: 'This content is currently unavailable.' }}</p>
+    <a href="{{ include.fallback_url | default: include.src }}" target="_blank" rel="noopener noreferrer" class="btn-primary">
+      {{ site.data[site.active_lang].strings.embed_open_external | default: site.data.en.strings.embed_open_external | default: 'Open in new tab' }}
+    </a>
+  </div>
+  <noscript>
+    <p>{{ include.fallback_text | default: site.data[site.active_lang].strings.embed_unavailable | default: site.data.en.strings.embed_unavailable | default: 'This content is currently unavailable.' }}</p>
+    <a href="{{ include.fallback_url | default: include.src }}" target="_blank" rel="noopener noreferrer">
+      {{ site.data[site.active_lang].strings.embed_open_external | default: site.data.en.strings.embed_open_external | default: 'Open in new tab' }}
+    </a>
+  </noscript>
+</div>

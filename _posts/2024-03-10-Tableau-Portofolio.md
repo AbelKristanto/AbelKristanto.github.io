@@ -18,7 +18,7 @@ This dashboard helps explain insurance claim patterns across customer demographi
 
 Review the dataset [here](https://onyxdata.ck.page/8cbde7b71b) and explore the dashboard on [Tableau Public](https://public.tableau.com/app/profile/abel.kristanto/viz/CarInsuranceAnalysis_17100849784940/Dashboard1?publish=yes).
 
-<a href="https://public.tableau.com/app/profile/abel.kristanto/viz/CarInsuranceAnalysis_17100849784940/Dashboard1"><img src="{{ '/assets/img/additional/cia.png' | relative_url }}" alt="Car Insurance Analysis"></a>
+{% include embed-container.html src="https://public.tableau.com/views/CarInsuranceAnalysis_17100849784940/Dashboard1?:embed=y&:display_count=no" type="dashboard" title="Car Insurance Analysis Dashboard" fallback_url="https://public.tableau.com/app/profile/abel.kristanto/viz/CarInsuranceAnalysis_17100849784940/Dashboard1" %}
 
 ## Spotify Analysis
 
@@ -26,7 +26,7 @@ This dashboard examines song popularity and engagement in the streaming era. It 
 
 Review the dataset [here](https://www.kaggle.com/datasets/nelgiriyewithana/top-spotify-songs-2023) and explore the dashboard on [Tableau Public](https://public.tableau.com/app/profile/abel.kristanto/viz/SpotifyAnalysis_17101537680360/SpotifyAnalysis?publish=yes).
 
-<a href ="https://public.tableau.com/app/profile/abel.kristanto/viz/SpotifyAnalysis_17101537680360/SpotifyAnalysis"><img src="{{ '/assets/img/additional/sa.png' | relative_url }}" alt="Spotify Analysis"></a>
+{% include embed-container.html src="https://public.tableau.com/views/SpotifyAnalysis_17101537680360/SpotifyAnalysis?:embed=y&:display_count=no" type="dashboard" title="Spotify Analysis Dashboard" fallback_url="https://public.tableau.com/app/profile/abel.kristanto/viz/SpotifyAnalysis_17101537680360/SpotifyAnalysis" %}
 
 ## Hotel Reservations Analysis
 
@@ -34,10 +34,12 @@ This dashboard focuses on hotel booking patterns and guest behavior. It helps ex
 
 Review the dataset [here](https://onyxdata.co.uk/data-dna-dataset-challenge/) and explore the dashboard on [Tableau Public](https://public.tableau.com/app/profile/abel.kristanto/viz/HotelAnalysis_17101747388490/HotelAnalysis?publish=yes).
 
-<a href="https://public.tableau.com/app/profile/abel.kristanto/viz/HotelAnalysis_17101747388490/HotelAnalysis"><img src="{{ '/assets/img/additional/hra.png' | relative_url }}" alt="Hotel Reservations Analysis"></a>
+{% include embed-container.html src="https://public.tableau.com/views/HotelAnalysis_17101747388490/HotelAnalysis?:embed=y&:display_count=no" type="dashboard" title="Hotel Reservations Analysis Dashboard" fallback_url="https://public.tableau.com/app/profile/abel.kristanto/viz/HotelAnalysis_17101747388490/HotelAnalysis" %}
 
 ## Mobile Sales Insight 2024
 
 This dashboard summarizes 2024 mobile sales performance through revenue, units sold, brand performance, regional distribution, and buyer demographics.
 
 Explore the dashboard on [Tableau Public](https://public.tableau.com/app/profile/abel.kristanto/viz/Exploration_17471529452820/Overview).
+
+{% include embed-container.html src="https://public.tableau.com/views/Exploration_17471529452820/Overview?:embed=y&:display_count=no" type="dashboard" title="Mobile Sales Insight 2024 Dashboard" fallback_url="https://public.tableau.com/app/profile/abel.kristanto/viz/Exploration_17471529452820/Overview" %}

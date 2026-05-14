@@ -1,0 +1,17 @@
+// =============================================================================
+// Premium Design System — Barrel File
+// =============================================================================
+// Imports all premium design system partials in the correct dependency order.
+// Variables and themes must come first, then component styles.
+
+@import 'premium/variables';
+@import 'premium/theme-light';
+@import 'premium/theme-dark';
+@import 'premium/typography';
+@import 'premium/glassmorphism';
+@import 'premium/animations';
+@import 'premium/cards';
+@import 'premium/hero';
+@import 'premium/embeds';
+@import 'premium/navigation';
+@import 'premium/responsive';

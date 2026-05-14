@@ -21,6 +21,6 @@ The prototype explores how conversational AI can help users interact with inform
 
 ## Try the prototype
 
-[Open the AI chatbot prototype](https://llama2.streamlit.app/?embed=true){: target="_blank" rel="noopener noreferrer" .btn .btn-primary }
+{% include embed-container.html src="https://llama2.streamlit.app/?embed=true" type="app" title="AI Chatbot Prototype - Streamlit App" fallback_url="https://llama2.streamlit.app/?embed=true" %}
 
 For collaboration or discussion around AI learning, prototyping, or experimentation, visit <a href="{{ '/contact/' | relative_url }}">Contact</a>.

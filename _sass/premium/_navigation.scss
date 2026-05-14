@@ -1,0 +1,551 @@
+// =============================================================================
+// Premium Design System — Navigation
+// =============================================================================
+// Sticky top navigation with glassmorphism, hamburger menu for mobile,
+// icon-only language switcher & theme toggle, and back-to-top button.
+// Requirements: 15.1, 15.2, 15.3, 15.4, 15.5
+
+// -----------------------------------------------------------------------------
+// Sticky Top Navigation Bar
+// -----------------------------------------------------------------------------
+.premium-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--glass-border);
+  transition: background var(--transition-slow),
+              box-shadow var(--transition-slow),
+              border-color var(--transition-slow);
+
+  // Fallback for browsers without backdrop-filter support
+  @supports not (backdrop-filter: blur(1px)) {
+    background: var(--color-surface);
+    opacity: 0.94;
+  }
+
+  [data-theme="dark"] & {
+    background: rgba(15, 20, 25, 0.85);
+
+    @supports not (backdrop-filter: blur(1px)) {
+      background: var(--color-surface);
+      opacity: 0.94;
+    }
+  }
+
+  // Scrolled state — add subtle shadow for depth
+  &.is-scrolled {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+
+    [data-theme="dark"] & {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Navigation Inner Container
+// -----------------------------------------------------------------------------
+.premium-nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  height: 60px;
+}
+
+// -----------------------------------------------------------------------------
+// Navigation Brand / Logo
+// -----------------------------------------------------------------------------
+.premium-nav__brand {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-text);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color var(--transition-fast);
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Navigation Links (Desktop)
+// -----------------------------------------------------------------------------
+.premium-nav__links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  @media (max-width: 767px) {
+    display: none;
+  }
+}
+
+.premium-nav__link {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: color var(--transition-fast);
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-primary);
+    transition: width var(--transition-base);
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: var(--color-text);
+
+    &::after {
+      width: 100%;
+    }
+  }
+
+  &.is-active {
+    color: var(--color-primary);
+
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Navigation Actions (Language Switcher + Theme Toggle)
+// -----------------------------------------------------------------------------
+.premium-nav__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+// Icon-only controls — max 40px width each (Requirement 15.5)
+.premium-nav__action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  max-width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-button);
+  background: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: color var(--transition-fast),
+              background-color var(--transition-fast),
+              transform var(--transition-fast);
+
+  &:hover {
+    color: var(--color-text);
+    background: rgba(0, 0, 0, 0.05);
+
+    [data-theme="dark"] & {
+      background: rgba(255, 255, 255, 0.08);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  &:active {
+    transform: scale(0.92);
+  }
+
+  svg,
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+// Language switcher icon-only wrapper
+.lang-switcher--nav {
+  position: relative;
+  max-width: 40px;
+
+  .lang-switcher__trigger {
+    @extend .premium-nav__action-btn;
+
+    // 44×44px minimum touch target on mobile (Requirement 8.6)
+    @media (max-width: 767px) {
+      width: 44px;
+      min-width: 44px;
+      height: 44px;
+      min-height: 44px;
+    }
+  }
+
+  .lang-switcher__menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 160px;
+    background: var(--color-surface);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-button);
+    box-shadow: var(--shadow-card-hover);
+    padding: 0.5rem 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4px);
+    transition: opacity var(--transition-base),
+                visibility var(--transition-base),
+                transform var(--transition-base);
+    list-style: none;
+    margin: 0;
+    z-index: 1001;
+
+    &.is-open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  }
+
+  .lang-switcher__option {
+    display: block;
+    padding: 0.5rem 1rem;
+    font-size: var(--text-sm);
+    color: var(--color-text);
+    text-decoration: none;
+    transition: background var(--transition-fast);
+
+    // 44×44px minimum touch target on mobile (Requirement 8.6)
+    @media (max-width: 767px) {
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      padding: 0.625rem 1rem;
+    }
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.04);
+
+      [data-theme="dark"] & {
+        background: rgba(255, 255, 255, 0.06);
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: -2px;
+      border-radius: 4px;
+    }
+
+    &--active {
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+  }
+}
+
+// Theme toggle icon-only wrapper
+.theme-toggle--nav {
+  .theme-toggle-btn {
+    @extend .premium-nav__action-btn;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Hamburger Menu (Mobile < 768px) — Requirement 15.4
+// -----------------------------------------------------------------------------
+.premium-nav__hamburger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  // 44×44px minimum touch target
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-button);
+  background: transparent;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: color var(--transition-fast),
+              background-color var(--transition-fast);
+
+  @media (max-width: 767px) {
+    display: flex;
+  }
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.05);
+
+    [data-theme="dark"] & {
+      background: rgba(255, 255, 255, 0.08);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}
+
+// Hamburger icon bars
+.premium-nav__hamburger-icon {
+  position: relative;
+  width: 22px;
+  height: 16px;
+
+  span {
+    display: block;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: currentColor;
+    border-radius: 1px;
+    transition: transform var(--transition-base),
+                opacity var(--transition-base);
+
+    &:nth-child(1) {
+      top: 0;
+    }
+
+    &:nth-child(2) {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &:nth-child(3) {
+      bottom: 0;
+    }
+  }
+
+  // Animate to X when menu is open
+  .premium-nav__hamburger[aria-expanded="true"] & {
+    span:nth-child(1) {
+      top: 50%;
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    span:nth-child(2) {
+      opacity: 0;
+    }
+
+    span:nth-child(3) {
+      bottom: 50%;
+      transform: translateY(50%) rotate(-45deg);
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Mobile Slide-In Panel — 200ms–400ms transition (Requirement 15.4)
+// -----------------------------------------------------------------------------
+.premium-nav__mobile-panel {
+  display: none;
+
+  @media (max-width: 767px) {
+    display: block;
+    position: fixed;
+    top: 60px; // below the nav bar
+    right: 0;
+    width: 280px;
+    max-width: 80vw;
+    height: calc(100vh - 60px);
+    background: var(--color-surface);
+    border-left: 1px solid var(--glass-border);
+    box-shadow: -4px 0 16px rgba(0, 0, 0, 0.08);
+    z-index: 999;
+    overflow-y: auto;
+    padding: 1.5rem;
+    transform: translateX(100%);
+    transition: transform 300ms ease;
+    visibility: hidden;
+
+    [data-theme="dark"] & {
+      box-shadow: -4px 0 16px rgba(0, 0, 0, 0.3);
+    }
+
+    &.is-open {
+      transform: translateX(0);
+      visibility: visible;
+    }
+  }
+}
+
+// Mobile panel overlay/backdrop
+.premium-nav__overlay {
+  display: none;
+
+  @media (max-width: 767px) {
+    display: block;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 60px);
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 300ms ease, visibility 300ms ease;
+
+    &.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+// Mobile navigation links inside the panel
+.premium-nav__mobile-links {
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+}
+
+.premium-nav__mobile-link {
+  display: block;
+  padding: 0.75rem 0;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--color-text);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  transition: color var(--transition-fast);
+
+  [data-theme="dark"] & {
+    border-bottom-color: rgba(255, 255, 255, 0.06);
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: var(--color-primary);
+  }
+
+  &.is-active {
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+}
+
+// Mobile panel actions (language switcher + theme toggle)
+.premium-nav__mobile-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+
+  [data-theme="dark"] & {
+    border-top-color: rgba(255, 255, 255, 0.06);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Back-to-Top Button — visible after 300px scroll (Requirement 15.2)
+// -----------------------------------------------------------------------------
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity var(--transition-base),
+              visibility var(--transition-base),
+              transform var(--transition-base),
+              background-color var(--transition-fast);
+
+  // Visible state — toggled via JS when scroll > 300px
+  &.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  &:hover {
+    background: var(--color-secondary);
+    transform: translateY(-2px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+  }
+
+  &:active {
+    transform: scale(0.92);
+  }
+
+  svg,
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  @media (max-width: 767px) {
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Reduced Motion — respect user preference
+// -----------------------------------------------------------------------------
+@media (prefers-reduced-motion: reduce) {
+  .premium-nav__mobile-panel {
+    transition: none;
+  }
+
+  .premium-nav__overlay {
+    transition: none;
+  }
+
+  .back-to-top {
+    transition: none;
+  }
+
+  .premium-nav__hamburger-icon span {
+    transition: none;
+  }
+
+  .lang-switcher--nav .lang-switcher__menu {
+    transition: none;
+  }
+}

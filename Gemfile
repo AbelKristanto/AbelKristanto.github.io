@@ -10,6 +10,10 @@ gem "jekyll-theme-chirpy", "~> 6.2", ">= 6.2.3"
 # native build path pulled in through jekyll-watch -> listen -> rb-inotify.
 gem "ffi", "~> 1.17", ">= 1.17.3"
 
+group :jekyll_plugins do
+  gem "jekyll-polyglot", "~> 1.8"
+end
+
 group :test do
   gem "html-proofer", "~> 4.4"
 end

@@ -1,36 +1,152 @@
-<!-- Simplified Top Bar -->
+<!-- Premium Top Bar — Requirements: 6.1, 8.1, 15.1, 15.4, 15.5
+     Uses .premium-nav class structure from _navigation.scss
+     Includes language switcher and theme toggle in .premium-nav__actions
+     Localized nav labels from site.data[site.active_lang].strings
+     Hamburger menu for mobile with slide-in panel
+     Preserves aria-label="Top Bar" and aria-label="Primary navigation"
+-->
 
-<header id="topbar-wrapper" aria-label="Top Bar">
-  <div id="topbar" class="px-lg-3">
-    <div class="topbar-main">
-      <div id="topbar-title">
-        {% if page.layout == 'home' %}
-          Overview
-        {% else %}
-          {{ page.title | default: site.title }}
-        {% endif %}
-      </div>
+<header id="topbar-wrapper" class="premium-nav" aria-label="Top Bar">
+  <div class="premium-nav__inner">
+    <!-- Brand / Site Title -->
+    <a href="{{ '/' | relative_url }}" class="premium-nav__brand">
+      {% if page.layout == 'home' %}
+        {{ site.data[site.active_lang].strings.nav_home | default: site.data.en.strings.nav_home }}
+      {% else %}
+        {{ page.title | default: site.title }}
+      {% endif %}
+    </a>
 
-      <div class="topbar-actions">
-        <a href="{{ '/contact/' | relative_url }}" class="btn btn-primary btn-sm topbar-cta">
-          Contact
-        </a>
-        <button type="button" id="sidebar-trigger" class="btn btn-link topbar-menu" aria-label="Open profile panel">
-          <i class="fas fa-bars fa-fw"></i>
-        </button>
-      </div>
+    <!-- Desktop Navigation Links -->
+    <nav aria-label="Primary navigation">
+      <ul class="premium-nav__links">
+        <li>
+          <a href="{{ '/' | relative_url }}" class="premium-nav__link{% if page.layout == 'home' %} is-active{% endif %}">
+            {{ site.data[site.active_lang].strings.nav_home | default: site.data.en.strings.nav_home }}
+          </a>
+        </li>
+        {% for tab in site.tabs %}
+          <li>
+            <a href="{{ tab.url | relative_url }}" class="premium-nav__link{% if tab.url == page.url %} is-active{% endif %}">
+              {% assign tab_key = 'nav_' | append: tab.title | downcase %}
+              {{ site.data[site.active_lang].strings[tab_key] | default: site.data.en.strings[tab_key] | default: tab.title }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    <!-- Actions: Language Switcher + Theme Toggle -->
+    <div class="premium-nav__actions">
+      {% include language-switcher.html %}
+      {% include theme-toggle.html %}
     </div>
 
-    <nav class="topbar-nav" aria-label="Primary navigation">
-      <a href="{{ '/' | relative_url }}" class="topbar-nav-link{% if page.layout == 'home' %} is-active{% endif %}">
-        Home
-      </a>
+    <!-- Hamburger Menu Button (Mobile) -->
+    <button class="premium-nav__hamburger" 
+            id="mobile-menu-toggle"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="mobile-nav-panel">
+      <span class="premium-nav__hamburger-icon" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </button>
+  </div>
 
-      {% for tab in site.tabs %}
-        <a href="{{ tab.url | relative_url }}" class="topbar-nav-link{% if tab.url == page.url %} is-active{% endif %}">
-          {{ tab.title | default: page.title }}
-        </a>
-      {% endfor %}
+  <!-- Mobile Overlay -->
+  <div class="premium-nav__overlay" id="mobile-nav-overlay" aria-hidden="true"></div>
+
+  <!-- Mobile Slide-In Panel -->
+  <div class="premium-nav__mobile-panel" id="mobile-nav-panel" role="dialog" aria-label="Navigation menu">
+    <nav aria-label="Primary navigation">
+      <ul class="premium-nav__mobile-links">
+        <li>
+          <a href="{{ '/' | relative_url }}" class="premium-nav__mobile-link{% if page.layout == 'home' %} is-active{% endif %}">
+            {{ site.data[site.active_lang].strings.nav_home | default: site.data.en.strings.nav_home }}
+          </a>
+        </li>
+        {% for tab in site.tabs %}
+          <li>
+            <a href="{{ tab.url | relative_url }}" class="premium-nav__mobile-link{% if tab.url == page.url %} is-active{% endif %}">
+              {% assign tab_key = 'nav_' | append: tab.title | downcase %}
+              {{ site.data[site.active_lang].strings[tab_key] | default: site.data.en.strings[tab_key] | default: tab.title }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
     </nav>
+
+    <!-- Mobile Actions -->
+    <div class="premium-nav__mobile-actions">
+      {% include language-switcher.html %}
+      {% include theme-toggle.html %}
+    </div>
   </div>
 </header>
+
+<script>
+(function() {
+  // Hamburger menu toggle
+  var hamburger = document.getElementById('mobile-menu-toggle');
+  var panel = document.getElementById('mobile-nav-panel');
+  var overlay = document.getElementById('mobile-nav-overlay');
+
+  if (!hamburger || !panel || !overlay) return;
+
+  function openMenu() {
+    hamburger.setAttribute('aria-expanded', 'true');
+    panel.classList.add('is-open');
+    overlay.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    hamburger.setAttribute('aria-expanded', 'false');
+    panel.classList.remove('is-open');
+    overlay.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  function toggleMenu() {
+    var isOpen = hamburger.getAttribute('aria-expanded') === 'true';
+    if (isOpen) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  }
+
+  hamburger.addEventListener('click', function(e) {
+    e.preventDefault();
+    toggleMenu();
+  });
+
+  overlay.addEventListener('click', function() {
+    closeMenu();
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && hamburger.getAttribute('aria-expanded') === 'true') {
+      closeMenu();
+      hamburger.focus();
+    }
+  });
+
+  // Add scrolled state to nav for shadow effect
+  var nav = document.getElementById('topbar-wrapper');
+  if (nav) {
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 10) {
+        nav.classList.add('is-scrolled');
+      } else {
+        nav.classList.remove('is-scrolled');
+      }
+    }, { passive: true });
+  }
+})();
+</script>

@@ -3,61 +3,105 @@ layout: default
 refactor: false
 ---
 
-<section class="home-section">
-  <h1>Data and AI work that people can understand and use.</h1>
-  <p>
-    I help teams make better decisions through analytics, AI, and automation — and help people learn faster through practical education.
-  </p>
-  <div class="cta-row">
-    <a href="{{ '/about/' | relative_url }}" class="btn btn-primary">Learn more about me</a>
+{% assign strings = site.data[site.active_lang].strings %}
+{% assign fallback = site.data.en.strings %}
+
+<!-- ===== Premium Hero Section ===== -->
+<section class="hero-section" aria-label="Hero">
+  <div class="hero-content">
+    <p class="hero-eyebrow">{{ strings.hero_eyebrow | default: fallback.hero_eyebrow }}</p>
+    <h1 class="hero-name">Abel Kristanto Widodo</h1>
+    <p class="hero-tagline">{{ strings.hero_title | default: fallback.hero_title }}</p>
+    <p class="hero-description">{{ strings.hero_description | default: fallback.hero_description }}</p>
+
+    <div class="hero-cta-group">
+      <a href="{{ '/about/' | relative_url }}" class="hero-cta hero-cta--primary">
+        {{ strings.hero_cta_primary | default: fallback.hero_cta_primary }}
+      </a>
+      <a href="{{ '/archives/' | relative_url }}" class="hero-cta hero-cta--secondary">
+        {{ strings.hero_cta_secondary | default: fallback.hero_cta_secondary }}
+      </a>
+    </div>
+
+    <div class="hero-metrics" role="list" aria-label="Key metrics">
+      <div class="hero-metric-card" role="listitem">
+        <span class="hero-metric-value">3000+</span>
+        <span class="hero-metric-label">{{ strings.stat_professionals | default: fallback.stat_professionals }}</span>
+      </div>
+      <div class="hero-metric-card" role="listitem">
+        <span class="hero-metric-value">1000+</span>
+        <span class="hero-metric-label">{{ strings.stat_learners | default: fallback.stat_learners }}</span>
+      </div>
+      <div class="hero-metric-card" role="listitem">
+        <span class="hero-metric-value">10+</span>
+        <span class="hero-metric-label">{{ strings.stat_automation | default: fallback.stat_automation }}</span>
+      </div>
+      <div class="hero-metric-card" role="listitem">
+        <span class="hero-metric-value">13</span>
+        <span class="hero-metric-label">{{ strings.stat_publications | default: fallback.stat_publications }}</span>
+      </div>
+    </div>
   </div>
 </section>
 
+<!-- ===== Services Summary ===== -->
 <section class="home-section">
-  <h2>What I Do</h2>
+  <h2>{{ strings.section_services_title | default: fallback.section_services_title }}</h2>
   <ul class="services-list">
     <li>
-      <strong>Analytics</strong> — Dashboards, reporting, and data storytelling for clearer decisions.
+      <strong>{{ strings.service_analytics_title | default: fallback.service_analytics_title }}</strong> — {{ strings.service_analytics_desc | default: fallback.service_analytics_desc }}
     </li>
     <li>
-      <strong>AI Automation</strong> — Workflow improvement with automation, RPA, and practical AI prototyping.
+      <strong>{{ strings.service_ai_title | default: fallback.service_ai_title }}</strong> — {{ strings.service_ai_desc | default: fallback.service_ai_desc }}
     </li>
     <li>
-      <strong>Mentoring</strong> — Learning support for beginners and professionals building data skills.
+      <strong>{{ strings.service_mentoring_title | default: fallback.service_mentoring_title }}</strong> — {{ strings.service_mentoring_desc | default: fallback.service_mentoring_desc }}
     </li>
     <li>
-      <strong>Speaking</strong> — Workshops, talks, and community sessions on analytics, AI, and digital capability.
+      <strong>{{ strings.service_speaking_title | default: fallback.service_speaking_title }}</strong> — {{ strings.service_speaking_desc | default: fallback.service_speaking_desc }}
     </li>
   </ul>
 </section>
 
+<!-- ===== Selected Work ===== -->
 <section class="home-section">
-  <h2>Selected Work</h2>
+  <h2>{{ strings.section_work_title | default: fallback.section_work_title }}</h2>
 
   <article class="project-card">
-    <h3>Dashboard Collection</h3>
-    <p>Public Tableau work showing how complex datasets become clearer business stories.</p>
-    <a href="{{ '/posts/tableau-dashboard-collection/' | relative_url }}" class="btn btn-outline-primary">View project</a>
+    <h3>{{ strings.work_dashboard_title | default: fallback.work_dashboard_title }}</h3>
+    <p>{{ strings.work_dashboard_desc | default: fallback.work_dashboard_desc }}</p>
+    <a href="{{ '/posts/tableau-dashboard-collection/' | relative_url }}" class="btn btn-outline-primary">
+      {{ strings.work_dashboard_cta | default: fallback.work_dashboard_cta }}
+    </a>
   </article>
 
   <article class="project-card">
-    <h3>ESPLOOR</h3>
-    <p>A learning initiative connecting classes, research support, and community growth.</p>
-    <a href="{{ '/posts/esploor-research-program/' | relative_url }}" class="btn btn-outline-primary">See the program</a>
+    <h3>{{ strings.work_esploor_title | default: fallback.work_esploor_title }}</h3>
+    <p>{{ strings.work_esploor_desc | default: fallback.work_esploor_desc }}</p>
+    <a href="{{ '/posts/esploor-research-program/' | relative_url }}" class="btn btn-outline-primary">
+      {{ strings.work_esploor_cta | default: fallback.work_esploor_cta }}
+    </a>
   </article>
 
   <article class="project-card">
-    <h3>Chatbot Experiment</h3>
-    <p>An early conversational AI prototype focused on practical interaction.</p>
-    <a href="{{ '/posts/ai-chatbot-prototype/' | relative_url }}" class="btn btn-outline-primary">Read more</a>
+    <h3>{{ strings.work_chatbot_title | default: fallback.work_chatbot_title }}</h3>
+    <p>{{ strings.work_chatbot_desc | default: fallback.work_chatbot_desc }}</p>
+    <a href="{{ '/posts/ai-chatbot-prototype/' | relative_url }}" class="btn btn-outline-primary">
+      {{ strings.work_chatbot_cta | default: fallback.work_chatbot_cta }}
+    </a>
   </article>
 </section>
 
+<!-- ===== Contact CTA ===== -->
 <section class="home-section">
-  <h2>Get in Touch</h2>
-  <p>Looking for analytics support, AI automation ideas, a mentor, or a speaker? Let's connect.</p>
+  <h2>{{ strings.section_contact_title | default: fallback.section_contact_title }}</h2>
+  <p>{{ strings.section_contact_desc | default: fallback.section_contact_desc }}</p>
   <div class="cta-row">
-    <a href="mailto:abelkrw@gmail.com" class="btn btn-primary">Email me</a>
-    <a href="https://www.linkedin.com/in/abelkrw" class="btn btn-outline-primary" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a>
+    <a href="mailto:abelkrw@gmail.com" class="btn btn-primary">
+      {{ strings.contact_email_cta | default: fallback.contact_email_cta }}
+    </a>
+    <a href="https://www.linkedin.com/in/abelkrw" class="btn btn-outline-primary" target="_blank" rel="noopener noreferrer">
+      {{ strings.contact_linkedin_cta | default: fallback.contact_linkedin_cta }}
+    </a>
   </div>
 </section>

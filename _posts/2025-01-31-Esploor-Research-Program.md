@@ -9,6 +9,8 @@ author: abelkrw
 
 # Esploor Research Program
 
+> **Note:** The YouTube video links below are password-protected via link-lock. Once direct YouTube URLs are available, they will be embedded directly on this page for inline viewing.
+
 ## **Overview**
 **Esploor Research Program** adalah program yang dirancang untuk menuangkan ide inovatif dari mahasiswa dan masyarakat umum dengan riset berbasis data, khususnya dalam bidang **Artificial Intelligence (AI) dan Big Data**. Program ini memberikan kesempatan kepada peserta untuk:
 
