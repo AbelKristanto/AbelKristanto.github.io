@@ -4,15 +4,17 @@
 // Implements modern card design with layered shadows, theme-adaptive borders,
 // hover elevation effects, consistent border-radius, and optional accent bars.
 //
+// IMPORTANT: Border-radius for buttons and inputs is scoped to premium
+// components only. We do NOT override Chirpy's generic button/input styles.
+//
 // Requirements: 5.1, 5.2, 5.3, 5.4, 5.5
 
 // -----------------------------------------------------------------------------
 // Consistent border-radius via CSS custom properties (Requirement 5.4)
-// These are defined in _variables.scss but enforced here for cards, buttons,
-// and inputs to ensure visual consistency within each element category.
+// Scoped to premium card classes only. Buttons and inputs are scoped to
+// premium sections to avoid breaking Chirpy's search and navigation buttons.
 // -----------------------------------------------------------------------------
 
-.card,
 .section-card,
 .project-card,
 .metric-card,
@@ -20,18 +22,33 @@
   border-radius: var(--radius-card);
 }
 
-button,
-.btn,
-[type="button"],
-[type="submit"],
-[type="reset"] {
+// Only apply premium card radius to .card inside our sections
+.home-section .card,
+.hero-section .card {
+  border-radius: var(--radius-card);
+}
+
+// Button border-radius — scoped to premium components only
+.hero-cta,
+.embed-container__fallback .btn-primary,
+.embed-container__fullscreen-toggle,
+.premium-nav__action-btn,
+.premium-nav__hamburger,
+.back-to-top,
+#main-content .btn,
+#main-content button:not(#back-to-top),
+.home-section button,
+.home-section .btn {
   border-radius: var(--radius-button);
 }
 
-input,
-textarea,
-select,
-.input {
+// Input border-radius — scoped to premium components only
+#main-content input,
+#main-content textarea,
+#main-content select,
+.home-section input,
+.home-section textarea,
+.home-section select {
   border-radius: var(--radius-input);
 }
 
@@ -39,9 +56,9 @@ select,
 // Base card styles (Requirement 5.1, 5.2)
 // Layered box-shadows create visible depth separation from the page background.
 // Semi-transparent border adapts to the active theme (light or dark).
+// Scoped to premium card classes only.
 // -----------------------------------------------------------------------------
 
-.card,
 .section-card,
 .project-card {
   position: relative;
@@ -53,7 +70,6 @@ select,
   box-shadow: var(--shadow-card);
 
   // Semi-transparent border adapting to theme (Requirement 5.2)
-  // Light theme: dark border at low opacity; Dark theme: light border at low opacity
   border: 1px solid var(--card-border-color, rgba(0, 0, 0, 0.08));
 
   // Smooth transition for hover state (Requirement 5.3)
@@ -64,8 +80,6 @@ select,
 
   // ---------------------------------------------------------------------------
   // Hover state (Requirement 5.3)
-  // Shadow spread increase of at least 2px + upward transform 2px–6px
-  // Transition duration 150ms–300ms (set above at 200ms)
   // ---------------------------------------------------------------------------
   &:hover {
     box-shadow: var(--shadow-card-hover);
@@ -80,10 +94,34 @@ select,
   }
 }
 
+// Apply card styles to .card only inside premium sections
+.home-section .card,
+.hero-section .card {
+  position: relative;
+  background: var(--color-surface);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--card-border-color, rgba(0, 0, 0, 0.08));
+  transition:
+    box-shadow 200ms ease,
+    transform 200ms ease,
+    border-color 200ms ease;
+
+  &:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-4px);
+    border-color: var(--card-border-color-hover, rgba(0, 0, 0, 0.12));
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}
+
 // -----------------------------------------------------------------------------
 // Theme-adaptive border colors (Requirement 5.2)
-// Light theme: rgba(0,0,0, opacity) where opacity is 0.05–0.2
-// Dark theme: rgba(255,255,255, opacity) where opacity is 0.05–0.2
 // -----------------------------------------------------------------------------
 
 :root {
@@ -126,8 +164,6 @@ select,
 
 // -----------------------------------------------------------------------------
 // Accent color bar / gradient strip (Requirement 5.5)
-// Optional 3px–6px thickness at top or left to differentiate card categories.
-// Use modifier classes to apply: .card--accent-top, .card--accent-left
 // -----------------------------------------------------------------------------
 
 // Top accent bar (default: primary gradient)
@@ -245,10 +281,11 @@ select,
 // -----------------------------------------------------------------------------
 
 @media (prefers-reduced-motion: reduce) {
-  .card,
   .section-card,
   .project-card,
-  .metric-card {
+  .metric-card,
+  .home-section .card,
+  .hero-section .card {
     transition: none;
 
     &:hover {
@@ -259,8 +296,6 @@ select,
 
 // -----------------------------------------------------------------------------
 // Untranslated content notice (Requirement 9.4)
-// Displayed when a page is shown in its original language because no
-// translation is available for the visitor's selected language.
 // -----------------------------------------------------------------------------
 
 .untranslated-notice {

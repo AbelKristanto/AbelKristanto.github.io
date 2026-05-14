@@ -3,17 +3,38 @@
 // =============================================================================
 // Defines micro-animations and transitions for cards, scroll-reveal, page
 // transitions, buttons/links, and reduced-motion accessibility compliance.
+//
+// IMPORTANT: Animations are scoped to premium components only. We do NOT
+// apply animations to #main-wrapper, main, or generic a/button elements
+// to avoid conflicting with Chirpy theme's built-in layout and transitions.
 
 // -----------------------------------------------------------------------------
 // 1. Card Hover Transitions
 // -----------------------------------------------------------------------------
 // Cards lift upward (-2px to -6px) with increased shadow on hover.
 // Transition completes in 200ms with ease timing.
+// Scoped to premium card classes only (not Chirpy's generic .card).
 
-.card,
 .section-card,
 .project-card,
-.metric-card {
+.metric-card,
+.hero-metric-card {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
+
+  &:hover,
+  &:focus-within {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-card-hover);
+  }
+}
+
+// Only apply to .card elements inside our premium sections
+.home-section .card,
+.hero-section .card {
   transform: translateY(-2px);
   box-shadow: var(--shadow-card);
   transition:
@@ -51,15 +72,9 @@
 // -----------------------------------------------------------------------------
 // 3. Page Fade Transition
 // -----------------------------------------------------------------------------
-// Main content area fades in on page load (150ms–300ms).
+// Applied only via explicit .page-fade class, NOT to #main-wrapper or main.
 
 .page-fade {
-  animation: pageFadeIn 250ms ease forwards;
-}
-
-#main-wrapper,
-main,
-.content {
   animation: pageFadeIn 250ms ease forwards;
 }
 
@@ -73,15 +88,18 @@ main,
 }
 
 // -----------------------------------------------------------------------------
-// 4. Button & Link Hover Transitions
+// 4. Button & Link Hover Transitions — scoped to premium components
 // -----------------------------------------------------------------------------
-// Buttons and links transition color and optional scale (1.0–1.05) in 150ms.
+// We do NOT apply transitions to generic `a` or `button` elements because
+// that would conflict with Chirpy's sidebar links, nav buttons, and search.
 
-a,
-button,
-.btn,
-.btn-primary,
-.btn-secondary {
+// Premium-specific button transitions
+.hero-cta,
+.embed-container__fallback .btn-primary,
+.embed-container__fullscreen-toggle,
+.premium-nav__action-btn,
+.premium-nav__hamburger,
+.back-to-top {
   transition:
     color var(--transition-fast),
     background-color var(--transition-fast),
@@ -90,9 +108,14 @@ button,
     box-shadow var(--transition-fast);
 }
 
-.btn,
-.btn-primary,
-.btn-secondary {
+// Premium-specific link transitions (inside main content only)
+#main-content a {
+  transition: color var(--transition-fast);
+}
+
+// Premium button hover effects
+.hero-cta,
+.embed-container__fallback .btn-primary {
   &:hover,
   &:focus-visible {
     transform: scale(1.03);
@@ -103,8 +126,9 @@ button,
   }
 }
 
-a:hover,
-a:focus-visible {
+// Link hover color inside main content
+#main-content a:hover,
+#main-content a:focus-visible {
   color: var(--color-primary);
 }
 
@@ -138,19 +162,18 @@ a:focus-visible {
   }
 
   // Disable page fade animation
-  #main-wrapper,
-  main,
-  .content,
   .page-fade {
     animation: none !important;
     opacity: 1 !important;
   }
 
   // Disable card hover transforms
-  .card,
   .section-card,
   .project-card,
-  .metric-card {
+  .metric-card,
+  .hero-metric-card,
+  .home-section .card,
+  .hero-section .card {
     transform: none !important;
 
     &:hover,
@@ -159,10 +182,9 @@ a:focus-visible {
     }
   }
 
-  // Disable button/link scale transforms
-  .btn,
-  .btn-primary,
-  .btn-secondary {
+  // Disable button scale transforms
+  .hero-cta,
+  .embed-container__fallback .btn-primary {
     &:hover,
     &:focus-visible,
     &:active {

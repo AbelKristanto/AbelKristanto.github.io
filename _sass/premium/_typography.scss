@@ -4,6 +4,9 @@
 // Defines font-family custom properties, heading styles, body text defaults,
 // and CJK locale overrides. The modular type scale (--text-xs through --text-4xl)
 // is defined in _variables.scss; this partial consumes those tokens.
+//
+// IMPORTANT: All heading and link styles are scoped to premium components or
+// #main-content to avoid conflicting with Chirpy theme's sidebar and navigation.
 
 // ---------------------------------------------------------------------------
 // Font-family custom properties
@@ -25,6 +28,9 @@
 // ---------------------------------------------------------------------------
 // Body defaults
 // ---------------------------------------------------------------------------
+// Font-family and base text settings are safe to apply globally since Chirpy's
+// sidebar inherits from body anyway. However, we must NOT set display, padding,
+// margin, or width on body.
 body {
   font-family: var(--font-body);
   font-size: var(--text-base);
@@ -35,16 +41,14 @@ body {
 }
 
 // ---------------------------------------------------------------------------
-// Heading styles
+// Heading styles — scoped to #main-content to avoid breaking sidebar title
 // ---------------------------------------------------------------------------
-// Each heading level decreases in font-size by at least 0.25rem from the
-// previous level. The type scale tokens guarantee this:
-//   --text-4xl: clamp(2.8rem, ..., 4rem)    → h1
-//   --text-2xl: clamp(1.8rem, ..., 2.5rem)  → h2
-//   --text-xl:  clamp(1.4rem, ..., 1.75rem) → h3
-//   --text-lg:  clamp(1.1rem, ..., 1.25rem) → h4
+// Chirpy's sidebar has `h1.site-title` which should NOT be affected by our
+// premium heading sizes. We scope all heading overrides to main content area.
 
-h1 {
+#main-content h1,
+.hero-section h1,
+.home-section h1 {
   font-family: var(--font-heading);
   font-size: var(--text-4xl);
   font-weight: 700;
@@ -53,7 +57,9 @@ h1 {
   margin-bottom: 0.5em;
 }
 
-h2 {
+#main-content h2,
+.hero-section h2,
+.home-section h2 {
   font-family: var(--font-heading);
   font-size: var(--text-2xl);
   font-weight: 700;
@@ -62,7 +68,9 @@ h2 {
   margin-bottom: 0.5em;
 }
 
-h3 {
+#main-content h3,
+.hero-section h3,
+.home-section h3 {
   font-family: var(--font-heading);
   font-size: var(--text-xl);
   font-weight: 600;
@@ -71,7 +79,9 @@ h3 {
   margin-bottom: 0.4em;
 }
 
-h4 {
+#main-content h4,
+.hero-section h4,
+.home-section h4 {
   font-family: var(--font-body);
   font-size: var(--text-lg);
   font-weight: 600;
@@ -81,9 +91,9 @@ h4 {
 }
 
 // ---------------------------------------------------------------------------
-// Paragraph and inline text
+// Paragraph and inline text — scoped to main content
 // ---------------------------------------------------------------------------
-p {
+#main-content p {
   margin-bottom: 1.25em;
 }
 
@@ -117,9 +127,12 @@ small,
 }
 
 // ---------------------------------------------------------------------------
-// Links
+// Links — scoped to #main-content to avoid breaking sidebar/nav links
 // ---------------------------------------------------------------------------
-a {
+// Chirpy's sidebar links and topbar links have their own color scheme.
+// We only style links inside the main content area.
+
+#main-content a:not(.btn):not(.premium-nav__link):not(.premium-nav__brand) {
   color: var(--color-primary);
   text-decoration: none;
   transition: color var(--transition-fast);

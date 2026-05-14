@@ -1,199 +1,66 @@
 // =============================================================================
 // Premium Design System — Responsive Breakpoints & Layout
 // =============================================================================
-// Consolidates all responsive rules: breakpoint overrides, section spacing,
-// max content width, and smooth scroll behavior.
-// Requirements: 15.2, 15.3
 
-// -----------------------------------------------------------------------------
-// Breakpoint variables
-// -----------------------------------------------------------------------------
 $breakpoint-sm: 576px;
 $breakpoint-md: 768px;
 $breakpoint-lg: 992px;
 $breakpoint-xl: 1200px;
 
-// -----------------------------------------------------------------------------
-// Smooth scroll behavior
-// -----------------------------------------------------------------------------
+// Smooth scroll
 html {
   scroll-behavior: smooth;
 }
 
-// -----------------------------------------------------------------------------
-// Global layout constraints
-// -----------------------------------------------------------------------------
-.content-wrapper,
-.main-content,
-main,
-#main-wrapper {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-}
-
-// -----------------------------------------------------------------------------
-// Section vertical spacing (minimum 2rem between sections)
-// -----------------------------------------------------------------------------
-section,
+// Section spacing for premium components only
 .home-section,
-.content > section,
-.page-content > section,
-.post-content > section {
-  margin-top: 2rem;
+.hero-section {
   margin-bottom: 2rem;
 }
 
-// Ensure consistent spacing between major page sections
-main > section + section,
-main > .home-section + .home-section,
-#main-wrapper > section + section {
+.home-section + .home-section {
   margin-top: 2rem;
 }
 
-// -----------------------------------------------------------------------------
-// Mobile-first base (< 576px)
-// -----------------------------------------------------------------------------
-body {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
+// Card grid responsive
+.card-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
 
-// -----------------------------------------------------------------------------
-// Small devices (>= 576px)
-// -----------------------------------------------------------------------------
-@media (min-width: $breakpoint-sm) {
-  body {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-}
-
-// -----------------------------------------------------------------------------
-// Medium devices / Tablets (>= 768px)
-// -----------------------------------------------------------------------------
-@media (min-width: $breakpoint-md) {
-  body {
-    padding-left: 2rem;
-    padding-right: 2rem;
+  @media (min-width: $breakpoint-md) {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  // Hero metric cards: horizontal row on tablet+
-  .hero__stats {
-    flex-direction: row;
-    justify-content: center;
-    gap: 1.5rem;
-  }
-
-  // Navigation: show full nav links, hide hamburger
-  .nav-hamburger {
-    display: none;
-  }
-
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-  }
-
-  // Embed containers: fixed-height variants get full height
-  .embed-container--app,
-  .embed-container--document {
-    min-height: 600px;
-  }
-}
-
-// -----------------------------------------------------------------------------
-// Large devices / Desktops (>= 992px)
-// -----------------------------------------------------------------------------
-@media (min-width: $breakpoint-lg) {
-  body {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
-  }
-
-  // Cards: multi-column grid layout
-  .card-grid {
+  @media (min-width: $breakpoint-lg) {
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 2rem;
   }
 }
 
-// -----------------------------------------------------------------------------
-// Extra-large devices (>= 1200px)
-// -----------------------------------------------------------------------------
-@media (min-width: $breakpoint-xl) {
-  body {
-    padding-left: 3rem;
-    padding-right: 3rem;
-  }
+// Embed containers responsive
+.embed-container--app,
+.embed-container--document {
+  min-height: 400px;
 
-  // Content max-width is enforced by the wrapper, body padding provides gutter
-  .content-wrapper,
-  .main-content,
-  main,
-  #main-wrapper {
-    max-width: 1200px;
+  @media (min-width: $breakpoint-md) {
+    min-height: 600px;
   }
 }
 
-// -----------------------------------------------------------------------------
-// Mobile overrides (< 768px)
-// -----------------------------------------------------------------------------
-@media (max-width: $breakpoint-md - 1px) {
-  // Hero: stack vertically with padding
-  .hero__content {
-    padding: 1rem;
-    text-align: center;
-  }
-
-  .hero__stats {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  // Navigation: hamburger menu visible
-  .nav-hamburger {
-    display: flex;
-    align-items: center;
+// Hero metrics responsive
+.hero-metrics {
+  @media (min-width: $breakpoint-md) {
+    flex-direction: row;
     justify-content: center;
-    width: 44px;
-    height: 44px;
-    cursor: pointer;
+    gap: 1.5rem;
   }
+}
 
-  .nav-links {
-    display: none;
-
-    &.is-open {
-      display: flex;
-      flex-direction: column;
-      position: fixed;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      width: 280px;
-      max-width: 80vw;
-      padding: 2rem 1.5rem;
-      background: var(--color-surface);
-      box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
-      z-index: 1001;
-      transition: transform var(--transition-slow);
-    }
-  }
-
-  // Embed containers: reduced height on mobile
-  .embed-container--app,
-  .embed-container--document {
-    min-height: 400px;
-  }
-
-  // Language switcher and theme toggle: icon-only, compact
+// Mobile touch targets
+@media (max-width: $breakpoint-md - 1px) {
   .lang-switcher,
   .theme-toggle-btn {
-    max-width: 44px;
     min-width: 44px;
     min-height: 44px;
   }
