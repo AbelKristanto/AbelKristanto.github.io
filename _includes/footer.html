@@ -1,15 +1,8 @@
-<footer
-  aria-label="Site Info"
-  class="site-footer
-    d-flex flex-column justify-content-center text-muted
-    flex-lg-row justify-content-lg-between align-items-lg-center pb-lg-3
-  "
->
+<footer aria-label="Site Info" class="site-footer">
   <p>
     {{ '©' }}
     <time>{{ 'now' | date: '%Y' }}</time>
-    <a href="{{ site.social.links[0] }}">{{ site.social.name }}</a>.
-    Data, AI, automation, and education with practical impact.
+    {{ site.social.name }}.
   </p>
 
   <p class="footer-links">

@@ -3,17 +3,12 @@
 <header id="topbar-wrapper" aria-label="Top Bar">
   <div id="topbar" class="px-lg-3">
     <div class="topbar-main">
-      <div class="topbar-copy">
-        <p class="topbar-kicker">
-          {% if page.layout == 'home' %}Personal website{% else %}Explore{% endif %}
-        </p>
-        <div id="topbar-title">
-          {% if page.layout == 'home' %}
-            Overview
-          {% else %}
-            {{ page.title | default: site.title }}
-          {% endif %}
-        </div>
+      <div id="topbar-title">
+        {% if page.layout == 'home' %}
+          Overview
+        {% else %}
+          {{ page.title | default: site.title }}
+        {% endif %}
       </div>
 
       <div class="topbar-actions">
@@ -33,7 +28,7 @@
 
       {% for tab in site.tabs %}
         <a href="{{ tab.url | relative_url }}" class="topbar-nav-link{% if tab.url == page.url %} is-active{% endif %}">
-          <span>{{ tab.title | default: page.title }}</span>
+          {{ tab.title | default: page.title }}
         </a>
       {% endfor %}
     </nav>
