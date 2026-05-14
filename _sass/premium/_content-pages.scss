@@ -1,0 +1,252 @@
+// =============================================================================
+// Premium Design System — Content Page Components
+// =============================================================================
+// Styles for grid layouts and components used in content pages (About, What I Do,
+// Teaching & Community). These classes are used in the markdown/HTML of _tabs/ files.
+
+// -----------------------------------------------------------------------------
+// Lead paragraph
+// -----------------------------------------------------------------------------
+.lead-paragraph {
+  font-size: var(--text-lg);
+  line-height: 1.7;
+  color: var(--color-text-muted);
+  margin-bottom: 2rem;
+  max-width: 680px;
+}
+
+// -----------------------------------------------------------------------------
+// Service Grid — 2 columns on desktop, 1 on mobile
+// -----------------------------------------------------------------------------
+.service-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(2, 1fr);
+  margin-bottom: 2rem;
+
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Section Card Grid — 3 columns on desktop, 1 on mobile
+// -----------------------------------------------------------------------------
+.section-card-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 2rem;
+
+  @media (max-width: 991px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Quick Facts Grid — 4 columns on desktop, 2 on tablet, 1 on mobile
+// -----------------------------------------------------------------------------
+.quick-facts {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+  margin-bottom: 2rem;
+
+  @media (max-width: 991px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 575px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Fact Card
+// -----------------------------------------------------------------------------
+.fact-card {
+  background: var(--color-surface);
+  border: 1px solid var(--card-border-color, rgba(0, 0, 0, 0.08));
+  border-radius: var(--radius-card);
+  padding: 1.25rem;
+  text-align: center;
+
+  strong {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 0.35rem;
+  }
+
+  span {
+    display: block;
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: 1.4;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Service Card (extends section-card with icon)
+// -----------------------------------------------------------------------------
+.service-card {
+  padding: 1.5rem;
+}
+
+.service-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(23, 107, 109, 0.08);
+  color: var(--color-primary);
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+
+  [data-theme="dark"] & {
+    background: rgba(79, 209, 197, 0.1);
+    color: var(--color-primary);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Section Card base (used in grids)
+// -----------------------------------------------------------------------------
+.section-card {
+  background: var(--color-surface);
+  border: 1px solid var(--card-border-color, rgba(0, 0, 0, 0.08));
+  border-radius: var(--radius-card);
+  padding: 1.5rem;
+  transition: box-shadow 200ms ease, transform 200ms ease;
+
+  &:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-2px);
+  }
+
+  h3 {
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+  }
+
+  p {
+    font-size: var(--text-base);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      padding: 0.25rem 0;
+      
+      &::before {
+        content: "•";
+        color: var(--color-primary);
+        margin-right: 0.5rem;
+      }
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Project Card (used in home page selected work)
+// -----------------------------------------------------------------------------
+.project-card {
+  background: var(--color-surface);
+  border: 1px solid var(--card-border-color, rgba(0, 0, 0, 0.08));
+  border-radius: var(--radius-card);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  transition: box-shadow 200ms ease, transform 200ms ease;
+
+  &:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-2px);
+  }
+
+  h3 {
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+  }
+
+  p {
+    font-size: var(--text-base);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Home section spacing
+// -----------------------------------------------------------------------------
+.home-section {
+  margin-bottom: 3rem;
+
+  h2 {
+    margin-bottom: 1.25rem;
+  }
+
+  .services-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--card-border-color, rgba(0, 0, 0, 0.08));
+      font-size: var(--text-base);
+      line-height: 1.6;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      strong {
+        color: var(--color-text);
+      }
+    }
+  }
+}
+
+// CTA row
+.cta-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+  .section-card,
+  .project-card,
+  .fact-card {
+    transition: none;
+
+    &:hover {
+      transform: none;
+    }
+  }
+}

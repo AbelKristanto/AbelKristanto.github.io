@@ -6,61 +6,52 @@ refactor: false
 {% assign strings = site.data[site.active_lang].strings %}
 {% assign fallback = site.data.en.strings %}
 
-<!-- ===== Premium Hero Section ===== -->
-<section class="hero-section" aria-label="Hero">
-  <div class="hero-content">
-    <p class="hero-eyebrow">{{ strings.hero_eyebrow | default: fallback.hero_eyebrow }}</p>
-    <h1 class="hero-name">Abel Kristanto Widodo</h1>
-    <p class="hero-tagline">{{ strings.hero_title | default: fallback.hero_title }}</p>
-    <p class="hero-description">{{ strings.hero_description | default: fallback.hero_description }}</p>
+<div class="home-intro">
+  <p class="home-eyebrow">{{ strings.hero_eyebrow | default: fallback.hero_eyebrow }}</p>
+  <h1>{{ strings.hero_title | default: fallback.hero_title }}</h1>
+  <p class="lead-paragraph">{{ strings.hero_description | default: fallback.hero_description }}</p>
+</div>
 
-    <div class="hero-cta-group">
-      <a href="{{ '/about/' | relative_url }}" class="hero-cta hero-cta--primary">
-        {{ strings.hero_cta_primary | default: fallback.hero_cta_primary }}
-      </a>
-      <a href="{{ '/archives/' | relative_url }}" class="hero-cta hero-cta--secondary">
-        {{ strings.hero_cta_secondary | default: fallback.hero_cta_secondary }}
-      </a>
-    </div>
-
-    <div class="hero-metrics" role="list" aria-label="Key metrics">
-      <div class="hero-metric-card" role="listitem">
-        <span class="hero-metric-value">3000+</span>
-        <span class="hero-metric-label">{{ strings.stat_professionals | default: fallback.stat_professionals }}</span>
-      </div>
-      <div class="hero-metric-card" role="listitem">
-        <span class="hero-metric-value">1000+</span>
-        <span class="hero-metric-label">{{ strings.stat_learners | default: fallback.stat_learners }}</span>
-      </div>
-      <div class="hero-metric-card" role="listitem">
-        <span class="hero-metric-value">10+</span>
-        <span class="hero-metric-label">{{ strings.stat_automation | default: fallback.stat_automation }}</span>
-      </div>
-      <div class="hero-metric-card" role="listitem">
-        <span class="hero-metric-value">13</span>
-        <span class="hero-metric-label">{{ strings.stat_publications | default: fallback.stat_publications }}</span>
-      </div>
-    </div>
+<div class="quick-facts">
+  <div class="fact-card">
+    <strong>3,000+</strong>
+    <span>{{ strings.stat_professionals | default: fallback.stat_professionals }}</span>
   </div>
-</section>
+  <div class="fact-card">
+    <strong>1,000+</strong>
+    <span>{{ strings.stat_learners | default: fallback.stat_learners }}</span>
+  </div>
+  <div class="fact-card">
+    <strong>10+</strong>
+    <span>{{ strings.stat_automation | default: fallback.stat_automation }}</span>
+  </div>
+  <div class="fact-card">
+    <strong>13</strong>
+    <span>{{ strings.stat_publications | default: fallback.stat_publications }}</span>
+  </div>
+</div>
 
 <!-- ===== Services Summary ===== -->
 <section class="home-section">
   <h2>{{ strings.section_services_title | default: fallback.section_services_title }}</h2>
-  <ul class="services-list">
-    <li>
-      <strong>{{ strings.service_analytics_title | default: fallback.service_analytics_title }}</strong> — {{ strings.service_analytics_desc | default: fallback.service_analytics_desc }}
-    </li>
-    <li>
-      <strong>{{ strings.service_ai_title | default: fallback.service_ai_title }}</strong> — {{ strings.service_ai_desc | default: fallback.service_ai_desc }}
-    </li>
-    <li>
-      <strong>{{ strings.service_mentoring_title | default: fallback.service_mentoring_title }}</strong> — {{ strings.service_mentoring_desc | default: fallback.service_mentoring_desc }}
-    </li>
-    <li>
-      <strong>{{ strings.service_speaking_title | default: fallback.service_speaking_title }}</strong> — {{ strings.service_speaking_desc | default: fallback.service_speaking_desc }}
-    </li>
-  </ul>
+  <div class="section-card-grid">
+    <div class="section-card">
+      <h3>{{ strings.service_analytics_title | default: fallback.service_analytics_title }}</h3>
+      <p>{{ strings.service_analytics_desc | default: fallback.service_analytics_desc }}</p>
+    </div>
+    <div class="section-card">
+      <h3>{{ strings.service_ai_title | default: fallback.service_ai_title }}</h3>
+      <p>{{ strings.service_ai_desc | default: fallback.service_ai_desc }}</p>
+    </div>
+    <div class="section-card">
+      <h3>{{ strings.service_mentoring_title | default: fallback.service_mentoring_title }}</h3>
+      <p>{{ strings.service_mentoring_desc | default: fallback.service_mentoring_desc }}</p>
+    </div>
+    <div class="section-card">
+      <h3>{{ strings.service_speaking_title | default: fallback.service_speaking_title }}</h3>
+      <p>{{ strings.service_speaking_desc | default: fallback.service_speaking_desc }}</p>
+    </div>
+  </div>
 </section>
 
 <!-- ===== Selected Work ===== -->

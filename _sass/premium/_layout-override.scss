@@ -1,0 +1,26 @@
+// =============================================================================
+// Premium Design System — Layout Override (No Sidebar)
+// =============================================================================
+// Chirpy theme expects a sidebar on the left and offsets #main-wrapper.
+// Since we removed the sidebar, we need to reset the layout to full-width.
+
+#sidebar {
+  display: none !important;
+  width: 0 !important;
+}
+
+#main-wrapper {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+// Remove the mask overlay that Chirpy uses for sidebar toggle on mobile
+#mask {
+  display: none !important;
+}
+
+// Ensure the topbar trigger button (hamburger for sidebar) is hidden
+// since we have our own hamburger in .premium-nav
+#sidebar-trigger {
+  display: none !important;
+}

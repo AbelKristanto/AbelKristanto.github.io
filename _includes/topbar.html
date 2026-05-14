@@ -10,11 +10,7 @@
   <div class="premium-nav__inner">
     <!-- Brand / Site Title -->
     <a href="{{ '/' | relative_url }}" class="premium-nav__brand">
-      {% if page.layout == 'home' %}
-        {{ site.data[site.active_lang].strings.nav_home | default: site.data.en.strings.nav_home }}
-      {% else %}
-        {{ page.title | default: site.title }}
-      {% endif %}
+      {{ site.title }}
     </a>
 
     <!-- Desktop Navigation Links -->

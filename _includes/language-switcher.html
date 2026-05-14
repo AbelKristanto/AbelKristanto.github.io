@@ -6,7 +6,7 @@
      - ARIA: aria-label, aria-expanded, role="listbox", role="option"
      - 44x44px minimum touch targets on mobile
 -->
-<div class="lang-switcher" role="navigation" aria-label="{{ site.data[site.active_lang].strings.language_switcher_label | default: site.data.en.strings.language_switcher_label }}">
+<div class="lang-switcher lang-switcher--nav" role="navigation" aria-label="{{ site.data[site.active_lang].strings.language_switcher_label | default: site.data.en.strings.language_switcher_label }}">
   <button class="lang-switcher__trigger" aria-expanded="false" aria-haspopup="listbox" type="button">
     <span class="lang-switcher__current">{{ site.data[site.active_lang].strings.lang_name_short | default: site.data.en.strings.lang_name_short }}</span>
     <svg class="lang-switcher__chevron" width="12" height="12" aria-hidden="true" focusable="false">
