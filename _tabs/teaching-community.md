@@ -1,7 +1,7 @@
 ---
-title: Teaching & Community
+title: Teaching
 icon: fas fa-people-group
-order: 5
+order: 4
 permalink: /teaching-community/
 ---
 

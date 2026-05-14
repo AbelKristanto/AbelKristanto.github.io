@@ -1,7 +1,7 @@
 ---
-title: Learning Materials
+title: Learn
 icon: fas fa-book
-order: 6
+order: 5
 permalink: /learning/
 ---
 

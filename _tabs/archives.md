@@ -1,7 +1,6 @@
 ---
 title: Insights
 icon: fas fa-pen-nib
-order: 4
 permalink: /insights/
 redirect_from:
   - /archives/
