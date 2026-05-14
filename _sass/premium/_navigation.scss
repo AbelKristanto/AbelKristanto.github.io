@@ -185,84 +185,41 @@
   }
 }
 
-// Language switcher icon-only wrapper
+// Language switcher — simple inline links with globe icon
 .lang-switcher--nav {
-  position: relative;
-  max-width: 40px;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: var(--text-sm);
 
-  .lang-switcher__trigger {
-    @extend .premium-nav__action-btn;
-
-    // 44×44px minimum touch target on mobile (Requirement 8.6)
-    @media (max-width: 767px) {
-      width: 44px;
-      min-width: 44px;
-      height: 44px;
-      min-height: 44px;
-    }
+  .lang-switcher__globe {
+    color: var(--color-text-muted);
+    flex-shrink: 0;
   }
 
-  .lang-switcher__menu {
-    position: absolute;
-    top: calc(100% + 8px);
-    right: 0;
-    min-width: 160px;
-    background: var(--color-surface);
-    border: 1px solid var(--glass-border);
-    border-radius: var(--radius-button);
-    box-shadow: var(--shadow-card-hover);
-    padding: 0.5rem 0;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-4px);
-    transition: opacity var(--transition-base),
-                visibility var(--transition-base),
-                transform var(--transition-base);
-    list-style: none;
-    margin: 0;
-    z-index: 1001;
-
-    &.is-open {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-  }
-
-  .lang-switcher__option {
-    display: block;
-    padding: 0.5rem 1rem;
-    font-size: var(--text-sm);
-    color: var(--color-text);
+  .lang-switcher__link {
+    color: var(--color-text-muted);
     text-decoration: none;
-    transition: background var(--transition-fast);
-
-    // 44×44px minimum touch target on mobile (Requirement 8.6)
-    @media (max-width: 767px) {
-      min-height: 44px;
-      display: flex;
-      align-items: center;
-      padding: 0.625rem 1rem;
-    }
+    font-weight: 500;
+    padding: 0.25rem 0.35rem;
+    border-radius: 4px;
+    transition: color var(--transition-fast), background var(--transition-fast);
 
     &:hover {
-      background: rgba(0, 0, 0, 0.04);
-
-      [data-theme="dark"] & {
-        background: rgba(255, 255, 255, 0.06);
-      }
-    }
-
-    &:focus-visible {
-      outline: 2px solid var(--color-primary);
-      outline-offset: -2px;
-      border-radius: 4px;
+      color: var(--color-primary);
+      background: rgba(23, 107, 109, 0.08);
     }
 
     &--active {
       color: var(--color-primary);
-      font-weight: 600;
+      font-weight: 700;
     }
+  }
+
+  .lang-switcher__sep {
+    color: var(--color-text-muted);
+    opacity: 0.4;
+    font-size: 0.75rem;
   }
 }
 

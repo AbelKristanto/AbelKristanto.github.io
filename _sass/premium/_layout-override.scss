@@ -91,6 +91,37 @@
     color: var(--color-text-muted) !important;
   }
 
+  // Footer wrapper background
+  #tail-wrapper,
+  footer,
+  .site-footer {
+    background-color: var(--color-bg) !important;
+  }
+
+  // Post navigation and related posts cards
+  .post-navigation,
+  .post-navigation .btn,
+  .card,
+  .post-card,
+  .related-posts .card,
+  #related-posts .card,
+  .further-reading .card {
+    background-color: var(--color-surface) !important;
+    border-color: var(--card-border-color) !important;
+    color: var(--color-text) !important;
+  }
+
+  // Any remaining white backgrounds from Chirpy
+  .row,
+  .col-12,
+  .px-md-4,
+  .px-1,
+  .wrapper,
+  .page-content,
+  .post-content {
+    background-color: transparent !important;
+  }
+
   // Untranslated notice
   .untranslated-notice {
     background-color: var(--color-surface) !important;

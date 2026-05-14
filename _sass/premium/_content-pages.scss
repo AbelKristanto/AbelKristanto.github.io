@@ -238,6 +238,42 @@
   margin-top: 1rem;
 }
 
+// -----------------------------------------------------------------------------
+// Button color overrides — use our primary color instead of Bootstrap blue
+// -----------------------------------------------------------------------------
+#main-content .btn-primary,
+.home-section .btn-primary,
+.home-intro .btn-primary {
+  background-color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+  color: #fff !important;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: var(--color-secondary) !important;
+    border-color: var(--color-secondary) !important;
+    box-shadow: 0 0 0 0.2rem rgba(23, 107, 109, 0.25) !important;
+  }
+}
+
+#main-content .btn-outline-primary,
+.home-section .btn-outline-primary,
+.home-intro .btn-outline-primary {
+  color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+  background-color: transparent !important;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
+    color: #fff !important;
+    box-shadow: 0 0 0 0.2rem rgba(23, 107, 109, 0.25) !important;
+  }
+}
+
 // Reduced motion
 @media (prefers-reduced-motion: reduce) {
   .section-card,
