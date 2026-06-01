@@ -1,0 +1,12 @@
+// =============================================================================
+// Minimalist Design System — Main Entry Point
+// =============================================================================
+// Brutalist/minimalist design inspired by Profile app
+// Imports all minimalist design system partials in correct order
+
+@import 'minimalist/variables';
+@import 'minimalist/base';
+@import 'minimalist/navigation';
+@import 'minimalist/components';
+
+// Made with Bob

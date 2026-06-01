@@ -1,0 +1,32 @@
+<!-- Minimalist Footer -->
+<footer class="minimalist-footer">
+  <div class="minimalist-footer__inner">
+    <div class="minimalist-footer__copyright">
+      Based in Indonesia • © {{ 'now' | date: "%Y" }}
+    </div>
+    <ul class="minimalist-footer__links">
+      <li>
+        <a href="https://github.com/{{ site.github.username }}" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           class="minimalist-footer__link">
+          Github
+        </a>
+      </li>
+      <li>
+        <a href="https://www.linkedin.com/in/{{ site.social.links[0] | split: '/' | last }}" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           class="minimalist-footer__link">
+          LinkedIn
+        </a>
+      </li>
+      <li>
+        <a href="mailto:{{ site.social.email }}" 
+           class="minimalist-footer__link">
+          Email
+        </a>
+      </li>
+    </ul>
+  </div>
+</footer>

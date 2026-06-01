@@ -106,7 +106,7 @@ assets:
     env: # [development|production]
 
 pwa:
-  enabled: true # the option for PWA feature
+  enabled: false # the option for PWA feature (disabled for minimalist design)
 
 paginate: 10
 

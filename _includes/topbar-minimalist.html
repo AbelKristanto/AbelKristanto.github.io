@@ -1,0 +1,178 @@
+<!-- Minimalist Top Navigation Bar -->
+<nav class="minimalist-nav" aria-label="Top Bar">
+  <div class="minimalist-nav__inner">
+    <!-- Brand / Site Title -->
+    <a href="{{ '/' | relative_url }}" class="minimalist-nav__brand">
+      {{ site.title }}
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <ul class="minimalist-nav__links">
+      <li>
+        <a href="{{ '/' | relative_url }}" 
+           class="minimalist-nav__link{% if page.layout == 'home' %} is-active{% endif %}">
+          Home
+        </a>
+      </li>
+      <li>
+        <a href="#projects" class="minimalist-nav__link">
+          Projects
+        </a>
+      </li>
+      <li>
+        <a href="#contact" class="minimalist-nav__link">
+          Contact
+        </a>
+      </li>
+    </ul>
+
+    <!-- Language Switcher (Desktop) -->
+    <div class="minimalist-lang-switcher">
+      <i class="fas fa-globe"></i>
+      <span class="minimalist-lang-switcher__label">Change Language:</span>
+      {% for tongue in site.languages %}
+        {% if tongue == site.active_lang %}
+          <span class="minimalist-lang-switcher__link is-active">{{ site.data[tongue].strings.lang_name_short }}</span>
+        {% else %}
+          <a class="minimalist-lang-switcher__link"
+             {% static_href %}href="{% if tongue == site.default_lang %}{{ site.baseurl }}{{ page.url }}{% else %}{{ site.baseurl }}/{{ tongue }}{{ page.url }}{% endif %}"{% endstatic_href %}
+             hreflang="{{ tongue }}"
+             title="{{ site.data[tongue].strings.lang_name }}">{{ site.data[tongue].strings.lang_name_short }}</a>
+        {% endif %}
+        {% unless forloop.last %}<span class="minimalist-lang-switcher__sep">·</span>{% endunless %}
+      {% endfor %}
+    </div>
+
+    <!-- Mobile Menu Toggle -->
+    <div class="minimalist-nav__mobile-toggle">
+      <button class="minimalist-nav__hamburger" 
+              id="mobile-menu-toggle"
+              type="button"
+              aria-label="Open navigation menu"
+              aria-expanded="false"
+              aria-controls="mobile-nav-panel">
+        <span class="minimalist-nav__hamburger-icon" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Overlay -->
+<div class="minimalist-nav__mobile-overlay" id="mobile-nav-overlay" aria-hidden="true"></div>
+
+<!-- Mobile Slide-In Panel -->
+<div class="minimalist-nav__mobile-panel" id="mobile-nav-panel" role="dialog" aria-label="Navigation menu">
+  <ul class="minimalist-nav__mobile-links">
+    <li>
+      <a href="{{ '/' | relative_url }}" 
+         class="minimalist-nav__mobile-link{% if page.layout == 'home' %} is-active{% endif %}">
+        Home
+      </a>
+    </li>
+    <li>
+      <a href="#projects" class="minimalist-nav__mobile-link">
+        Projects
+      </a>
+    </li>
+    <li>
+      <a href="#contact" class="minimalist-nav__mobile-link">
+        Contact
+      </a>
+    </li>
+  </ul>
+
+  <!-- Mobile Language Switcher -->
+  <div class="minimalist-nav__mobile-lang">
+    <div class="minimalist-lang-switcher">
+      <i class="fas fa-globe"></i>
+      <span class="minimalist-lang-switcher__label">Change Language:</span>
+      {% for tongue in site.languages %}
+        {% if tongue == site.active_lang %}
+          <span class="minimalist-lang-switcher__link is-active">{{ site.data[tongue].strings.lang_name_short }}</span>
+        {% else %}
+          <a class="minimalist-lang-switcher__link"
+             {% static_href %}href="{% if tongue == site.default_lang %}{{ site.baseurl }}{{ page.url }}{% else %}{{ site.baseurl }}/{{ tongue }}{{ page.url }}{% endif %}"{% endstatic_href %}
+             hreflang="{{ tongue }}"
+             title="{{ site.data[tongue].strings.lang_name }}">{{ site.data[tongue].strings.lang_name_short }}</a>
+        {% endif %}
+        {% unless forloop.last %}<span class="minimalist-lang-switcher__sep">·</span>{% endunless %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  // Hamburger menu toggle
+  var hamburger = document.getElementById('mobile-menu-toggle');
+  var panel = document.getElementById('mobile-nav-panel');
+  var overlay = document.getElementById('mobile-nav-overlay');
+
+  if (!hamburger || !panel || !overlay) return;
+
+  function openMenu() {
+    hamburger.setAttribute('aria-expanded', 'true');
+    panel.classList.add('is-open');
+    overlay.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    hamburger.setAttribute('aria-expanded', 'false');
+    panel.classList.remove('is-open');
+    overlay.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  function toggleMenu() {
+    var isOpen = hamburger.getAttribute('aria-expanded') === 'true';
+    if (isOpen) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  }
+
+  hamburger.addEventListener('click', function(e) {
+    e.preventDefault();
+    toggleMenu();
+  });
+
+  overlay.addEventListener('click', function() {
+    closeMenu();
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && hamburger.getAttribute('aria-expanded') === 'true') {
+      closeMenu();
+      hamburger.focus();
+    }
+  });
+
+  // Close menu when clicking a link
+  var mobileLinks = panel.querySelectorAll('.minimalist-nav__mobile-link');
+  mobileLinks.forEach(function(link) {
+    link.addEventListener('click', function() {
+      closeMenu();
+    });
+  });
+  
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+    anchor.addEventListener('click', function(e) {
+      var href = this.getAttribute('href');
+      if (href !== '#' && document.querySelector(href)) {
+        e.preventDefault();
+        var target = document.querySelector(href);
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        closeMenu();
+      }
+    });
+  });
+})();
+</script>

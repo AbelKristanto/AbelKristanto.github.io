@@ -7,52 +7,23 @@ layout: compress
 {% include origin-type.html %}
 {% include lang.html %}
 
-{% if site.theme_mode %}
-  {% capture prefer_mode %}data-mode="{{ site.theme_mode }}"{% endcapture %}
-{% endif %}
-
-<html lang="{{ site.active_lang | default: site.lang }}" data-theme="light" {{ prefer_mode }}>
+<html lang="{{ site.active_lang | default: site.lang }}">
   {% include head.html %}
 
-  <body class="{% if page.layout == 'home' %}landing-page{% endif %}">
+  <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
 
-    <div id="main-wrapper" class="d-flex justify-content-center">
-      <div class="container d-flex flex-column px-xxl-5">
-        {% include topbar.html lang=lang %}
+    {% include topbar-minimalist.html lang=lang %}
 
-        <div class="row flex-grow-1">
-          <main id="main-content" aria-label="Main Content" class="col-12 px-md-4">
-            {% if layout.refactor or layout.layout == 'default' %}
-              {% include refactor-content.html content=content lang=lang %}
-            {% else %}
-              {{ content }}
-            {% endif %}
-          </main>
-        </div>
+    <main id="main-content" class="minimalist-main" aria-label="Main Content">
+      {% if layout.refactor or layout.layout == 'default' %}
+        {% include refactor-content.html content=content lang=lang %}
+      {% else %}
+        {{ content }}
+      {% endif %}
+    </main>
 
-        <div class="row">
-          <div id="tail-wrapper" class="col-12 px-md-4">
-            {% for _include in layout.tail_includes %}
-              {% assign _include_path = _include | append: '.html' %}
-              {% include {{ _include_path }} lang=lang %}
-            {% endfor %}
-
-            {% include_cached footer.html lang=lang %}
-          </div>
-        </div>
-
-        {% include_cached search-results.html lang=lang %}
-      </div>
-
-      <aside aria-label="Scroll to Top">
-        <button id="back-to-top" type="button" class="btn btn-lg btn-box-shadow">
-          <i class="fas fa-angle-up"></i>
-        </button>
-      </aside>
-    </div>
-
-    <div id="mask"></div>
+    {% include footer-minimalist.html lang=lang %}
 
     {% if site.pwa.enabled %}
       {% include_cached notification.html lang=lang %}
@@ -65,10 +36,5 @@ layout: compress
     {% endif %}
 
     {% include_cached search-loader.html %}
-
-    <script src="{{ '/assets/js/theme-toggle.js' | relative_url }}"></script>
-    <script src="{{ '/assets/js/scroll-reveal.js' | relative_url }}"></script>
-    <script src="{{ '/assets/js/embed-loader.js' | relative_url }}"></script>
-    <script src="{{ '/assets/js/lang-switcher.js' | relative_url }}"></script>
   </body>
 </html>

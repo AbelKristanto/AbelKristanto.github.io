@@ -1,0 +1,295 @@
+// =============================================================================
+// Minimalist Design System — Navigation
+// =============================================================================
+// Simple top navigation bar with brutalist styling
+
+// ---------------------------------------------------------------------------
+// Top Navigation Bar
+// ---------------------------------------------------------------------------
+.minimalist-nav {
+  width: 100%;
+  padding: var(--space-8) var(--space-6);
+  
+  @media (max-width: 767px) {
+    padding: var(--space-6) var(--space-6);
+  }
+}
+
+.minimalist-nav__inner {
+  max-width: var(--container-lg);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// ---------------------------------------------------------------------------
+// Brand / Logo
+// ---------------------------------------------------------------------------
+.minimalist-nav__brand {
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: opacity var(--transition-fast);
+  
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Navigation Links (Desktop)
+// ---------------------------------------------------------------------------
+.minimalist-nav__links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  
+  @media (max-width: 767px) {
+    display: none;
+  }
+}
+
+.minimalist-nav__link {
+  font-size: var(--text-xs);
+  font-weight: var(--font-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-text-light);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  position: relative;
+  
+  &:hover {
+    color: var(--color-text);
+    opacity: 1;
+  }
+  
+  &.is-active {
+    color: var(--color-text);
+    border-bottom: var(--border-thin) solid var(--color-text);
+    padding-bottom: 2px;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Language Switcher (Minimalist)
+// ---------------------------------------------------------------------------
+.minimalist-lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  font-weight: var(--font-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  
+  @media (max-width: 767px) {
+    display: none;
+  }
+  
+  i, svg {
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+  }
+}
+.minimalist-lang-switcher__label {
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+  text-transform: none;
+  letter-spacing: normal;
+  margin-right: var(--space-1);
+}
+
+
+.minimalist-lang-switcher__link {
+  color: var(--color-text-light);
+  text-decoration: none;
+  padding: var(--space-1) var(--space-2);
+  transition: color var(--transition-fast);
+  
+  &:hover {
+    color: var(--color-text);
+    opacity: 1;
+  }
+  
+  &.is-active {
+    color: var(--color-text);
+    font-weight: var(--font-black);
+  }
+}
+
+.minimalist-lang-switcher__sep {
+  color: var(--color-border-darker);
+  font-size: var(--text-xs);
+}
+
+// ---------------------------------------------------------------------------
+// Mobile Menu Toggle
+// ---------------------------------------------------------------------------
+.minimalist-nav__mobile-toggle {
+  display: none;
+  
+  @media (max-width: 767px) {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+}
+
+.minimalist-nav__hamburger {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.minimalist-nav__hamburger-icon {
+  position: relative;
+  width: 22px;
+  height: 16px;
+  
+  span {
+    display: block;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--color-text);
+    transition: transform var(--transition-base), opacity var(--transition-base);
+    
+    &:nth-child(1) {
+      top: 0;
+    }
+    
+    &:nth-child(2) {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    
+    &:nth-child(3) {
+      bottom: 0;
+    }
+  }
+  
+  // X icon when open
+  .minimalist-nav__hamburger[aria-expanded="true"] & {
+    span:nth-child(1) {
+      top: 50%;
+      transform: translateY(-50%) rotate(45deg);
+    }
+    
+    span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    span:nth-child(3) {
+      bottom: 50%;
+      transform: translateY(50%) rotate(-45deg);
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Mobile Menu Panel
+// ---------------------------------------------------------------------------
+.minimalist-nav__mobile-panel {
+  display: none;
+  
+  @media (max-width: 767px) {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 280px;
+    max-width: 80vw;
+    height: 100vh;
+    background: var(--color-surface);
+    border-left: var(--border-thin) solid var(--color-border);
+    z-index: var(--z-fixed);
+    padding: var(--space-6);
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform var(--transition-slow);
+    
+    &.is-open {
+      transform: translateX(0);
+    }
+  }
+}
+
+.minimalist-nav__mobile-overlay {
+  display: none;
+  
+  @media (max-width: 767px) {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: calc(var(--z-fixed) - 1);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-slow), visibility var(--transition-slow);
+    
+    &.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+.minimalist-nav__mobile-links {
+  list-style: none;
+  margin: 0 0 var(--space-8);
+  padding: 0;
+}
+
+.minimalist-nav__mobile-link {
+  display: block;
+  padding: var(--space-3) 0;
+  font-size: var(--text-base);
+  font-weight: var(--font-medium);
+  color: var(--color-text);
+  text-decoration: none;
+  border-bottom: var(--border-thin) solid var(--color-border);
+  transition: color var(--transition-fast);
+  
+  &:hover {
+    color: var(--color-text-muted);
+    opacity: 1;
+  }
+  
+  &.is-active {
+    font-weight: var(--font-bold);
+  }
+}
+
+.minimalist-nav__mobile-lang {
+  padding-top: var(--space-4);
+  border-top: var(--border-thin) solid var(--color-border);
+  
+  .minimalist-lang-switcher {
+    display: flex;
+  }
+}
+
+// Made with Bob

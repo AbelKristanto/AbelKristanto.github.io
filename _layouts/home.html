@@ -6,12 +6,23 @@ refactor: false
 {% assign strings = site.data[site.active_lang].strings %}
 {% assign fallback = site.data.en.strings %}
 
-<div class="home-intro">
-  <p class="home-eyebrow">{{ strings.hero_eyebrow | default: fallback.hero_eyebrow }}</p>
+<!-- Hero Section -->
+<section class="minimalist-section">
+  <div class="eyebrow">{{ strings.hero_eyebrow | default: fallback.hero_eyebrow }}</div>
   <h1>{{ strings.hero_title | default: fallback.hero_title }}</h1>
   <p class="lead-paragraph">{{ strings.hero_description | default: fallback.hero_description }}</p>
-</div>
+  
+  <div class="divider-with-line">
+    <a href="#projects" class="minimalist-nav__link">
+      View Projects
+    </a>
+    <a href="#contact" class="minimalist-nav__link">
+      Contact
+    </a>
+  </div>
+</section>
 
+<!-- Quick Facts -->
 <div class="quick-facts">
   <div class="fact-card">
     <strong>3,000+</strong>
@@ -31,68 +42,167 @@ refactor: false
   </div>
 </div>
 
-<!-- ===== Services Summary ===== -->
-<section class="home-section">
-  <h2>{{ strings.section_services_title | default: fallback.section_services_title }}</h2>
-  <div class="section-card-grid">
-    <div class="section-card">
-      <h3>{{ strings.service_analytics_title | default: fallback.service_analytics_title }}</h3>
-      <p>{{ strings.service_analytics_desc | default: fallback.service_analytics_desc }}</p>
+<!-- About Section -->
+<section class="minimalist-section">
+  <h3 class="eyebrow">About</h3>
+  <p class="lead-paragraph">{{ strings.about_lead | default: fallback.about_lead }}</p>
+  <p>{{ strings.about_goal | default: fallback.about_goal }}</p>
+  
+  <h4 style="margin-top: 2rem; margin-bottom: 1rem; font-size: var(--text-base); font-weight: var(--font-semibold);">{{ strings.about_what_people_need | default: fallback.about_what_people_need }}</h4>
+  <ul style="list-style: disc; padding-left: 1.5rem;">
+    <li>{{ strings.about_need_1 | default: fallback.about_need_1 }}</li>
+    <li>{{ strings.about_need_2 | default: fallback.about_need_2 }}</li>
+    <li>{{ strings.about_need_3 | default: fallback.about_need_3 }}</li>
+  </ul>
+</section>
+
+<!-- Services Section -->
+<section class="minimalist-section">
+  <h3 class="eyebrow">{{ strings.section_services_title | default: fallback.section_services_title }}</h3>
+  
+  <div class="service-grid">
+    <div class="service-card">
+      <div class="service-card__icon">
+        <i class="fas fa-chart-pie"></i>
+      </div>
+      <div class="service-card__content">
+        <h4 class="service-card__title">{{ strings.service_analytics_title | default: fallback.service_analytics_title }}</h4>
+        <p class="service-card__description">{{ strings.service_analytics_desc | default: fallback.service_analytics_desc }}</p>
+      </div>
     </div>
-    <div class="section-card">
-      <h3>{{ strings.service_ai_title | default: fallback.service_ai_title }}</h3>
-      <p>{{ strings.service_ai_desc | default: fallback.service_ai_desc }}</p>
+    
+    <div class="service-card">
+      <div class="service-card__icon">
+        <i class="fas fa-gears"></i>
+      </div>
+      <div class="service-card__content">
+        <h4 class="service-card__title">{{ strings.service_ai_title | default: fallback.service_ai_title }}</h4>
+        <p class="service-card__description">{{ strings.service_ai_desc | default: fallback.service_ai_desc }}</p>
+      </div>
     </div>
-    <div class="section-card">
-      <h3>{{ strings.service_mentoring_title | default: fallback.service_mentoring_title }}</h3>
-      <p>{{ strings.service_mentoring_desc | default: fallback.service_mentoring_desc }}</p>
+    
+    <div class="service-card">
+      <div class="service-card__icon">
+        <i class="fas fa-user-group"></i>
+      </div>
+      <div class="service-card__content">
+        <h4 class="service-card__title">{{ strings.service_mentoring_title | default: fallback.service_mentoring_title }}</h4>
+        <p class="service-card__description">{{ strings.service_mentoring_desc | default: fallback.service_mentoring_desc }}</p>
+      </div>
     </div>
-    <div class="section-card">
-      <h3>{{ strings.service_speaking_title | default: fallback.service_speaking_title }}</h3>
-      <p>{{ strings.service_speaking_desc | default: fallback.service_speaking_desc }}</p>
+    
+    <div class="service-card">
+      <div class="service-card__icon">
+        <i class="fas fa-person-chalkboard"></i>
+      </div>
+      <div class="service-card__content">
+        <h4 class="service-card__title">{{ strings.service_speaking_title | default: fallback.service_speaking_title }}</h4>
+        <p class="service-card__description">{{ strings.service_speaking_desc | default: fallback.service_speaking_desc }}</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ===== Selected Work ===== -->
-<section class="home-section">
-  <h2>{{ strings.section_work_title | default: fallback.section_work_title }}</h2>
-
-  <article class="project-card">
-    <h3>{{ strings.work_dashboard_title | default: fallback.work_dashboard_title }}</h3>
-    <p>{{ strings.work_dashboard_desc | default: fallback.work_dashboard_desc }}</p>
-    <a href="{{ '/posts/tableau-dashboard-collection/' | relative_url }}" class="btn btn-outline-primary">
-      {{ strings.work_dashboard_cta | default: fallback.work_dashboard_cta }}
-    </a>
-  </article>
-
-  <article class="project-card">
-    <h3>{{ strings.work_esploor_title | default: fallback.work_esploor_title }}</h3>
-    <p>{{ strings.work_esploor_desc | default: fallback.work_esploor_desc }}</p>
-    <a href="{{ '/posts/esploor-research-program/' | relative_url }}" class="btn btn-outline-primary">
-      {{ strings.work_esploor_cta | default: fallback.work_esploor_cta }}
-    </a>
-  </article>
-
-  <article class="project-card">
-    <h3>{{ strings.work_chatbot_title | default: fallback.work_chatbot_title }}</h3>
-    <p>{{ strings.work_chatbot_desc | default: fallback.work_chatbot_desc }}</p>
-    <a href="{{ '/posts/ai-chatbot-prototype/' | relative_url }}" class="btn btn-outline-primary">
-      {{ strings.work_chatbot_cta | default: fallback.work_chatbot_cta }}
-    </a>
-  </article>
+<!-- Experience Section -->
+<section class="minimalist-section">
+  <h3 class="eyebrow">{{ strings.about_experience_title | default: fallback.about_experience_title }}</h3>
+  
+  <div class="section-card-grid">
+    <div class="section-card">
+      <h4>{{ strings.about_exp_finance_title | default: fallback.about_exp_finance_title }}</h4>
+      <p>{{ strings.about_exp_finance_desc | default: fallback.about_exp_finance_desc }}</p>
+      <ul>
+        <li>{{ strings.about_exp_finance_1 | default: fallback.about_exp_finance_1 }}</li>
+        <li>{{ strings.about_exp_finance_2 | default: fallback.about_exp_finance_2 }}</li>
+      </ul>
+    </div>
+    
+    <div class="section-card">
+      <h4>{{ strings.about_exp_community_title | default: fallback.about_exp_community_title }}</h4>
+      <p>{{ strings.about_exp_community_desc | default: fallback.about_exp_community_desc }}</p>
+      <ul>
+        <li>{{ strings.about_exp_community_1 | default: fallback.about_exp_community_1 }}</li>
+        <li>{{ strings.about_exp_community_2 | default: fallback.about_exp_community_2 }}</li>
+      </ul>
+    </div>
+    
+    <div class="section-card">
+      <h4>{{ strings.about_exp_mentor_title | default: fallback.about_exp_mentor_title }}</h4>
+      <p>{{ strings.about_exp_mentor_desc | default: fallback.about_exp_mentor_desc }}</p>
+      <ul>
+        <li>{{ strings.about_exp_mentor_1 | default: fallback.about_exp_mentor_1 }}</li>
+        <li>{{ strings.about_exp_mentor_2 | default: fallback.about_exp_mentor_2 }}</li>
+      </ul>
+    </div>
+  </div>
 </section>
 
-<!-- ===== Contact CTA ===== -->
-<section class="home-section">
-  <h2>{{ strings.section_contact_title | default: fallback.section_contact_title }}</h2>
-  <p>{{ strings.section_contact_desc | default: fallback.section_contact_desc }}</p>
+<!-- Selected Work Section -->
+<section id="projects" class="minimalist-section">
+  <h3 class="eyebrow">{{ strings.section_work_title | default: fallback.section_work_title }}</h3>
+  
+  <ul class="project-list">
+    <li class="project-item">
+      <a href="{{ '/posts/tableau-dashboard-collection/' | relative_url }}" class="project-item__link">
+        <div class="project-item__content">
+          <span class="project-item__title">{{ strings.work_dashboard_title | default: fallback.work_dashboard_title }}</span>
+          <p class="project-item__description">{{ strings.work_dashboard_desc | default: fallback.work_dashboard_desc }}</p>
+        </div>
+        <div class="project-item__arrow">
+          <i class="fas fa-arrow-up-right"></i>
+        </div>
+      </a>
+    </li>
+    
+    <li class="project-item">
+      <a href="{{ '/posts/esploor-research-program/' | relative_url }}" class="project-item__link">
+        <div class="project-item__content">
+          <span class="project-item__title">{{ strings.work_esploor_title | default: fallback.work_esploor_title }}</span>
+          <p class="project-item__description">{{ strings.work_esploor_desc | default: fallback.work_esploor_desc }}</p>
+        </div>
+        <div class="project-item__arrow">
+          <i class="fas fa-arrow-up-right"></i>
+        </div>
+      </a>
+    </li>
+    
+    <li class="project-item">
+      <a href="{{ '/posts/ai-chatbot-prototype/' | relative_url }}" class="project-item__link">
+        <div class="project-item__content">
+          <span class="project-item__title">{{ strings.work_chatbot_title | default: fallback.work_chatbot_title }}</span>
+          <p class="project-item__description">{{ strings.work_chatbot_desc | default: fallback.work_chatbot_desc }}</p>
+        </div>
+        <div class="project-item__arrow">
+          <i class="fas fa-arrow-up-right"></i>
+        </div>
+      </a>
+    </li>
+  </ul>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="minimalist-section">
+  <h3 class="eyebrow">{{ strings.section_contact_title | default: fallback.section_contact_title }}</h3>
+  <p class="border-accent-left">{{ strings.section_contact_desc | default: fallback.section_contact_desc }}</p>
+  
   <div class="cta-row">
-    <a href="mailto:abelkrw@gmail.com" class="btn btn-primary">
+    <a href="mailto:{{ site.social.email }}" class="btn btn-primary">
+      <i class="fas fa-envelope"></i>
       {{ strings.contact_email_cta | default: fallback.contact_email_cta }}
     </a>
-    <a href="https://www.linkedin.com/in/abelkrw" class="btn btn-outline-primary" target="_blank" rel="noopener noreferrer">
+    <a href="{{ site.social.links[0] }}" 
+       target="_blank" 
+       rel="noopener noreferrer"
+       class="btn btn-outline">
+      <i class="fab fa-linkedin"></i>
       {{ strings.contact_linkedin_cta | default: fallback.contact_linkedin_cta }}
+    </a>
+    <a href="https://github.com/{{ site.github.username }}" 
+       target="_blank" 
+       rel="noopener noreferrer"
+       class="btn btn-outline">
+      <i class="fab fa-github"></i>
+      GitHub
     </a>
   </div>
 </section>
