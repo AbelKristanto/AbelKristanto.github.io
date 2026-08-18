@@ -539,6 +539,15 @@ article.minimalist-section,
 // gutter, so the same page mixed 16 / 20 / 32px gaps. Everything now reads from
 // the --card-* and --grid-gap tokens.
 
+// A single card placed directly in prose (no grid around it) needs the same
+// block rhythm as a grid, otherwise it collides with the next paragraph.
+.content > .section-card,
+.content > .project-card,
+.content > .quest,
+.content > .fact-card {
+  margin: var(--space-8) 0;
+}
+
 // Grids: identical gutter everywhere, one step tighter on small screens.
 .quick-facts,
 .service-grid,
@@ -692,8 +701,15 @@ article.minimalist-section,
 }
 
 .player-card {
+  // Same block rhythm as the card grids. Without it the card sat flush against
+  // the paragraph below, and its 4px stepped shadow read as an overlap.
+  margin: var(--space-8) 0;
   padding: var(--card-pad-lg);
   gap: var(--card-pad-lg);
+
+  @media (max-width: 767px) {
+    margin: var(--space-6) 0;
+  }
 
   @media (max-width: 767px) {
     padding: var(--card-pad);
@@ -722,7 +738,9 @@ article.minimalist-section,
 // Section headings need clearly more space above than below, otherwise a
 // heading reads as belonging to the block it follows.
 .content {
-  > h2 {
+  // :not(.eyebrow) — the HUD labels are also h2 for document outline reasons,
+  // and they keep their own pixel sizing.
+  > h2:not(.eyebrow) {
     font-size: var(--text-2xl);
     margin-top: var(--space-16);
     margin-bottom: var(--space-5);
@@ -737,7 +755,7 @@ article.minimalist-section,
     }
   }
 
-  > h3 {
+  > h3:not(.eyebrow) {
     margin-top: var(--space-10);
     margin-bottom: var(--space-4);
   }
