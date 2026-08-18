@@ -39,6 +39,9 @@ document.addEventListener('DOMContentLoaded', function() {
   if (toggles.length) {
     toggles.forEach(function(toggle) {
       toggle.addEventListener('click', function() {
+        if (window.__sfx) {
+          window.__sfx.play('toggle');
+        }
         var current = document.documentElement.getAttribute('data-theme');
         var next = current === 'dark' ? 'light' : 'dark';
         document.documentElement.setAttribute('data-theme', next);

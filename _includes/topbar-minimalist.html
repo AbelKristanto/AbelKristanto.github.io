@@ -15,15 +15,6 @@
       <!-- Light / Dark Theme Toggle -->
       {% include theme-toggle.html %}
 
-      <!-- CRT scanline toggle (also unlocked by the Konami code) -->
-      <button type="button"
-              class="crt-toggle"
-              data-crt-toggle
-              aria-pressed="false"
-              title="{{ s.crt_toggle_label | default: f.crt_toggle_label }}">
-        {{ s.crt_toggle_label | default: f.crt_toggle_label }}
-      </button>
-
       <!-- Menu drawer toggle -->
       <div class="minimalist-nav__mobile-toggle">
         <button class="minimalist-nav__hamburger"
@@ -64,6 +55,24 @@
       </li>
     {% endfor %}
   </ul>
+
+  <!-- Arcade toggles: kept out of the bar so it stays readable on phones -->
+  <div class="minimalist-nav__mobile-toggles">
+    <button type="button"
+            class="crt-toggle"
+            data-crt-toggle
+            aria-pressed="false"
+            title="{{ s.crt_toggle_label | default: f.crt_toggle_label }}">
+      {{ s.crt_toggle_label | default: f.crt_toggle_label }}
+    </button>
+    <button type="button"
+            class="crt-toggle"
+            data-sfx-toggle
+            aria-pressed="true"
+            title="{{ s.sfx_toggle_label | default: f.sfx_toggle_label }}">
+      {{ s.sfx_toggle_label | default: f.sfx_toggle_label }}
+    </button>
+  </div>
 
   <!-- Mobile Language Switcher -->
   <div class="minimalist-nav__mobile-lang">

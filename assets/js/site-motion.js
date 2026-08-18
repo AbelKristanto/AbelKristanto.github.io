@@ -25,6 +25,14 @@
     window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var gsap = window.gsap;
 
+  // Thin wrapper so every call site can fire sound without null checks; the
+  // audio layer is optional and silently absent when the script fails to load.
+  function sfx(name) {
+    if (window.__sfx) {
+      window.__sfx.play(name);
+    }
+  }
+
   // No GSAP (offline, blocked CDN) → drop the hidden state, keep the site usable.
   if (!gsap) {
     root.classList.remove('motion-ready');
@@ -35,6 +43,7 @@
     initArcade();
     initStartMenu();
     initDrawer();
+    initInterfaceSounds();
     initPageTransitions();
     return;
   }
@@ -58,6 +67,7 @@
   initArcade();
   initStartMenu();
   initDrawer();
+  initInterfaceSounds();
   initPageTransitions();
   initVanta();
 
@@ -387,6 +397,7 @@
     window.addEventListener('scroll', update, { passive: true });
 
     button.addEventListener('click', function () {
+      sfx('click');
       if (instance) {
         instance.scrollTo(0);
       } else {
@@ -536,6 +547,7 @@
     var toggle = document.querySelector('[data-crt-toggle]');
     if (toggle) {
       toggle.addEventListener('click', function () {
+        sfx('toggle');
         setCrt(root.getAttribute('data-crt') !== 'on');
       });
     }
@@ -576,6 +588,7 @@
 
       index = 0;
       setCrt(true);
+      sfx('unlock');
       showToast();
     });
   }
@@ -610,6 +623,7 @@
     var index = 0;
 
     var select = function (next) {
+      sfx('tick');
       index = (next + items.length) % items.length;
       items.forEach(function (item, i) {
         item.classList.toggle('is-selected', i === index);
@@ -641,6 +655,7 @@
         // Enter only "starts the game" when focus is nowhere else on the page;
         // otherwise the browser's own activation behaviour wins.
         event.preventDefault();
+        sfx('confirm');
         items[index].click();
       }
     });
@@ -675,6 +690,9 @@
     };
 
     var closeMenu = function () {
+      if (panel.classList.contains('is-open')) {
+        sfx('close');
+      }
       hamburger.setAttribute('aria-expanded', 'false');
       panel.classList.remove('is-open');
       overlay.classList.remove('is-open');
@@ -682,6 +700,7 @@
     };
 
     var openMenu = function () {
+      sfx('open');
       hamburger.setAttribute('aria-expanded', 'true');
       panel.classList.add('is-open');
       overlay.classList.add('is-open');
@@ -712,6 +731,49 @@
         link.addEventListener('click', closeMenu);
       }
     );
+  }
+
+  // -------------------------------------------------------------------------
+  // Interface sounds
+  // -------------------------------------------------------------------------
+  // Delegated so it also covers markup rendered after boot. Internal links are
+  // skipped here because the page-transition handler already plays `warp` for
+  // them, and two sounds on one click reads as a glitch.
+  function initInterfaceSounds() {
+    document.addEventListener('pointerenter', function (event) {
+      var target = event.target;
+      if (!target || !target.closest) {
+        return;
+      }
+      if (target.closest('[data-menu-item], .minimalist-nav__mobile-link')) {
+        sfx('tick');
+      }
+    }, true);
+
+    document.addEventListener('click', function (event) {
+      var target = event.target;
+      if (!target || !target.closest) {
+        return;
+      }
+
+      // Controls that already play their own sound. Without this they fire
+      // twice on one click, which reads as a glitch rather than feedback.
+      var ownsSound =
+        '[data-back-to-top], [data-crt-toggle], [data-sfx-toggle], ' +
+        '.js-theme-toggle, #mobile-menu-toggle';
+      if (target.closest(ownsSound)) {
+        return;
+      }
+
+      var link = target.closest('a');
+      if (link && isInternalNavigation(link)) {
+        return;
+      }
+
+      if (target.closest('a, button')) {
+        sfx('click');
+      }
+    });
   }
 
   // -------------------------------------------------------------------------
@@ -756,6 +818,7 @@
       }
 
       event.preventDefault();
+      sfx('warp');
       writeFlag();
       overlay.classList.add('is-covering');
 

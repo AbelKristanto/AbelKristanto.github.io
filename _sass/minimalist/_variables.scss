@@ -43,6 +43,7 @@
   --card-pad-lg: var(--space-8);     // 32px — large panels (player card)
   --card-pad-sm: var(--space-5);     // 20px — dense cards on small screens
   --grid-gap: var(--space-6);        // 24px — gutter between cards
+  --measure: 50rem;                  // 800px — shared width of text and cards
   --grid-gap-sm: var(--space-4);     // 16px — gutter below 768px
   --card-title-gap: var(--space-4);  // 16px — title to body
   --card-text-gap: var(--space-4);   // 16px — between blocks inside a card

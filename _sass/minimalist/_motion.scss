@@ -61,7 +61,12 @@
 // Word-level hero reveal (react-bits SplitText port)
 .split-line {
   display: block;
+  // Masks each line so words can slide up into place. The clip box is padded
+  // sideways because Press Start 2P glyphs carry a stepped text-shadow that
+  // would otherwise be shaved off the first and last letter of a line.
   overflow: hidden;
+  padding: 0 0.1em;
+  margin: 0 -0.1em;
 }
 
 .split-word {

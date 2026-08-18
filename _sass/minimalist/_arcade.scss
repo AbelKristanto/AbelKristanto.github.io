@@ -466,6 +466,13 @@
   padding-top: var(--space-5);
 }
 
+.minimalist-nav__mobile-toggles {
+  display: flex;
+  gap: var(--space-3);
+  padding-top: var(--space-5);
+  border-top: var(--border-thin) solid var(--color-border);
+}
+
 // The back-to-top button is fixed to the bottom-right; without this the footer
 // links run underneath it.
 .minimalist-footer__inner {
@@ -486,6 +493,43 @@
   &:hover {
     border-color: var(--color-neon);
   }
+}
+
+// ---------------------------------------------------------------------------
+// Content column
+// ---------------------------------------------------------------------------
+// Cards used to stretch to the full 1024px container while paragraphs stopped
+// at their own max-width, so text looked cut short next to a much wider card.
+// One column width now governs both: --measure sets the article width, and
+// every child aligns to the same left and right edge.
+article.minimalist-section,
+.post-article {
+  max-width: var(--measure);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.content,
+.post-content {
+  // Slightly larger than the global base: at this column width the 15px base
+  // ran long enough to hurt line tracking.
+  font-size: var(--text-lg);
+
+  > p,
+  > ul,
+  > ol,
+  > blockquote {
+    max-width: none;
+  }
+}
+
+.lead-paragraph {
+  max-width: none;
+}
+
+// The page title shares the column, so its left edge lines up with the text.
+.page-title {
+  max-width: var(--measure);
 }
 
 // ---------------------------------------------------------------------------
@@ -679,8 +723,14 @@
 // heading reads as belonging to the block it follows.
 .content {
   > h2 {
+    font-size: var(--text-2xl);
     margin-top: var(--space-16);
     margin-bottom: var(--space-5);
+
+    @media (max-width: 767px) {
+      font-size: var(--text-xl);
+      margin-top: var(--space-12);
+    }
 
     &:first-child {
       margin-top: 0;
@@ -696,7 +746,6 @@
   > ul,
   > ol {
     margin-bottom: var(--space-5);
-    max-width: 46rem;
   }
 
   > .eyebrow {
@@ -757,7 +806,9 @@
 .start-screen__content {
   position: relative;
   width: 100%;
-  max-width: 46rem;
+  // Same rule as the content pages: one column governs every child, so the
+  // tagline, the menu rules and the hint all end on the same edge.
+  max-width: var(--measure);
 }
 
 .start-screen__tag {
@@ -788,7 +839,6 @@
   font-size: var(--text-lg);
   line-height: var(--leading-relaxed);
   color: var(--color-text-muted);
-  max-width: 38rem;
   margin-bottom: var(--space-10);
 }
 
@@ -817,7 +867,6 @@
 .start-menu {
   display: grid;
   gap: var(--space-1);
-  max-width: 34rem;
 }
 
 .start-menu__item {
@@ -1019,6 +1068,10 @@
   line-height: 1.6;
   letter-spacing: 0;
   text-transform: none;
+
+  @media (max-width: 767px) {
+    font-size: var(--pixel-xs);
+  }
 }
 
 .minimalist-nav__mobile-link,
