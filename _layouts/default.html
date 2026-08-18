@@ -11,7 +11,24 @@ layout: compress
   {% include head.html %}
 
   <body>
-    <a class="skip-link" href="#main-content">Skip to content</a>
+    <a class="skip-link" href="#main-content">{{ site.data[site.active_lang].strings.skip_to_content | default: site.data.en.strings.skip_to_content }}</a>
+
+    <!-- Page transition wipe. Inert until site-motion.js drives it, so a
+         broken script can never leave the page covered. -->
+    <div class="page-transition" data-page-transition aria-hidden="true">
+      <span class="page-transition__col"></span>
+      <span class="page-transition__col"></span>
+      <span class="page-transition__col"></span>
+      <span class="page-transition__col"></span>
+      <span class="page-transition__col"></span>
+      <span class="page-transition__col"></span>
+      <span class="page-transition__label">{{ site.data[site.active_lang].strings.embed_loading | default: site.data.en.strings.embed_loading }}</span>
+    </div>
+
+    <!-- GSAP-scrubbed reading progress -->
+    <div class="scroll-progress" aria-hidden="true">
+      <div class="scroll-progress__bar"></div>
+    </div>
 
     {% include topbar-minimalist.html lang=lang %}
 
@@ -25,16 +42,21 @@ layout: compress
 
     {% include footer-minimalist.html lang=lang %}
 
-    {% if site.pwa.enabled %}
-      {% include_cached notification.html lang=lang %}
-    {% endif %}
+    <button type="button"
+            class="back-to-top"
+            data-back-to-top
+            aria-label="{{ site.data[site.active_lang].strings.back_to_top | default: site.data.en.strings.back_to_top }}">
+      <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </button>
 
-    {% include js-selector.html %}
+    <div class="arcade-toast" data-arcade-toast role="status" aria-live="polite">
+      {{ site.data[site.active_lang].strings.konami_toast | default: site.data.en.strings.konami_toast }}
+    </div>
+
+    {% include motion-scripts.html %}
 
     {% if page.mermaid %}
       {% include mermaid.html %}
     {% endif %}
-
-    {% include_cached search-loader.html %}
   </body>
 </html>

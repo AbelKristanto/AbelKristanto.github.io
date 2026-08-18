@@ -1,0 +1,1074 @@
+// =============================================================================
+// Arcade Layer — pixel/game skin on top of the minimalist base
+// =============================================================================
+// Rules of the layer:
+//   1. Press Start 2P is only ever used for SHORT strings (labels, numbers,
+//      buttons, nav). Every paragraph stays on Inter so the site still reads as
+//      a professional portfolio rather than a novelty page.
+//   2. Pixel surfaces use square corners + a stepped shadow (no blur), which is
+//      what makes them read as sprites instead of cards.
+//   3. Everything decorative sits behind `prefers-reduced-motion` or is static.
+
+// ---------------------------------------------------------------------------
+// Shared pixel surface
+// ---------------------------------------------------------------------------
+%pixel-surface {
+  background: var(--color-surface);
+  border: var(--border-medium) solid var(--color-text);
+  border-radius: 0;
+  box-shadow: var(--pixel-shadow);
+}
+
+.pixel-frame {
+  @extend %pixel-surface;
+}
+
+// ---------------------------------------------------------------------------
+// Pixel typography
+// ---------------------------------------------------------------------------
+.pixel-type {
+  font-family: var(--font-pixel);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+
+// Section labels across every page become HUD labels.
+.eyebrow {
+  font-family: var(--font-pixel);
+  font-size: var(--pixel-sm);
+  font-weight: 400;
+  letter-spacing: var(--tracking-wide);
+  line-height: 1.7;
+  color: var(--color-neon);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+
+  &::before {
+    content: "";
+    flex: 0 0 10px;
+    height: 10px;
+    background: var(--color-neon);
+    box-shadow: 0 -4px 0 var(--color-neon-2);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// CRT / scanline overlay
+// ---------------------------------------------------------------------------
+// Off by default. `data-crt="on"` is set by the CRT toggle (and the Konami
+// easter egg) in site-motion.js, and persisted in localStorage.
+[data-crt='on'] body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--scanline-color) 0,
+    var(--scanline-color) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Player card — the "who is this person" HUD
+// ---------------------------------------------------------------------------
+.player-card {
+  @extend %pixel-surface;
+
+  display: grid;
+  grid-template-columns: 168px 1fr;
+  gap: var(--space-8);
+  padding: var(--space-8);
+  position: relative;
+  overflow: hidden;
+
+  // faint pixel grid so the panel reads as a game screen
+  background-image:
+    linear-gradient(var(--color-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-grid) 1px, transparent 1px);
+  background-size: 24px 24px, 24px 24px;
+
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    padding: var(--space-5);
+  }
+}
+
+.player-card__avatar {
+  align-self: start;
+  border: var(--border-medium) solid var(--color-text);
+  background: var(--color-bg-elevated);
+  padding: var(--space-2);
+
+  img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    // renders the photo as chunky pixels without shipping a second asset
+    image-rendering: pixelated;
+    filter: contrast(1.08) saturate(0.9);
+  }
+
+  @media (max-width: 767px) {
+    max-width: 132px;
+  }
+}
+
+.player-card__id {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+.player-card__name {
+  font-family: var(--font-pixel);
+  font-size: var(--pixel-md);
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.player-card__class {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-text-muted);
+  letter-spacing: var(--tracking-wide);
+}
+
+.player-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.player-chip {
+  font-family: var(--font-pixel);
+  font-size: var(--pixel-xs);
+  line-height: 1;
+  padding: var(--space-2) var(--space-3);
+  border: var(--border-thin) solid var(--color-border-darker);
+  color: var(--color-text-muted);
+  background: var(--color-bg);
+  box-shadow: var(--pixel-shadow-sm);
+}
+
+.player-chip--level {
+  border-color: var(--color-neon);
+  color: var(--color-neon);
+  box-shadow: 2px 2px 0 var(--color-accent-soft);
+}
+
+// ---------------------------------------------------------------------------
+// XP / skill bars
+// ---------------------------------------------------------------------------
+.skill-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: var(--space-4);
+}
+
+.skill {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-2);
+  align-items: baseline;
+}
+
+.skill__name {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-text);
+  letter-spacing: var(--tracking-wide);
+}
+
+.skill__value {
+  font-family: var(--font-pixel);
+  font-size: var(--pixel-xs);
+  color: var(--color-text-light);
+}
+
+.skill__track {
+  display: block;
+  grid-column: 1 / -1;
+  height: 14px;
+  border: var(--border-thin) solid var(--color-text);
+  background: var(--color-bg-elevated);
+  padding: 2px;
+}
+
+.skill__fill {
+  display: block;
+  height: 100%;
+  width: 0;
+  // Segment mask paints ON TOP of the accent gradient, so the bar reads as
+  // discrete XP blocks rather than a smooth meter. Layer order matters here:
+  // the first background-image is the topmost layer.
+  background-image:
+    repeating-linear-gradient(90deg, transparent 0 10px, var(--color-bg-elevated) 10px 12px),
+    linear-gradient(90deg, var(--color-neon), var(--color-neon-2));
+  transition: width 900ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+// No JS / reduced motion: bars render at their declared width immediately.
+.no-motion .skill__fill,
+.skill__fill.is-filled {
+  transition: none;
+}
+
+// ---------------------------------------------------------------------------
+// Quest log (achievements)
+// ---------------------------------------------------------------------------
+.quest-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-4);
+}
+
+.quest {
+  @extend %pixel-surface;
+
+  padding: var(--space-4);
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+
+  &:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--color-neon);
+  }
+}
+
+.quest__icon {
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--color-neon);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.quest__title {
+  font-family: var(--font-pixel);
+  font-size: var(--pixel-xs);
+  line-height: 1.6;
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+}
+
+.quest__desc {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+// ---------------------------------------------------------------------------
+// Arcade treatment for existing components
+// ---------------------------------------------------------------------------
+.fact-card {
+  border-radius: 0;
+  border-width: var(--border-medium);
+  border-color: var(--color-text);
+  box-shadow: var(--pixel-shadow-sm);
+
+  strong {
+    font-family: var(--font-pixel);
+    font-size: var(--pixel-md);
+    line-height: 1.4;
+  }
+
+  span {
+    font-family: var(--font-mono);
+    letter-spacing: var(--tracking-wide);
+  }
+}
+
+.btn {
+  font-family: var(--font-pixel);
+  font-size: var(--pixel-xs);
+  letter-spacing: 0;
+  border-radius: 0;
+  padding: var(--space-3) var(--space-4);
+  box-shadow: var(--pixel-shadow-sm);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+    border-color var(--transition-fast), background var(--transition-fast);
+
+  &:hover {
+    opacity: 1;
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 var(--color-neon);
+  }
+
+  &:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0 var(--color-neon);
+  }
+}
+
+.service-card__title,
+.project-item__title {
+  font-family: var(--font-pixel);
+  font-size: var(--pixel-xs);
+  line-height: 1.7;
+  letter-spacing: 0;
+}
+
+.section-card,
+.service-card,
+.project-item {
+  border-radius: 0;
+}
+
+// ---------------------------------------------------------------------------
+// CRT toggle button (sits next to the theme toggle)
+// ---------------------------------------------------------------------------
+.crt-toggle {
+  font-family: var(--font-pixel);
+  font-size: var(--pixel-xs);
+  line-height: 1;
+  padding: var(--space-2) var(--space-3);
+  border: var(--border-thin) solid var(--color-border-dark);
+  background: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+
+  &:hover {
+    color: var(--color-neon);
+    border-color: var(--color-neon);
+  }
+
+  &[aria-pressed='true'] {
+    color: var(--color-neon);
+    border-color: var(--color-neon);
+    box-shadow: var(--pixel-shadow-sm);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Easter-egg banner (Konami code)
+// ---------------------------------------------------------------------------
+.arcade-toast {
+  position: fixed;
+  left: 50%;
+  bottom: var(--space-8);
+  transform: translateX(-50%) translateY(120%);
+  z-index: var(--z-tooltip);
+  font-family: var(--font-pixel);
+  font-size: var(--pixel-xs);
+  line-height: 1.6;
+  padding: var(--space-4) var(--space-5);
+  background: var(--color-surface);
+  border: var(--border-medium) solid var(--color-neon);
+  box-shadow: var(--pixel-shadow-neon);
+  color: var(--color-text);
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1), opacity 320ms ease,
+    visibility 0s linear 320ms;
+
+  &.is-open {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Reduced motion
+// ---------------------------------------------------------------------------
+@media (prefers-reduced-motion: reduce) {
+  .skill__fill {
+    transition: none;
+  }
+
+  .quest:hover,
+  .btn:hover {
+    transform: none;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Menu drawer
+// ---------------------------------------------------------------------------
+// "MENU" label next to the burger, so the only nav control in the bar reads as
+// navigation rather than as decoration.
+.minimalist-nav__hamburger {
+  gap: var(--space-3);
+  width: auto;
+  padding: var(--space-2) var(--space-3);
+  border: var(--border-thin) solid var(--color-border-dark);
+  transition: border-color var(--transition-fast), color var(--transition-fast);
+
+  &:hover {
+    opacity: 1;
+    border-color: var(--color-neon);
+
+    .minimalist-nav__hamburger-label {
+      color: var(--color-neon);
+    }
+  }
+}
+
+.minimalist-nav__hamburger-label {
+  font-family: var(--font-pixel);
+  font-size: var(--pixel-xs);
+  line-height: 1;
+  color: var(--color-text-muted);
+  transition: color var(--transition-fast);
+
+  @media (max-width: 479px) {
+    display: none;
+  }
+}
+
+.minimalist-nav__mobile-link {
+  display: block;
+  padding: var(--space-4) 0;
+  border-bottom: var(--border-thin) solid var(--color-border);
+  color: var(--color-text);
+
+  &:hover,
+  &.is-active {
+    opacity: 1;
+    color: var(--color-neon);
+  }
+}
+
+.minimalist-nav__mobile-lang {
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+}
+
+// The back-to-top button is fixed to the bottom-right; without this the footer
+// links run underneath it.
+.minimalist-footer__inner {
+  padding-right: 64px;
+
+  @media (max-width: 767px) {
+    padding-right: 0;
+    padding-bottom: 56px;
+  }
+}
+
+.back-to-top {
+  border-radius: 0;
+  border-width: var(--border-medium);
+  border-color: var(--color-text);
+  box-shadow: var(--pixel-shadow-sm);
+
+  &:hover {
+    border-color: var(--color-neon);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Card interiors — vertical rhythm
+// ---------------------------------------------------------------------------
+// Cards were mixing component margins with prose margins, so headings sat too
+// close to their body text and the last paragraph pushed the card open at the
+// bottom. Each card now owns its spacing and drops trailing margins.
+.section-card,
+.quest,
+.project-card,
+.fact-card,
+.player-card {
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+.section-card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-6) var(--space-6) var(--space-5);
+
+  // Actions drop to the bottom so a row of cards ends on one line.
+  > .btn,
+  > .cta-row {
+    margin-top: auto;
+    margin-bottom: 0;
+  }
+
+  > .cta-row {
+    padding-top: var(--space-4);
+  }
+
+  > .btn {
+    align-self: flex-start;
+    margin-top: auto;
+  }
+
+  h3 {
+    font-family: var(--font-pixel);
+    font-size: var(--pixel-xs);
+    line-height: 1.7;
+    letter-spacing: 0;
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-3);
+    border-bottom: var(--border-thin) solid var(--color-border);
+  }
+
+  p {
+    margin-bottom: var(--space-4);
+  }
+
+  ul {
+    margin-top: var(--space-4);
+
+    li {
+      margin-bottom: var(--space-3);
+      line-height: var(--leading-relaxed);
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.quest {
+  gap: var(--space-4);
+  padding: var(--space-5);
+}
+
+.quest__title {
+  margin-bottom: var(--space-3);
+}
+
+.project-card {
+  gap: var(--space-3);
+
+  // The text block stretches so every card's call to action sits on the same
+  // baseline, however uneven the descriptions are.
+  > div {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .btn,
+  .cta-row {
+    margin-top: auto;
+  }
+
+  .cta-row {
+    margin-bottom: 0;
+  }
+
+  h3 {
+    margin-bottom: var(--space-3);
+    padding-bottom: var(--space-3);
+    border-bottom: var(--border-thin) solid var(--color-border);
+  }
+
+  p:last-of-type {
+    margin-bottom: var(--space-4);
+  }
+}
+
+.fact-card {
+  padding: var(--space-6) var(--space-4);
+
+  strong {
+    margin-bottom: var(--space-3);
+  }
+
+  span {
+    line-height: var(--leading-normal);
+  }
+}
+
+.service-card {
+  gap: var(--space-4);
+}
+
+.service-card__title {
+  margin-bottom: var(--space-3);
+}
+
+.service-card__description {
+  margin-top: 0;
+}
+
+.player-card__meta {
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.player-card__id {
+  margin-bottom: var(--space-8);
+  padding-bottom: var(--space-6);
+  border-bottom: var(--border-thin) solid var(--color-border);
+}
+
+.skill-list {
+  gap: var(--space-5);
+}
+
+// ---------------------------------------------------------------------------
+// Heading rhythm in prose
+// ---------------------------------------------------------------------------
+// Section headings need clearly more space above than below, otherwise a
+// heading reads as belonging to the block it follows.
+.content {
+  > h2 {
+    margin-top: var(--space-16);
+    margin-bottom: var(--space-5);
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  > h3 {
+    margin-top: var(--space-10);
+    margin-bottom: var(--space-4);
+  }
+
+  > p,
+  > ul,
+  > ol {
+    margin-bottom: var(--space-5);
+    max-width: 46rem;
+  }
+
+  > .eyebrow {
+    margin-top: var(--space-12);
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Start screen (home)
+// ---------------------------------------------------------------------------
+.start-screen {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  min-height: calc(100vh - 12rem);
+  padding: var(--space-16) var(--space-10);
+  border: var(--border-medium) solid var(--color-text);
+  box-shadow: var(--pixel-shadow);
+  background: var(--color-bg-elevated);
+
+  @media (max-width: 767px) {
+    min-height: calc(100vh - 9rem);
+    padding: var(--space-10) var(--space-5);
+  }
+}
+
+.start-screen__canvas {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(60% 80% at 15% 10%, var(--color-accent-soft), transparent 60%),
+    radial-gradient(50% 60% at 85% 20%, var(--spotlight-color), transparent 65%);
+
+  canvas {
+    display: block;
+  }
+}
+
+.start-screen__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--color-bg) 55%, transparent),
+    color-mix(in srgb, var(--color-bg) 82%, transparent)
+  );
+}
+
+.start-screen__content {
+  position: relative;
+  width: 100%;
+  max-width: 46rem;
+}
+
+.start-screen__tag {
+  margin-bottom: var(--space-6);
+}
+
+.start-screen__name {
+  font-family: var(--font-pixel);
+  font-size: var(--pixel-xl);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0;
+  margin-bottom: var(--space-5);
+  text-shadow: 3px 3px 0 var(--color-accent-soft);
+}
+
+.start-screen__role {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-neon);
+  margin-bottom: var(--space-4);
+}
+
+.start-screen__tagline {
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-muted);
+  max-width: 38rem;
+  margin-bottom: var(--space-10);
+}
+
+.start-screen__controls {
+  margin-top: var(--space-8);
+  margin-bottom: 0;
+  font-family: var(--font-pixel);
+  font-size: var(--pixel-xs);
+  line-height: 1.8;
+  color: var(--color-text-lighter);
+}
+
+// Blinking "ready" tag, the one piece of idle motion on the screen.
+.blink {
+  animation: arcade-blink 1.6s steps(2, end) infinite;
+}
+
+@keyframes arcade-blink {
+  0%, 60% { opacity: 1; }
+  61%, 100% { opacity: 0.35; }
+}
+
+// ---------------------------------------------------------------------------
+// Start menu
+// ---------------------------------------------------------------------------
+.start-menu {
+  display: grid;
+  gap: var(--space-1);
+  max-width: 34rem;
+}
+
+.start-menu__item {
+  display: grid;
+  grid-template-columns: 1.5rem auto;
+  align-items: baseline;
+  gap: var(--space-2) var(--space-3);
+  padding: var(--space-3) var(--space-3) var(--space-3) 0;
+  border-bottom: var(--border-thin) solid var(--color-border);
+  color: var(--color-text);
+  transition: padding-left var(--transition-base), border-color var(--transition-base);
+
+  &:hover,
+  &:focus-visible,
+  &.is-selected {
+    opacity: 1;
+    padding-left: var(--space-3);
+    border-color: var(--color-neon);
+
+    .start-menu__marker {
+      opacity: 1;
+      color: var(--color-neon);
+    }
+
+    .start-menu__label {
+      color: var(--color-neon);
+    }
+  }
+}
+
+.start-menu__marker {
+  font-size: var(--pixel-sm);
+  line-height: 1.6;
+  opacity: 0;
+  transition: opacity var(--transition-fast), color var(--transition-fast);
+}
+
+.start-menu__label {
+  font-family: var(--font-pixel);
+  font-size: var(--pixel-sm);
+  line-height: 1.6;
+  letter-spacing: 0;
+  transition: color var(--transition-fast);
+}
+
+.start-menu__hint {
+  grid-column: 2;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-light);
+}
+
+// ---------------------------------------------------------------------------
+// Page transition wipe
+// ---------------------------------------------------------------------------
+// Six columns wipe up to cover the outgoing page and wipe further up to
+// uncover the incoming one. The overlay is hidden and non-interactive unless
+// JS explicitly puts it in one of the two states.
+.page-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.page-transition__col {
+  background: var(--color-hud);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 260ms cubic-bezier(0.65, 0, 0.35, 1);
+
+  @for $i from 1 through 6 {
+    &:nth-child(#{$i}) {
+      transition-delay: #{($i - 1) * 35}ms;
+    }
+  }
+}
+
+.page-transition__label {
+  position: absolute;
+  inset: auto 0 var(--space-12) 0;
+  text-align: center;
+  font-family: var(--font-pixel);
+  font-size: var(--pixel-xs);
+  color: var(--color-bg);
+  opacity: 0;
+  transition: opacity 160ms ease;
+}
+
+// Covering: columns grow from the bottom, page is on its way out.
+.page-transition.is-covering {
+  visibility: visible;
+
+  .page-transition__col {
+    transform: scaleY(1);
+  }
+
+  .page-transition__label {
+    opacity: 1;
+    transition-delay: 200ms;
+  }
+}
+
+// Revealing: columns start full height and retract upward.
+.page-transition.is-revealing {
+  visibility: visible;
+
+  .page-transition__col {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+
+  &.is-done .page-transition__col {
+    transform: scaleY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-transition {
+    display: none;
+  }
+
+  .blink {
+    animation: none;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Hero — boot screen
+// ---------------------------------------------------------------------------
+// The hero frame is squared off and given the stepped shadow so it matches the
+// player card instead of the older rounded-card look.
+.hero {
+  border-radius: 0;
+  border-width: var(--border-medium);
+  border-color: var(--color-text);
+  box-shadow: var(--pixel-shadow);
+}
+
+.hero__name {
+  font-family: var(--font-pixel);
+  font-size: var(--pixel-xl);
+  line-height: 1.35;
+  letter-spacing: 0;
+  font-weight: 400;
+  margin-bottom: var(--space-5);
+  // stepped highlight instead of a blurred text-shadow keeps the sprite look
+  text-shadow: 3px 3px 0 var(--color-accent-soft);
+}
+
+.hero__role {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-neon);
+  margin-bottom: var(--space-4);
+}
+
+.hero__tagline {
+  font-size: var(--text-xl);
+  font-weight: var(--font-medium);
+  line-height: var(--leading-snug);
+  color: var(--color-text);
+  max-width: 44rem;
+  margin-bottom: var(--space-4);
+  // terminal prompt marker
+  &::before {
+    content: "> ";
+    color: var(--color-neon);
+    font-family: var(--font-mono);
+  }
+}
+
+.hero__scroll-hint {
+  font-family: var(--font-pixel);
+  font-size: var(--pixel-xs);
+  letter-spacing: 0;
+}
+
+.player-card__skills-title {
+  margin-bottom: var(--space-4);
+}
+
+.player-card__body {
+  min-width: 0;
+}
+
+// ---------------------------------------------------------------------------
+// Navigation
+// ---------------------------------------------------------------------------
+.minimalist-nav__brand {
+  font-family: var(--font-pixel);
+  font-size: var(--pixel-sm);
+  line-height: 1.6;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.minimalist-nav__mobile-link,
+.minimalist-footer__link,
+.minimalist-lang-switcher__link {
+  font-family: var(--font-pixel);
+  font-size: var(--pixel-xs);
+  letter-spacing: 0;
+  line-height: 1.8;
+}
+
+.minimalist-lang-switcher__label,
+.minimalist-footer__copyright {
+  font-family: var(--font-mono);
+  letter-spacing: var(--tracking-wide);
+}
+// ---------------------------------------------------------------------------
+// Page + post titles
+// ---------------------------------------------------------------------------
+// Tab titles are one or two words, so they survive the pixel face. Post titles
+// stay on Inter — headlines there run long and have to stay readable.
+.page-title {
+  font-family: var(--font-pixel);
+  font-size: var(--pixel-lg);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0;
+  margin-bottom: var(--space-8);
+  text-shadow: 3px 3px 0 var(--color-accent-soft);
+}
+
+// Section headings inside prose keep Inter (they run long) but pick up a small
+// pixel marker so they belong to the same system as the HUD labels.
+.content > h2,
+.post-content > h2 {
+  &::before {
+    content: "// ";
+    font-family: var(--font-pixel);
+    font-size: 0.5em;
+    color: var(--color-neon);
+    vertical-align: middle;
+    margin-right: var(--space-2);
+  }
+}
+
+.post-title {
+  letter-spacing: var(--tracking-tight);
+}
+
+.post-tag,
+.post-meta {
+  font-family: var(--font-mono);
+}
+
+// ---------------------------------------------------------------------------
+// Chinese pages
+// ---------------------------------------------------------------------------
+// zh labels carry their pinyin ("项目 Xiàngmù") so a non-Chinese reader can
+// pronounce them. Uppercasing would destroy the tone marks (XIÀNGMÙ reads as
+// shouting and breaks pinyin convention), so every uppercase label opts out on
+// zh pages, and nav labels stay on one line.
+html[lang^='zh'] {
+  // Press Start 2P has no CJK glyphs, so on Chinese pages every label mixes a
+  // pixel latin half with a fallback hanzi half at mismatched optical sizes.
+  // Overriding the token swaps the whole pixel layer to the mono stack for zh
+  // only — one definition, every component follows.
+  --font-pixel: "JetBrains Mono", "Noto Sans SC", "PingFang SC", "Microsoft YaHei",
+    "Hiragino Sans GB", monospace;
+
+  // Mono renders smaller than the pixel face at the same px value.
+  --pixel-xs: 0.72rem;
+  --pixel-sm: 0.82rem;
+  --pixel-md: 1.05rem;
+  --pixel-lg: clamp(1.4rem, 1.1rem + 1vw, 2rem);
+  --pixel-xl: clamp(1.8rem, 1.3rem + 2vw, 3rem);
+
+  .page-title,
+  .start-screen__name,
+  .player-card__name,
+  .start-menu__label,
+  .minimalist-nav__brand,
+  .quest__title,
+  .service-card__title,
+  .project-item__title,
+  .eyebrow {
+    font-weight: var(--font-bold);
+  }
+
+  .eyebrow,
+  .btn,
+  .service-card__title,
+  .minimalist-footer__link,
+  .minimalist-footer__copyright,
+  .fact-card span,
+  .hero__role,
+  .hero__scroll-hint,
+  .post-tag,
+  .minimalist-nav__mobile-link {
+    text-transform: none;
+  }
+}
+
+// Made with Bob

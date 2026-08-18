@@ -6,10 +6,11 @@
 
 :root {
   // ---------------------------------------------------------------------------
-  // Monochrome Color Palette
+  // Monochrome Color Palette (light theme is the default token set)
   // ---------------------------------------------------------------------------
   --color-primary: #1a1a1a;
   --color-bg: #fdfdfd;
+  --color-bg-elevated: #f6f6f7;
   --color-surface: #ffffff;
   --color-text: #1a1a1a;
   --color-text-muted: #555555;
@@ -18,6 +19,47 @@
   --color-border: #eeeeee;
   --color-border-dark: #dddddd;
   --color-border-darker: #cccccc;
+
+  // Single restrained accent, used for gradients, glows and focus states only
+  --color-accent: #4f46e5;
+  --color-accent-2: #06b6d4;
+  --color-accent-soft: rgba(79, 70, 229, 0.08);
+  --gradient-accent: linear-gradient(100deg, var(--color-accent), var(--color-accent-2));
+
+  // Elevation / glass surfaces
+  --shadow-sm: 0 1px 2px rgba(15, 15, 20, 0.04);
+  --shadow-md: 0 8px 24px rgba(15, 15, 20, 0.06);
+  --shadow-lg: 0 24px 60px rgba(15, 15, 20, 0.10);
+  --surface-glass: rgba(253, 253, 253, 0.72);
+  --spotlight-color: rgba(79, 70, 229, 0.10);
+
+  // Radii (soft edges keep the brutalist grid readable without harshness)
+  --radius-sm: 2px;
+  --radius-md: 6px;
+  --radius-lg: 14px;
+
+  // ---------------------------------------------------------------------------
+  // Arcade layer
+  // ---------------------------------------------------------------------------
+  // The pixel/game theme rides on top of the professional base: one neon pair,
+  // a grid line colour, and a stepped "pixel shadow" that replaces soft blur.
+  --color-neon: #4f46e5;
+  --color-neon-2: #06b6d4;
+  --color-xp: #16a34a;
+  --color-hud: #0f172a;
+  --color-grid: rgba(15, 23, 42, 0.06);
+  --pixel-shadow: 4px 4px 0 var(--color-hud);
+  --pixel-shadow-sm: 2px 2px 0 var(--color-hud);
+  --pixel-shadow-neon: 4px 4px 0 var(--color-neon);
+  --scanline-color: rgba(15, 23, 42, 0.035);
+
+  // Pixel type sizes. Press Start 2P renders ~1.4x larger than Inter at the same
+  // px value, so these are deliberately smaller than the matching --text-* step.
+  --pixel-xs: clamp(0.5rem, 0.46rem + 0.12vw, 0.58rem);
+  --pixel-sm: clamp(0.6rem, 0.55rem + 0.15vw, 0.7rem);
+  --pixel-md: clamp(0.8rem, 0.7rem + 0.3vw, 1rem);
+  --pixel-lg: clamp(1.1rem, 0.9rem + 0.9vw, 1.9rem);
+  --pixel-xl: clamp(1.5rem, 1.1rem + 1.9vw, 2.9rem);
 
   // ---------------------------------------------------------------------------
   // Typography Scale (clamp for fluid sizing)
@@ -36,6 +78,12 @@
   // ---------------------------------------------------------------------------
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-mono: "JetBrains Mono", "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, monospace;
+
+  // Pixel display face. Press Start 2P has no lowercase rhythm worth reading in
+  // long form, so it is reserved for short labels: eyebrows, HUD chips, stat
+  // numbers, buttons. Body copy stays on Inter.
+  --font-pixel: "Press Start 2P", "JetBrains Mono", "Noto Sans SC", "PingFang SC",
+    "Microsoft YaHei", "Courier New", monospace;
 
   // ---------------------------------------------------------------------------
   // Font Weights
@@ -116,6 +164,45 @@
   --z-modal: 400;
   --z-popover: 500;
   --z-tooltip: 600;
+}
+
+// ---------------------------------------------------------------------------
+// Dark Theme Token Overrides
+// ---------------------------------------------------------------------------
+// `data-theme` is set on <html> before first paint by the inline FOUC guard in
+// head.html, so these tokens swap without a flash.
+[data-theme='dark'] {
+  --color-primary: #f2f2f3;
+  --color-bg: #0d0d10;
+  --color-bg-elevated: #15151a;
+  --color-surface: #131318;
+  --color-text: #f2f2f3;
+  --color-text-muted: #a9a9b2;
+  --color-text-light: #8d8d97;
+  --color-text-lighter: #6f6f79;
+  --color-border: #24242c;
+  --color-border-dark: #303039;
+  --color-border-darker: #3d3d48;
+
+  --color-accent: #8b8bff;
+  --color-accent-2: #4dd8e8;
+  --color-accent-soft: rgba(139, 139, 255, 0.12);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.55);
+  --surface-glass: rgba(13, 13, 16, 0.72);
+  --spotlight-color: rgba(139, 139, 255, 0.14);
+
+  --color-neon: #8b8bff;
+  --color-neon-2: #4dd8e8;
+  --color-xp: #34d399;
+  --color-hud: #05050a;
+  --color-grid: rgba(139, 139, 255, 0.08);
+  --pixel-shadow: 4px 4px 0 #05050a;
+  --pixel-shadow-sm: 2px 2px 0 #05050a;
+  --pixel-shadow-neon: 4px 4px 0 var(--color-neon);
+  --scanline-color: rgba(139, 139, 255, 0.05);
 }
 
 // Made with Bob

@@ -19,9 +19,15 @@
 // ---------------------------------------------------------------------------
 html {
   font-size: 16px;
+  scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+
+  // Lenis drives scrolling itself; native smooth-scroll would fight it.
+  &.lenis {
+    scroll-behavior: auto;
+  }
 }
 
 body {
@@ -31,6 +37,7 @@ body {
   line-height: var(--leading-normal);
   color: var(--color-text);
   background-color: var(--color-bg);
+  transition: background-color var(--transition-slow), color var(--transition-slow);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -79,19 +86,19 @@ h5 {
 
 h6 {
   font-size: var(--text-base);
+  font-weight: var(--font-bold);
+}
 
 // Hide anchor links that might appear after headings
 h1, h2, h3, h4, h5, h6 {
   a.anchor {
     display: none;
   }
-  
+
   // Remove any trailing # symbols
   &::after {
     content: none;
   }
-}
-  font-weight: var(--font-bold);
 }
 
 // Eyebrow text (small uppercase labels)
@@ -131,8 +138,9 @@ a {
   }
   
   &:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
   }
 }
 
@@ -307,6 +315,26 @@ button {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+// ---------------------------------------------------------------------------
+// Lenis Smooth Scroll — required host rules
+// ---------------------------------------------------------------------------
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
 }
 
 // Made with Bob

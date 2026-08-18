@@ -7,30 +7,33 @@ redirect_from:
   - /portfolio/
 ---
 
+{% assign s = site.data[site.active_lang].strings %}
+{% assign f = site.data.en.strings %}
+
 <p class="lead-paragraph">
-  This page highlights projects where analytics, AI, automation, research, and education create practical value.
+  {{ s.projects_lead | default: f.projects_lead }}
 </p>
 
 <div class="project-grid">
   <article class="project-card">
-    <img src="{{ '/assets/img/additional/cia.png' | relative_url }}" alt="Dashboard portfolio preview">
+    <img src="{{ '/assets/img/additional/cia.png' | relative_url }}" alt="{{ s.project_dashboard_title | default: f.project_dashboard_title }}">
     <div>
-      <p class="project-kicker">Analytics</p>
-      <h3>Tableau dashboard collection</h3>
-      <p>Public dashboards that turn dense datasets into visual stories for insurance, hospitality, music, and retail.</p>
-      <p><strong>Value:</strong> helps stakeholders compare performance and act faster.</p>
-      <a href="{{ '/posts/tableau-dashboard-collection/' | relative_url }}" class="btn btn-outline-primary btn-sm">View project</a>
+      <p class="project-kicker">{{ s.project_dashboard_kicker | default: f.project_dashboard_kicker }}</p>
+      <h3>{{ s.project_dashboard_title | default: f.project_dashboard_title }}</h3>
+      <p>{{ s.project_dashboard_desc | default: f.project_dashboard_desc }}</p>
+      <p><strong>{{ s.projects_value_label | default: f.projects_value_label }}:</strong> {{ s.project_dashboard_value | default: f.project_dashboard_value }}</p>
+      <a href="{{ '/posts/tableau-dashboard-collection/' | relative_url }}" class="btn btn-outline-primary btn-sm">{{ s.project_dashboard_cta | default: f.project_dashboard_cta }}</a>
     </div>
   </article>
 
   <article class="project-card">
     <div>
-      <p class="project-kicker">Education</p>
-      <h3>ESPLOOR learning platform</h3>
-      <p>A free learning initiative that evolved from classes into broader community and research support.</p>
-      <p><strong>Value:</strong> expands access to practical digital and data skills.</p>
+      <p class="project-kicker">{{ s.project_esploor_kicker | default: f.project_esploor_kicker }}</p>
+      <h3>{{ s.project_esploor_title | default: f.project_esploor_title }}</h3>
+      <p>{{ s.project_esploor_desc | default: f.project_esploor_desc }}</p>
+      <p><strong>{{ s.projects_value_label | default: f.projects_value_label }}:</strong> {{ s.project_esploor_value | default: f.project_esploor_value }}</p>
       <div class="cta-row">
-        <a href="{{ '/posts/esploor-research-program/' | relative_url }}" class="btn btn-outline-primary btn-sm">Program overview</a>
+        <a href="{{ '/posts/esploor-research-program/' | relative_url }}" class="btn btn-outline-primary btn-sm">{{ s.project_esploor_cta | default: f.project_esploor_cta }}</a>
         <a href="https://www.instagram.com/esploorcom" class="btn btn-ghost btn-sm" target="_blank" rel="noopener noreferrer">ESPLOOR</a>
       </div>
     </div>
@@ -38,39 +41,39 @@ redirect_from:
 
   <article class="project-card">
     <div>
-      <p class="project-kicker">AI</p>
-      <h3>AI chatbot prototype</h3>
-      <p>An LLM-based experiment that explores conversational interfaces for practical assistance.</p>
-      <p><strong>Value:</strong> shows how AI ideas can become accessible user experiences.</p>
-      <a href="{{ '/posts/ai-chatbot-prototype/' | relative_url }}" class="btn btn-outline-primary btn-sm">Read overview</a>
+      <p class="project-kicker">{{ s.project_chatbot_kicker | default: f.project_chatbot_kicker }}</p>
+      <h3>{{ s.project_chatbot_title | default: f.project_chatbot_title }}</h3>
+      <p>{{ s.project_chatbot_desc | default: f.project_chatbot_desc }}</p>
+      <p><strong>{{ s.projects_value_label | default: f.projects_value_label }}:</strong> {{ s.project_chatbot_value | default: f.project_chatbot_value }}</p>
+      <a href="{{ '/posts/ai-chatbot-prototype/' | relative_url }}" class="btn btn-outline-primary btn-sm">{{ s.project_chatbot_cta | default: f.project_chatbot_cta }}</a>
     </div>
   </article>
 
   <article class="project-card">
     <div>
-      <p class="project-kicker">Healthcare concept</p>
-      <h3>Speech therapy aid</h3>
-      <p>An applied collaboration to support children with speech delay through therapist-assisted and home use.</p>
+      <p class="project-kicker">{{ s.project_speech_kicker | default: f.project_speech_kicker }}</p>
+      <h3>{{ s.project_speech_title | default: f.project_speech_title }}</h3>
+      <p>{{ s.project_speech_desc | default: f.project_speech_desc }}</p>
     </div>
   </article>
 
   <article class="project-card">
     <div>
-      <p class="project-kicker">Product design</p>
-      <h3>Ergonomic pillow study</h3>
-      <p>An early research project on sleep quality, anthropometry, and ergonomic comfort for Indonesian users.</p>
+      <p class="project-kicker">{{ s.project_pillow_kicker | default: f.project_pillow_kicker }}</p>
+      <h3>{{ s.project_pillow_title | default: f.project_pillow_title }}</h3>
+      <p>{{ s.project_pillow_desc | default: f.project_pillow_desc }}</p>
     </div>
   </article>
 
   <article class="project-card">
     <div>
-      <p class="project-kicker">Operations</p>
-      <h3>Workflow automation in financial services</h3>
-      <p>A series of internal automation and monitoring efforts that reduce repetitive work and improve visibility.</p>
+      <p class="project-kicker">{{ s.project_ops_kicker | default: f.project_ops_kicker }}</p>
+      <h3>{{ s.project_ops_title | default: f.project_ops_title }}</h3>
+      <p>{{ s.project_ops_desc | default: f.project_ops_desc }}</p>
     </div>
   </article>
 </div>
 
 <p>
-  Some work is public and linked here. Some projects are summarized because the detailed implementation is internal.
+  {{ s.projects_closing | default: f.projects_closing }}
 </p>

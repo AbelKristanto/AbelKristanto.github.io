@@ -16,12 +16,10 @@
   padding-bottom: var(--space-16);
   display: flex;
   flex-direction: column;
-  gap: var(--space-12);
-  
+
   @media (max-width: 767px) {
     padding-top: var(--space-6);
     padding-bottom: var(--space-12);
-    gap: var(--space-8);
   }
 }
 
@@ -30,12 +28,15 @@
 // ---------------------------------------------------------------------------
 .minimalist-section {
   position: relative;
-  
+  scroll-margin-top: var(--space-24);
+
+  // Vertical rhythm lives here only — the parent no longer adds a flex gap on
+  // top of it, which used to double the spacing between sections.
   &:not(:last-child) {
-    margin-bottom: var(--space-12);
-    
+    margin-bottom: var(--space-16);
+
     @media (max-width: 767px) {
-      margin-bottom: var(--space-8);
+      margin-bottom: var(--space-10);
     }
   }
 }
@@ -89,12 +90,17 @@
 
 .fact-card {
   text-align: center;
-  padding: var(--space-5);
+  padding: var(--space-6) var(--space-5);
   border: var(--border-thin) solid var(--color-border);
-  transition: border-color var(--transition-base);
-  
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  transition: border-color var(--transition-base), transform var(--transition-base),
+    box-shadow var(--transition-base);
+
   &:hover {
     border-color: var(--color-border-darker);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
   }
   
   strong {
@@ -215,13 +221,34 @@
 }
 
 .project-item {
+  position: relative;
   display: block;
-  padding: var(--space-4) 0;
+  padding: var(--space-5) var(--space-4);
   border-bottom: var(--border-thin) solid var(--color-border);
-  transition: padding-left var(--transition-slow);
-  
+  border-radius: var(--radius-md);
+  transition: padding-left var(--transition-slow), background-color var(--transition-base);
+
+  // Accent rail that grows in on hover
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 12%;
+    height: 76%;
+    width: 2px;
+    background: var(--gradient-accent);
+    transform: scaleY(0);
+    transform-origin: 50% 0;
+    transition: transform var(--transition-slow);
+  }
+
   &:hover {
-    padding-left: var(--space-4);
+    padding-left: var(--space-6);
+    background: var(--color-bg-elevated);
+
+    &::before {
+      transform: scaleY(1);
+    }
     
     .project-item__arrow {
       color: var(--color-text);
@@ -291,10 +318,21 @@
 .section-card {
   padding: var(--space-6);
   border: var(--border-thin) solid var(--color-border);
-  transition: border-color var(--transition-base);
-  
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  transition: border-color var(--transition-base), transform var(--transition-base),
+    box-shadow var(--transition-base);
+
   &:hover {
     border-color: var(--color-border-darker);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+
+  h4 {
+    font-size: var(--text-base);
+    font-weight: var(--font-semibold);
+    margin-bottom: var(--space-3);
   }
   
   h3 {
@@ -336,13 +374,15 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  padding: var(--space-2) var(--space-4);
+  padding: var(--space-3) var(--space-5);
   font-size: var(--text-xs);
   font-weight: var(--font-bold);
   text-transform: uppercase;
   letter-spacing: var(--tracking-wider);
   text-decoration: none;
-  transition: opacity var(--transition-fast), border-color var(--transition-fast);
+  border-radius: var(--radius-md);
+  transition: opacity var(--transition-fast), border-color var(--transition-fast),
+    color var(--transition-fast), background-color var(--transition-fast);
   cursor: pointer;
   
   &:hover {
@@ -744,4 +784,281 @@
   margin-top: var(--space-12);
   padding-top: var(--space-6);
   border-top: var(--border-thin) solid var(--color-border);
+}
+
+
+// ---------------------------------------------------------------------------
+// Embed Container — loading, fallback and fullscreen states
+// ---------------------------------------------------------------------------
+.embed-container {
+  border-radius: var(--radius-md);
+
+  &__iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    opacity: 0;
+    transition: opacity var(--transition-slower);
+  }
+
+  &__loader {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-widest);
+    color: var(--color-text-lighter);
+  }
+
+  &__spinner {
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--color-border-dark);
+    border-top-color: var(--color-accent);
+    border-radius: 50%;
+    animation: embed-spin 800ms linear infinite;
+  }
+
+  &__fullscreen-toggle {
+    position: absolute;
+    top: var(--space-3);
+    right: var(--space-3);
+    z-index: var(--z-base);
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-sm);
+    border: var(--border-thin) solid var(--color-border-dark);
+    background: var(--surface-glass);
+    backdrop-filter: blur(8px);
+    color: var(--color-text-muted);
+    opacity: 0;
+    transition: opacity var(--transition-base), color var(--transition-base);
+  }
+
+  &:hover &__fullscreen-toggle,
+  &:focus-within &__fullscreen-toggle {
+    opacity: 1;
+  }
+
+  &--fullscreen {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-modal);
+    margin: 0;
+    padding-bottom: 0;
+    height: 100vh;
+    border-radius: 0;
+    background: var(--color-bg);
+  }
+}
+
+@keyframes embed-spin {
+  to { transform: rotate(360deg); }
+}
+
+// ---------------------------------------------------------------------------
+// Service Card — promoted to a real card so the grid reads as a set
+// ---------------------------------------------------------------------------
+.service-card {
+  padding: var(--space-5);
+  border: var(--border-thin) solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  transition: border-color var(--transition-base), transform var(--transition-base),
+    box-shadow var(--transition-base);
+
+  &:hover {
+    border-color: var(--color-border-darker);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+}
+
+.service-card__icon {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  margin-top: 0;
+  border-radius: var(--radius-md);
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+}
+
+// ---------------------------------------------------------------------------
+// Footer — accent hairline above the content
+// ---------------------------------------------------------------------------
+.minimalist-footer {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--gradient-accent);
+    opacity: 0.35;
+  }
+}
+
+.minimalist-footer__link {
+  &:hover {
+    color: var(--color-accent);
+    opacity: 1;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// About — "what people need" list (was inline styles on the home layout)
+// ---------------------------------------------------------------------------
+.about-needs__title {
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-4);
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+}
+
+.about-needs {
+  list-style: none;
+  padding-left: 0;
+  max-width: 48rem;
+
+  li {
+    position: relative;
+    padding-left: var(--space-6);
+    color: var(--color-text-muted);
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.6em;
+      width: 10px;
+      height: 1px;
+      background: var(--color-accent);
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Content page components (Projects, Contact, What I Do)
+// ---------------------------------------------------------------------------
+// These classes are authored directly in the `_tabs/*.md` pages. They had no
+// styles at all after the premium stylesheet was dropped, so they are defined
+// here against the same tokens as the rest of the system.
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-6);
+  margin: var(--space-8) 0;
+
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  background: var(--color-surface);
+  border: var(--border-medium) solid var(--color-text);
+  box-shadow: var(--pixel-shadow-sm);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+
+  &:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--color-neon);
+  }
+
+  img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    border: var(--border-thin) solid var(--color-border-dark);
+    margin: 0;
+  }
+
+  h3 {
+    font-family: var(--font-pixel);
+    font-size: var(--pixel-xs);
+    line-height: 1.7;
+    letter-spacing: 0;
+    margin-bottom: var(--space-3);
+  }
+
+  p {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-3);
+  }
+}
+
+.project-kicker {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: var(--font-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-neon);
+  margin-bottom: var(--space-2) !important;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-5);
+  margin: var(--space-8) 0;
+
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Button variants used only inside the content pages.
+.btn-sm {
+  padding: var(--space-2) var(--space-3);
+  align-self: flex-start;
+}
+
+.btn-outline-primary {
+  background: transparent;
+  color: var(--color-text);
+  border: var(--border-medium) solid var(--color-text);
+
+  &:hover {
+    border-color: var(--color-neon);
+    color: var(--color-neon);
+  }
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-text-muted);
+  border: var(--border-thin) dashed var(--color-border-darker);
+
+  &:hover {
+    color: var(--color-neon);
+    border-color: var(--color-neon);
+  }
+}
+
+.service-icon {
+  color: var(--color-neon);
+  margin-bottom: var(--space-3);
 }

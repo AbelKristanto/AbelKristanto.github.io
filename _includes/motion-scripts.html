@@ -1,0 +1,26 @@
+<!-- =========================================================================
+     Motion stack (loaded in order, all deferred so they never block paint)
+
+     lenis  — smooth scrolling            https://github.com/darkroomengineering/lenis
+     gsap   — animation engine            https://github.com/greensock/GSAP
+     ScrollTrigger — scroll-linked tweens
+     vanta + three — animated hero background, lazy loaded by site-motion.js
+                     only on large pointer-capable screens
+                                          https://github.com/tengbao/vanta
+     ========================================================================= -->
+<script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+<script defer src="{{ '/assets/js/site-motion.js' | relative_url }}"></script>
+<script defer src="{{ '/assets/js/theme-toggle.js' | relative_url }}"></script>
+<script defer src="{{ '/assets/js/embed-loader.js' | relative_url }}"></script>
+
+{% if jekyll.environment == 'production' and site.pwa.enabled != true %}
+  <!-- Removes the service worker registered by earlier versions of this site -->
+  <script defer src="{{ '/unregister.js' | relative_url }}"></script>
+{% endif %}
+
+{% if site.google_analytics.id != empty and site.google_analytics.id %}
+  {% include google-analytics.html %}
+{% endif %}

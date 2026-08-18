@@ -1,0 +1,41 @@
+{% assign s = site.data[site.active_lang].strings %}
+{% assign f = site.data.en.strings %}
+
+<!-- Player Card — identity HUD + skill tree. Included by the About page. -->
+<div class="player-card" data-reveal="up">
+  <div class="player-card__avatar">
+    <img src="{{ '/assets/img/profile.png' | relative_url }}"
+         alt="{{ site.social.name }}"
+         width="320" height="320" loading="lazy">
+  </div>
+
+  <div class="player-card__body">
+    <div class="player-card__id">
+      <p class="player-card__name">{{ site.social.name }}</p>
+      <span class="player-card__class">{{ s.player_class | default: f.player_class }}</span>
+
+      <div class="player-card__meta">
+        <span class="player-chip player-chip--level">{{ s.player_level_label | default: f.player_level_label }}</span>
+        <span class="player-chip">{{ s.player_base | default: f.player_base }}</span>
+        <span class="player-chip">{{ s.player_langs | default: f.player_langs }}</span>
+        <span class="player-chip">{{ s.player_status | default: f.player_status }}</span>
+      </div>
+    </div>
+
+    <h2 class="eyebrow player-card__skills-title">{{ s.skills_eyebrow | default: f.skills_eyebrow }}</h2>
+
+    <ul class="skill-list">
+      {% assign skill_keys = 'skill_python,skill_sql,skill_viz,skill_automation,skill_ai,skill_teaching' | split: ',' %}
+      {% assign skill_values = '92,90,88,85,78,95' | split: ',' %}
+      {% for key in skill_keys %}
+        <li class="skill">
+          <span class="skill__name">{{ s[key] | default: f[key] }}</span>
+          <span class="skill__value">{{ skill_values[forloop.index0] }} / 100</span>
+          <span class="skill__track">
+            <span class="skill__fill" data-xp="{{ skill_values[forloop.index0] }}"></span>
+          </span>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

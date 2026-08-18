@@ -1,0 +1,290 @@
+// =============================================================================
+// Minimalist Design System — Motion & Effects Layer
+// =============================================================================
+// Visual layer that sits on top of the static design system:
+//   - Lenis  : smooth scrolling (base rules live in _base.scss)
+//   - GSAP   : scroll-triggered reveals, hero timeline, stat counters
+//   - Vanta  : animated hero background (three.js NET effect)
+//   - react-bits inspired effects ported to vanilla CSS/JS:
+//     shiny text, gradient text, spotlight cards, magnetic buttons, count-up.
+//
+// Every effect degrades to a plain, fully visible page: hidden states only
+// apply once `html.motion-ready` is set by site-motion.js AFTER GSAP loaded.
+
+// ---------------------------------------------------------------------------
+// Scroll Progress Bar
+// ---------------------------------------------------------------------------
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--border-thick);
+  z-index: var(--z-tooltip);
+  pointer-events: none;
+  background: transparent;
+
+  &__bar {
+    height: 100%;
+    width: 100%;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    background: var(--gradient-accent);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Reveal On Scroll (GSAP ScrollTrigger driven)
+// ---------------------------------------------------------------------------
+// Without JS these selectors never match, so content renders normally.
+.motion-ready [data-reveal] {
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+.motion-ready [data-reveal='up'] {
+  transform: translate3d(0, 24px, 0);
+}
+
+.motion-ready [data-reveal='fade'] {
+  transform: none;
+}
+
+.motion-ready [data-reveal='left'] {
+  transform: translate3d(-24px, 0, 0);
+}
+
+.motion-ready [data-reveal].is-revealed {
+  will-change: auto;
+}
+
+// Word-level hero reveal (react-bits SplitText port)
+.split-line {
+  display: block;
+  overflow: hidden;
+}
+
+.split-word {
+  display: inline-block;
+  white-space: pre;
+}
+
+.motion-ready .split-word {
+  opacity: 0;
+  transform: translate3d(0, 0.6em, 0);
+}
+
+// ---------------------------------------------------------------------------
+// Hero
+// ---------------------------------------------------------------------------
+.hero {
+  position: relative;
+  isolation: isolate;
+  padding: var(--space-16) var(--space-8) var(--space-12);
+  border: var(--border-thin) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-bg-elevated);
+
+  @media (max-width: 767px) {
+    padding: var(--space-10) var(--space-5) var(--space-8);
+  }
+}
+
+// Vanta mounts its canvas here; the gradient below is the no-JS fallback.
+.hero__canvas {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(60% 80% at 15% 10%, var(--color-accent-soft), transparent 60%),
+    radial-gradient(50% 60% at 85% 20%, var(--spotlight-color), transparent 65%);
+
+  canvas {
+    display: block;
+  }
+}
+
+// Keeps text readable over the animated canvas in both themes.
+.hero__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--color-bg) 55%, transparent),
+    color-mix(in srgb, var(--color-bg) 82%, transparent)
+  );
+}
+
+.hero__content {
+  position: relative;
+  max-width: 52rem;
+}
+
+.hero__title {
+  margin-bottom: var(--space-6);
+}
+
+.hero__scroll-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-10);
+  font-size: var(--text-xs);
+  font-weight: var(--font-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-text-lighter);
+
+  &::after {
+    content: '';
+    width: 1px;
+    height: 28px;
+    background: linear-gradient(to bottom, var(--color-text-lighter), transparent);
+    animation: hero-hint 1.8s ease-in-out infinite;
+  }
+}
+
+@keyframes hero-hint {
+  0%, 100% { transform: scaleY(0.4); transform-origin: top; opacity: 0.4; }
+  50%      { transform: scaleY(1);   transform-origin: top; opacity: 1; }
+}
+
+// ---------------------------------------------------------------------------
+// Text Effects (react-bits ports)
+// ---------------------------------------------------------------------------
+.gradient-text {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.shiny-text {
+  position: relative;
+  background: linear-gradient(
+      100deg,
+      var(--color-text-lighter) 40%,
+      var(--color-text) 50%,
+      var(--color-text-lighter) 60%
+    )
+    0 0 / 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shiny-sweep 5s linear infinite;
+}
+
+@keyframes shiny-sweep {
+  0%   { background-position: 150% 0; }
+  100% { background-position: -50% 0; }
+}
+
+// ---------------------------------------------------------------------------
+// Spotlight Card (pointer-tracked glow; --mx/--my set by site-motion.js)
+// ---------------------------------------------------------------------------
+.spotlight {
+  position: relative;
+  isolation: isolate;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity var(--transition-slow);
+    background: radial-gradient(
+      220px circle at var(--mx, 50%) var(--my, 50%),
+      var(--spotlight-color),
+      transparent 70%
+    );
+  }
+
+  &:hover::before,
+  &:focus-within::before {
+    opacity: 1;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Magnetic Button (translation applied by site-motion.js)
+// ---------------------------------------------------------------------------
+.magnetic {
+  will-change: transform;
+}
+
+// ---------------------------------------------------------------------------
+// Counter (stable width while digits tick up)
+// ---------------------------------------------------------------------------
+[data-count-to] {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+}
+
+// ---------------------------------------------------------------------------
+// Back To Top
+// ---------------------------------------------------------------------------
+.back-to-top {
+  position: fixed;
+  right: var(--space-6);
+  bottom: var(--space-6);
+  z-index: var(--z-fixed);
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: var(--border-thin) solid var(--color-border-dark);
+  background: var(--surface-glass);
+  backdrop-filter: blur(10px);
+  color: var(--color-text);
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity var(--transition-base), transform var(--transition-base),
+    visibility var(--transition-base), border-color var(--transition-base);
+
+  &.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  &:hover {
+    border-color: var(--color-accent);
+  }
+
+  @media (max-width: 767px) {
+    right: var(--space-4);
+    bottom: var(--space-4);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Reduced Motion — strip every animated effect, keep every element visible
+// ---------------------------------------------------------------------------
+@media (prefers-reduced-motion: reduce) {
+  .motion-ready [data-reveal],
+  .motion-ready .split-word {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .shiny-text {
+    animation: none;
+    color: var(--color-text);
+    background: none;
+  }
+
+  .hero__scroll-hint::after {
+    animation: none;
+  }
+
+  .scroll-progress {
+    display: none;
+  }
+}

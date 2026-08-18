@@ -1,0 +1,18 @@
+{% assign s = site.data[site.active_lang].strings %}
+{% assign f = site.data.en.strings %}
+
+<!-- Quest Log — achievements framed as completed quests. -->
+<div class="quest-grid">
+  {% assign quest_icons = 'fa-bolt,fa-users,fa-graduation-cap,fa-book' | split: ',' %}
+  {% for i in (1..4) %}
+    {% assign title_key = 'quest_' | append: i | append: '_title' %}
+    {% assign desc_key = 'quest_' | append: i | append: '_desc' %}
+    <article class="quest spotlight" data-reveal="up">
+      <span class="quest__icon"><i class="fas {{ quest_icons[forloop.index0] }}" aria-hidden="true"></i></span>
+      <div>
+        <h3 class="quest__title">{{ s[title_key] | default: f[title_key] }}</h3>
+        <p class="quest__desc">{{ s[desc_key] | default: f[desc_key] }}</p>
+      </div>
+    </article>
+  {% endfor %}
+</div>

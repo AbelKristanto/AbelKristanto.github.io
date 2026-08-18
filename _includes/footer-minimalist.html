@@ -1,8 +1,11 @@
+{% assign s = site.data[site.active_lang].strings %}
+{% assign f = site.data.en.strings %}
+
 <!-- Minimalist Footer -->
 <footer class="minimalist-footer">
   <div class="minimalist-footer__inner">
     <div class="minimalist-footer__copyright">
-      Based in Indonesia • © {{ 'now' | date: "%Y" }}
+      {{ s.footer_based | default: f.footer_based }} • © {{ 'now' | date: "%Y" }}
     </div>
     <ul class="minimalist-footer__links">
       <li>

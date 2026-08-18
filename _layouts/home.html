@@ -6,203 +6,57 @@ refactor: false
 {% assign strings = site.data[site.active_lang].strings %}
 {% assign fallback = site.data.en.strings %}
 
-<!-- Hero Section -->
-<section class="minimalist-section">
-  <div class="eyebrow">{{ strings.hero_eyebrow | default: fallback.hero_eyebrow }}</div>
-  <h1>{{ strings.hero_title | default: fallback.hero_title }}</h1>
-  <p class="lead-paragraph">{{ strings.hero_description | default: fallback.hero_description }}</p>
-  
-  <div class="divider-with-line">
-    <a href="#projects" class="minimalist-nav__link">
-      View Projects
-    </a>
-    <a href="#contact" class="minimalist-nav__link">
-      Contact
-    </a>
-  </div>
-</section>
+<!-- Start screen.
+     The home page is deliberately a single screen: name, role, one line of
+     context, and a menu. Every menu entry is a real page navigation, so the
+     page-transition wipe in site-motion.js has something to play against. -->
+<section class="start-screen" data-hero>
+  <div class="start-screen__canvas" data-vanta aria-hidden="true"></div>
+  <div class="start-screen__scrim" aria-hidden="true"></div>
 
-<!-- Quick Facts -->
-<div class="quick-facts">
-  <div class="fact-card">
-    <strong>3,000+</strong>
-    <span>{{ strings.stat_professionals | default: fallback.stat_professionals }}</span>
-  </div>
-  <div class="fact-card">
-    <strong>1,000+</strong>
-    <span>{{ strings.stat_learners | default: fallback.stat_learners }}</span>
-  </div>
-  <div class="fact-card">
-    <strong>10+</strong>
-    <span>{{ strings.stat_automation | default: fallback.stat_automation }}</span>
-  </div>
-  <div class="fact-card">
-    <strong>13</strong>
-    <span>{{ strings.stat_publications | default: fallback.stat_publications }}</span>
-  </div>
-</div>
+  <div class="start-screen__content">
+    <p class="eyebrow start-screen__tag blink" data-hero-stagger>
+      {{ strings.hero_player_tag | default: fallback.hero_player_tag }}
+    </p>
 
-<!-- About Section -->
-<section class="minimalist-section">
-  <h3 class="eyebrow">About</h3>
-  <p class="lead-paragraph">{{ strings.about_lead | default: fallback.about_lead }}</p>
-  <p>{{ strings.about_goal | default: fallback.about_goal }}</p>
-  
-  <h4 style="margin-top: 2rem; margin-bottom: 1rem; font-size: var(--text-base); font-weight: var(--font-semibold);">{{ strings.about_what_people_need | default: fallback.about_what_people_need }}</h4>
-  <ul style="list-style: disc; padding-left: 1.5rem;">
-    <li>{{ strings.about_need_1 | default: fallback.about_need_1 }}</li>
-    <li>{{ strings.about_need_2 | default: fallback.about_need_2 }}</li>
-    <li>{{ strings.about_need_3 | default: fallback.about_need_3 }}</li>
-  </ul>
-</section>
+    <h1 class="start-screen__name" data-split>{{ site.social.name }}</h1>
 
-<!-- Services Section -->
-<section class="minimalist-section">
-  <h3 class="eyebrow">{{ strings.section_services_title | default: fallback.section_services_title }}</h3>
-  
-  <div class="service-grid">
-    <div class="service-card">
-      <div class="service-card__icon">
-        <i class="fas fa-chart-pie"></i>
-      </div>
-      <div class="service-card__content">
-        <h4 class="service-card__title">{{ strings.service_analytics_title | default: fallback.service_analytics_title }}</h4>
-        <p class="service-card__description">{{ strings.service_analytics_desc | default: fallback.service_analytics_desc }}</p>
-      </div>
-    </div>
-    
-    <div class="service-card">
-      <div class="service-card__icon">
-        <i class="fas fa-gears"></i>
-      </div>
-      <div class="service-card__content">
-        <h4 class="service-card__title">{{ strings.service_ai_title | default: fallback.service_ai_title }}</h4>
-        <p class="service-card__description">{{ strings.service_ai_desc | default: fallback.service_ai_desc }}</p>
-      </div>
-    </div>
-    
-    <div class="service-card">
-      <div class="service-card__icon">
-        <i class="fas fa-user-group"></i>
-      </div>
-      <div class="service-card__content">
-        <h4 class="service-card__title">{{ strings.service_mentoring_title | default: fallback.service_mentoring_title }}</h4>
-        <p class="service-card__description">{{ strings.service_mentoring_desc | default: fallback.service_mentoring_desc }}</p>
-      </div>
-    </div>
-    
-    <div class="service-card">
-      <div class="service-card__icon">
-        <i class="fas fa-person-chalkboard"></i>
-      </div>
-      <div class="service-card__content">
-        <h4 class="service-card__title">{{ strings.service_speaking_title | default: fallback.service_speaking_title }}</h4>
-        <p class="service-card__description">{{ strings.service_speaking_desc | default: fallback.service_speaking_desc }}</p>
-      </div>
-    </div>
-  </div>
-</section>
+    <p class="start-screen__role" data-hero-stagger>
+      {{ strings.hero_eyebrow | default: fallback.hero_eyebrow }}
+    </p>
 
-<!-- Experience Section -->
-<section class="minimalist-section">
-  <h3 class="eyebrow">{{ strings.about_experience_title | default: fallback.about_experience_title }}</h3>
-  
-  <div class="section-card-grid">
-    <div class="section-card">
-      <h4>{{ strings.about_exp_finance_title | default: fallback.about_exp_finance_title }}</h4>
-      <p>{{ strings.about_exp_finance_desc | default: fallback.about_exp_finance_desc }}</p>
-      <ul>
-        <li>{{ strings.about_exp_finance_1 | default: fallback.about_exp_finance_1 }}</li>
-        <li>{{ strings.about_exp_finance_2 | default: fallback.about_exp_finance_2 }}</li>
-      </ul>
-    </div>
-    
-    <div class="section-card">
-      <h4>{{ strings.about_exp_community_title | default: fallback.about_exp_community_title }}</h4>
-      <p>{{ strings.about_exp_community_desc | default: fallback.about_exp_community_desc }}</p>
-      <ul>
-        <li>{{ strings.about_exp_community_1 | default: fallback.about_exp_community_1 }}</li>
-        <li>{{ strings.about_exp_community_2 | default: fallback.about_exp_community_2 }}</li>
-      </ul>
-    </div>
-    
-    <div class="section-card">
-      <h4>{{ strings.about_exp_mentor_title | default: fallback.about_exp_mentor_title }}</h4>
-      <p>{{ strings.about_exp_mentor_desc | default: fallback.about_exp_mentor_desc }}</p>
-      <ul>
-        <li>{{ strings.about_exp_mentor_1 | default: fallback.about_exp_mentor_1 }}</li>
-        <li>{{ strings.about_exp_mentor_2 | default: fallback.about_exp_mentor_2 }}</li>
-      </ul>
-    </div>
-  </div>
-</section>
+    <p class="start-screen__tagline" data-hero-stagger>
+      {{ strings.hero_title | default: fallback.hero_title }}
+    </p>
 
-<!-- Selected Work Section -->
-<section id="projects" class="minimalist-section">
-  <h3 class="eyebrow">{{ strings.section_work_title | default: fallback.section_work_title }}</h3>
-  
-  <ul class="project-list">
-    <li class="project-item">
-      <a href="{{ '/posts/tableau-dashboard-collection/' | relative_url }}" class="project-item__link">
-        <div class="project-item__content">
-          <span class="project-item__title">{{ strings.work_dashboard_title | default: fallback.work_dashboard_title }}</span>
-          <p class="project-item__description">{{ strings.work_dashboard_desc | default: fallback.work_dashboard_desc }}</p>
-        </div>
-        <div class="project-item__arrow">
-          <i class="fas fa-arrow-up-right"></i>
-        </div>
+    <nav class="start-menu"
+         aria-label="{{ strings.start_menu_label | default: fallback.start_menu_label }}"
+         data-start-menu
+         data-hero-stagger>
+      <a class="start-menu__item is-selected" href="{{ '/projects/' | relative_url }}" data-menu-item>
+        <span class="start-menu__marker" aria-hidden="true">&#9656;</span>
+        <span class="start-menu__label">{{ strings.nav_projects | default: fallback.nav_projects }}</span>
+        <span class="start-menu__hint">{{ strings.menu_projects_hint | default: fallback.menu_projects_hint }}</span>
       </a>
-    </li>
-    
-    <li class="project-item">
-      <a href="{{ '/posts/esploor-research-program/' | relative_url }}" class="project-item__link">
-        <div class="project-item__content">
-          <span class="project-item__title">{{ strings.work_esploor_title | default: fallback.work_esploor_title }}</span>
-          <p class="project-item__description">{{ strings.work_esploor_desc | default: fallback.work_esploor_desc }}</p>
-        </div>
-        <div class="project-item__arrow">
-          <i class="fas fa-arrow-up-right"></i>
-        </div>
+      <a class="start-menu__item" href="{{ '/about/' | relative_url }}" data-menu-item>
+        <span class="start-menu__marker" aria-hidden="true">&#9656;</span>
+        <span class="start-menu__label">{{ strings.nav_about | default: fallback.nav_about }}</span>
+        <span class="start-menu__hint">{{ strings.menu_about_hint | default: fallback.menu_about_hint }}</span>
       </a>
-    </li>
-    
-    <li class="project-item">
-      <a href="{{ '/posts/ai-chatbot-prototype/' | relative_url }}" class="project-item__link">
-        <div class="project-item__content">
-          <span class="project-item__title">{{ strings.work_chatbot_title | default: fallback.work_chatbot_title }}</span>
-          <p class="project-item__description">{{ strings.work_chatbot_desc | default: fallback.work_chatbot_desc }}</p>
-        </div>
-        <div class="project-item__arrow">
-          <i class="fas fa-arrow-up-right"></i>
-        </div>
+      <a class="start-menu__item" href="{{ '/what-i-do/' | relative_url }}" data-menu-item>
+        <span class="start-menu__marker" aria-hidden="true">&#9656;</span>
+        <span class="start-menu__label">{{ strings["nav_what i do"] | default: fallback["nav_what i do"] }}</span>
+        <span class="start-menu__hint">{{ strings.menu_services_hint | default: fallback.menu_services_hint }}</span>
       </a>
-    </li>
-  </ul>
-</section>
+      <a class="start-menu__item" href="{{ '/contact/' | relative_url }}" data-menu-item>
+        <span class="start-menu__marker" aria-hidden="true">&#9656;</span>
+        <span class="start-menu__label">{{ strings.nav_contact | default: fallback.nav_contact }}</span>
+        <span class="start-menu__hint">{{ strings.menu_contact_hint | default: fallback.menu_contact_hint }}</span>
+      </a>
+    </nav>
 
-<!-- Contact Section -->
-<section id="contact" class="minimalist-section">
-  <h3 class="eyebrow">{{ strings.section_contact_title | default: fallback.section_contact_title }}</h3>
-  <p class="border-accent-left">{{ strings.section_contact_desc | default: fallback.section_contact_desc }}</p>
-  
-  <div class="cta-row">
-    <a href="mailto:{{ site.social.email }}" class="btn btn-primary">
-      <i class="fas fa-envelope"></i>
-      {{ strings.contact_email_cta | default: fallback.contact_email_cta }}
-    </a>
-    <a href="{{ site.social.links[0] }}" 
-       target="_blank" 
-       rel="noopener noreferrer"
-       class="btn btn-outline">
-      <i class="fab fa-linkedin"></i>
-      {{ strings.contact_linkedin_cta | default: fallback.contact_linkedin_cta }}
-    </a>
-    <a href="https://github.com/{{ site.github.username }}" 
-       target="_blank" 
-       rel="noopener noreferrer"
-       class="btn btn-outline">
-      <i class="fab fa-github"></i>
-      GitHub
-    </a>
+    <p class="start-screen__controls" data-hero-stagger>
+      {{ strings.start_controls_hint | default: fallback.start_controls_hint }}
+    </p>
   </div>
 </section>

@@ -1,23 +1,51 @@
-<!-- Embed Container for Tableau/iframe embeds -->
+{% assign s = site.data[site.active_lang].strings %}
+{% assign f = site.data.en.strings %}
+
+<!-- Embed Container for Tableau/Streamlit/iframe embeds.
+     The iframe src is held in `data-src` and injected by embed-loader.js so a
+     slow or blocked third-party embed can fall back to a direct link. -->
 <div class="embed-container" data-type="{{ include.type | default: 'iframe' }}">
   {% if include.src %}
-    <iframe 
-      src="{{ include.src }}" 
-      frameborder="0" 
+    <div class="embed-container__loader" aria-hidden="true">
+      <span class="embed-container__spinner"></span>
+      <span>{{ s.embed_loading | default: f.embed_loading }}</span>
+    </div>
+
+    <iframe
+      class="embed-container__iframe"
+      data-src="{{ include.src }}"
+      frameborder="0"
       allowfullscreen
       loading="lazy"
       title="{{ include.title | default: 'Embedded content' }}"
       aria-label="{{ include.title | default: 'Embedded content' }}">
     </iframe>
+
+    <button type="button"
+            class="embed-container__fullscreen-toggle"
+            aria-label="{{ s.embed_fullscreen | default: f.embed_fullscreen }}"
+            title="{{ s.embed_fullscreen | default: f.embed_fullscreen }}">
+      <i class="fas fa-expand" aria-hidden="true"></i>
+    </button>
+
+    <div class="embed-container__fallback" hidden>
+      <p>{{ include.fallback_text | default: s.embed_unavailable | default: f.embed_unavailable }}</p>
+      <a href="{{ include.fallback_url | default: include.src }}"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="btn btn-primary">
+        {{ s.embed_open_external | default: f.embed_open_external }}
+      </a>
+    </div>
   {% else %}
     <div class="embed-container__fallback">
-      <p>{{ site.data[site.active_lang].strings.embed_unavailable | default: site.data.en.strings.embed_unavailable | default: "This content is currently unavailable." }}</p>
+      <p>{{ include.fallback_text | default: s.embed_unavailable | default: f.embed_unavailable }}</p>
       {% if include.fallback_url %}
-        <a href="{{ include.fallback_url }}" 
-           target="_blank" 
+        <a href="{{ include.fallback_url }}"
+           target="_blank"
            rel="noopener noreferrer"
            class="btn btn-primary">
-          {{ site.data[site.active_lang].strings.embed_open_external | default: site.data.en.strings.embed_open_external | default: "Open in new tab" }}
+          {{ s.embed_open_external | default: f.embed_open_external }}
         </a>
       {% endif %}
     </div>

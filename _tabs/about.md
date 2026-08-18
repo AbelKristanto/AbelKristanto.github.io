@@ -7,6 +7,10 @@ order: 1
 {% assign s = site.data[site.active_lang].strings %}
 {% assign f = site.data.en.strings %}
 
+<h2 class="eyebrow">{{ s.about_player_title | default: f.about_player_title }}</h2>
+
+{% include player-card.html %}
+
 <p class="lead-paragraph">
   {{ s.about_lead | default: f.about_lead }}
 </p>
@@ -68,6 +72,10 @@ order: 1
     </ul>
   </div>
 </div>
+
+## {{ s.about_quests_title | default: f.about_quests_title }}
+
+{% include quest-log.html %}
 
 ## {{ s.about_education_title | default: f.about_education_title }}
 

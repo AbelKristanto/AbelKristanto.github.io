@@ -10,7 +10,7 @@ layout: default
   {% if page.layout == 'page' or page.collection == 'tabs' %}
     {% assign page_title_key = 'nav_' | append: page.title | downcase %}
     {% assign localized_title = site.data[site.active_lang].strings[page_title_key] %}
-    <h1>{{ localized_title | default: page.title }}</h1>
+    <h1 class="page-title">{{ localized_title | default: page.title }}</h1>
   {% endif %}
   
   <div class="content">

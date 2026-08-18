@@ -7,12 +7,37 @@
 // Top Navigation Bar
 // ---------------------------------------------------------------------------
 .minimalist-nav {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
   width: 100%;
-  padding: var(--space-8) var(--space-6);
-  
-  @media (max-width: 767px) {
-    padding: var(--space-6) var(--space-6);
+  padding: var(--space-5) var(--space-6);
+  background: transparent;
+  transition: background-color var(--transition-slow), box-shadow var(--transition-slow),
+    padding var(--transition-slow), border-color var(--transition-slow);
+  border-bottom: var(--border-thin) solid transparent;
+
+  // `is-scrolled` is toggled by site-motion.js past 16px of scroll.
+  &.is-scrolled {
+    padding-top: var(--space-3);
+    padding-bottom: var(--space-3);
+    background: var(--surface-glass);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom-color: var(--color-border);
+    box-shadow: var(--shadow-sm);
   }
+
+  @media (max-width: 767px) {
+    padding: var(--space-4) var(--space-5);
+  }
+}
+
+// Right-hand cluster: links, language, theme toggle
+.minimalist-nav__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
 }
 
 .minimalist-nav__inner {
@@ -41,44 +66,6 @@
 }
 
 // ---------------------------------------------------------------------------
-// Navigation Links (Desktop)
-// ---------------------------------------------------------------------------
-.minimalist-nav__links {
-  display: flex;
-  align-items: center;
-  gap: var(--space-8);
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  
-  @media (max-width: 767px) {
-    display: none;
-  }
-}
-
-.minimalist-nav__link {
-  font-size: var(--text-xs);
-  font-weight: var(--font-bold);
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-widest);
-  color: var(--color-text-light);
-  text-decoration: none;
-  transition: color var(--transition-fast);
-  position: relative;
-  
-  &:hover {
-    color: var(--color-text);
-    opacity: 1;
-  }
-  
-  &.is-active {
-    color: var(--color-text);
-    border-bottom: var(--border-thin) solid var(--color-text);
-    padding-bottom: 2px;
-  }
-}
-
-// ---------------------------------------------------------------------------
 // Language Switcher (Minimalist)
 // ---------------------------------------------------------------------------
 .minimalist-lang-switcher {
@@ -89,11 +76,8 @@
   font-weight: var(--font-bold);
   text-transform: uppercase;
   letter-spacing: var(--tracking-widest);
-  
-  @media (max-width: 767px) {
-    display: none;
-  }
-  
+  flex-wrap: wrap;
+
   i, svg {
     color: var(--color-text-muted);
     font-size: var(--text-sm);
@@ -134,14 +118,11 @@
 // ---------------------------------------------------------------------------
 // Mobile Menu Toggle
 // ---------------------------------------------------------------------------
+// The drawer toggle is the only navigation control in the bar, at every width.
 .minimalist-nav__mobile-toggle {
-  display: none;
-  
-  @media (max-width: 767px) {
-    display: flex;
-    align-items: center;
-    gap: var(--space-4);
-  }
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
 }
 
 .minimalist-nav__hamburger {
@@ -210,50 +191,46 @@
 // Mobile Menu Panel
 // ---------------------------------------------------------------------------
 .minimalist-nav__mobile-panel {
-  display: none;
-  
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 340px;
+  max-width: 86vw;
+  height: 100vh;
+  background: var(--color-surface);
+  border-left: var(--border-medium) solid var(--color-text);
+  z-index: var(--z-fixed);
+  padding: var(--space-10) var(--space-8);
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform var(--transition-slow);
+
+  &.is-open {
+    transform: translateX(0);
+  }
+
   @media (max-width: 767px) {
-    display: block;
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 280px;
-    max-width: 80vw;
-    height: 100vh;
-    background: var(--color-surface);
-    border-left: var(--border-thin) solid var(--color-border);
-    z-index: var(--z-fixed);
-    padding: var(--space-6);
-    overflow-y: auto;
-    transform: translateX(100%);
-    transition: transform var(--transition-slow);
-    
-    &.is-open {
-      transform: translateX(0);
-    }
+    padding: var(--space-8) var(--space-6);
   }
 }
 
 .minimalist-nav__mobile-overlay {
-  display: none;
-  
-  @media (max-width: 767px) {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.3);
-    z-index: calc(var(--z-fixed) - 1);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity var(--transition-slow), visibility var(--transition-slow);
-    
-    &.is-open {
-      opacity: 1;
-      visibility: visible;
-    }
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: calc(var(--z-fixed) - 1);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-slow), visibility var(--transition-slow);
+
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
   }
 }
 
@@ -289,6 +266,46 @@
   
   .minimalist-lang-switcher {
     display: flex;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Theme Toggle Button
+// ---------------------------------------------------------------------------
+.theme-toggle--nav {
+  display: flex;
+  align-items: center;
+}
+
+.theme-toggle-btn {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: var(--border-thin) solid var(--color-border-dark);
+  background: transparent;
+  color: var(--color-text);
+  transition: border-color var(--transition-base), color var(--transition-base),
+    background-color var(--transition-base);
+
+  &:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    background: var(--color-accent-soft);
+  }
+}
+
+// Language switcher stays visible on mobile inside the slide-in panel only,
+// but the desktop cluster needs a divider so it does not merge with the links.
+.minimalist-nav__actions .minimalist-lang-switcher {
+  padding-left: var(--space-5);
+  border-left: var(--border-thin) solid var(--color-border);
+}
+
+@media (max-width: 767px) {
+  .minimalist-nav__actions .minimalist-lang-switcher {
+    display: none;
   }
 }
 

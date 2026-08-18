@@ -1,62 +1,45 @@
-<!-- Minimalist Top Navigation Bar -->
+{% assign s = site.data[site.active_lang].strings %}
+{% assign f = site.data.en.strings %}
+
+<!-- Top bar.
+     Deliberately sparse: brand on the left, three controls on the right. The
+     page links and the language switcher live inside the drawer at every
+     breakpoint so the bar never competes with the page for attention. -->
 <nav class="minimalist-nav" aria-label="Top Bar">
   <div class="minimalist-nav__inner">
-    <!-- Brand / Site Title -->
     <a href="{{ '/' | relative_url }}" class="minimalist-nav__brand">
       {{ site.title }}
     </a>
 
-    <!-- Desktop Navigation Links -->
-    <ul class="minimalist-nav__links">
-      <li>
-        <a href="{{ '/' | relative_url }}" 
-           class="minimalist-nav__link{% if page.layout == 'home' %} is-active{% endif %}">
-          Home
-        </a>
-      </li>
-      <li>
-        <a href="{{ '/' | relative_url }}#projects" class="minimalist-nav__link">
-          Projects
-        </a>
-      </li>
-      <li>
-        <a href="{{ '/' | relative_url }}#contact" class="minimalist-nav__link">
-          Contact
-        </a>
-      </li>
-    </ul>
+    <div class="minimalist-nav__actions">
+      <!-- Light / Dark Theme Toggle -->
+      {% include theme-toggle.html %}
 
-    <!-- Language Switcher (Desktop) -->
-    <div class="minimalist-lang-switcher">
-      <i class="fas fa-globe"></i>
-      <span class="minimalist-lang-switcher__label">Change Language:</span>
-      {% for tongue in site.languages %}
-        {% if tongue == site.active_lang %}
-          <span class="minimalist-lang-switcher__link is-active">{{ site.data[tongue].strings.lang_name_short }}</span>
-        {% else %}
-          <a class="minimalist-lang-switcher__link"
-             {% static_href %}href="{% if tongue == site.default_lang %}{{ site.baseurl }}{{ page.url }}{% else %}{{ site.baseurl }}/{{ tongue }}{{ page.url }}{% endif %}"{% endstatic_href %}
-             hreflang="{{ tongue }}"
-             title="{{ site.data[tongue].strings.lang_name }}">{{ site.data[tongue].strings.lang_name_short }}</a>
-        {% endif %}
-        {% unless forloop.last %}<span class="minimalist-lang-switcher__sep">·</span>{% endunless %}
-      {% endfor %}
-    </div>
-
-    <!-- Mobile Menu Toggle -->
-    <div class="minimalist-nav__mobile-toggle">
-      <button class="minimalist-nav__hamburger" 
-              id="mobile-menu-toggle"
-              type="button"
-              aria-label="Open navigation menu"
-              aria-expanded="false"
-              aria-controls="mobile-nav-panel">
-        <span class="minimalist-nav__hamburger-icon" aria-hidden="true">
-          <span></span>
-          <span></span>
-          <span></span>
-        </span>
+      <!-- CRT scanline toggle (also unlocked by the Konami code) -->
+      <button type="button"
+              class="crt-toggle"
+              data-crt-toggle
+              aria-pressed="false"
+              title="{{ s.crt_toggle_label | default: f.crt_toggle_label }}">
+        {{ s.crt_toggle_label | default: f.crt_toggle_label }}
       </button>
+
+      <!-- Menu drawer toggle -->
+      <div class="minimalist-nav__mobile-toggle">
+        <button class="minimalist-nav__hamburger"
+                id="mobile-menu-toggle"
+                type="button"
+                aria-label="{{ s.nav_menu_label | default: f.nav_menu_label }}"
+                aria-expanded="false"
+                aria-controls="mobile-nav-panel">
+          <span class="minimalist-nav__hamburger-label">{{ s.nav_menu_label | default: f.nav_menu_label }}</span>
+          <span class="minimalist-nav__hamburger-icon" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+      </div>
     </div>
   </div>
 </nav>
@@ -65,31 +48,28 @@
 <div class="minimalist-nav__mobile-overlay" id="mobile-nav-overlay" aria-hidden="true"></div>
 
 <!-- Mobile Slide-In Panel -->
-<div class="minimalist-nav__mobile-panel" id="mobile-nav-panel" role="dialog" aria-label="Navigation menu">
+<div class="minimalist-nav__mobile-panel" id="mobile-nav-panel" role="dialog" aria-label="{{ s.nav_menu_label | default: f.nav_menu_label }}">
   <ul class="minimalist-nav__mobile-links">
-    <li>
-      <a href="{{ '/' | relative_url }}" 
-         class="minimalist-nav__mobile-link{% if page.layout == 'home' %} is-active{% endif %}">
-        Home
-      </a>
-    </li>
-    <li>
-      <a href="{{ '/' | relative_url }}#projects" class="minimalist-nav__mobile-link">
-        Projects
-      </a>
-    </li>
-    <li>
-      <a href="{{ '/' | relative_url }}#contact" class="minimalist-nav__mobile-link">
-        Contact
-      </a>
-    </li>
+    {% assign nav_paths = '/,/projects/,/about/,/what-i-do/,/contact/' | split: ',' %}
+    {% assign nav_keys = 'nav_home,nav_projects,nav_about,nav_what i do,nav_contact' | split: ',' %}
+    {% for path in nav_paths %}
+      {% assign key = nav_keys[forloop.index0] %}
+      {% assign is_home = false %}
+      {% if path == '/' and page.layout == 'home' %}{% assign is_home = true %}{% endif %}
+      <li>
+        <a href="{{ path | relative_url }}"
+           class="minimalist-nav__mobile-link{% if is_home or page.url == path %} is-active{% endif %}">
+          {{ s[key] | default: f[key] }}
+        </a>
+      </li>
+    {% endfor %}
   </ul>
 
   <!-- Mobile Language Switcher -->
   <div class="minimalist-nav__mobile-lang">
     <div class="minimalist-lang-switcher">
-      <i class="fas fa-globe"></i>
-      <span class="minimalist-lang-switcher__label">Change Language:</span>
+      <i class="fas fa-globe" aria-hidden="true"></i>
+      <span class="minimalist-lang-switcher__label">{{ s.lang_switch_label | default: f.lang_switch_label }}</span>
       {% for tongue in site.languages %}
         {% if tongue == site.active_lang %}
           <span class="minimalist-lang-switcher__link is-active">{{ site.data[tongue].strings.lang_name_short }}</span>
@@ -107,46 +87,46 @@
 
 <script>
 (function() {
-  // Hamburger menu toggle
   var hamburger = document.getElementById('mobile-menu-toggle');
   var panel = document.getElementById('mobile-nav-panel');
   var overlay = document.getElementById('mobile-nav-overlay');
 
   if (!hamburger || !panel || !overlay) return;
 
+  // Lenis owns the scroll position, so lock/unlock through it when available
+  // (falls back to body overflow when smooth scrolling is off).
+  function lockScroll(locked) {
+    if (window.__lenis) {
+      locked ? window.__lenis.stop() : window.__lenis.start();
+    }
+    document.body.style.overflow = locked ? 'hidden' : '';
+  }
+
   function openMenu() {
     hamburger.setAttribute('aria-expanded', 'true');
     panel.classList.add('is-open');
     overlay.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
+    lockScroll(true);
   }
 
   function closeMenu() {
     hamburger.setAttribute('aria-expanded', 'false');
     panel.classList.remove('is-open');
     overlay.classList.remove('is-open');
-    document.body.style.overflow = '';
-  }
-
-  function toggleMenu() {
-    var isOpen = hamburger.getAttribute('aria-expanded') === 'true';
-    if (isOpen) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
+    lockScroll(false);
   }
 
   hamburger.addEventListener('click', function(e) {
     e.preventDefault();
-    toggleMenu();
+    if (hamburger.getAttribute('aria-expanded') === 'true') {
+      closeMenu();
+    } else {
+      openMenu();
+    }
   });
 
-  overlay.addEventListener('click', function() {
-    closeMenu();
-  });
+  overlay.addEventListener('click', closeMenu);
 
-  // Close on Escape key
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && hamburger.getAttribute('aria-expanded') === 'true') {
       closeMenu();
@@ -154,25 +134,11 @@
     }
   });
 
-  // Close menu when clicking a link
-  var mobileLinks = panel.querySelectorAll('.minimalist-nav__mobile-link');
-  mobileLinks.forEach(function(link) {
-    link.addEventListener('click', function() {
-      closeMenu();
-    });
+  panel.querySelectorAll('.minimalist-nav__mobile-link').forEach(function(link) {
+    link.addEventListener('click', closeMenu);
   });
-  
-  // Smooth scroll for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-    anchor.addEventListener('click', function(e) {
-      var href = this.getAttribute('href');
-      if (href !== '#' && document.querySelector(href)) {
-        e.preventDefault();
-        var target = document.querySelector(href);
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        closeMenu();
-      }
-    });
-  });
+
+  // Anchor smooth-scrolling is handled centrally in site-motion.js so it can
+  // route through Lenis instead of native scrollIntoView.
 })();
 </script>

@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', function() {
     var loader = container.querySelector('.embed-container__loader');
     var fallback = container.querySelector('.embed-container__fallback');
     var fullscreenBtn = container.querySelector('.embed-container__fullscreen-toggle');
+    if (!iframe) return;
+
     var src = iframe.getAttribute('data-src');
 
     if (!src) return;
