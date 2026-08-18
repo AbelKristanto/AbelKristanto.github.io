@@ -279,6 +279,15 @@ button {
 }
 
 // ---------------------------------------------------------------------------
+// Hidden attribute
+// ---------------------------------------------------------------------------
+// Any class that sets `display` outranks the browser default for [hidden], so
+// components like .editor (display: grid) stayed visible while marked hidden.
+[hidden] {
+  display: none !important;
+}
+
+// ---------------------------------------------------------------------------
 // Utility Classes
 // ---------------------------------------------------------------------------
 .container {

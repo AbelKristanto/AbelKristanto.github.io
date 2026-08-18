@@ -74,6 +74,30 @@ redirect_from:
   </article>
 </div>
 
+{% comment %}
+  Posts published through /post/ land in the "Projects" category and show up
+  here automatically, newest first. Nothing to edit by hand after publishing.
+{% endcomment %}
+{% assign published = site.posts | where_exp: "post", "post.categories contains 'Projects'" %}
+{% if published.size > 0 %}
+<h2>{{ s.projects_published_title | default: f.projects_published_title }}</h2>
+
+<div class="project-grid">
+  {% for post in published %}
+    <a class="post-card" href="{{ post.url | relative_url }}">
+      <span class="post-card__date">{{ post.date | date: "%d %b %Y" }}</span>
+      <h3 class="post-card__title">{{ post.title }}</h3>
+      <p class="post-card__excerpt">{{ post.description | default: post.excerpt | strip_html | truncate: 150 }}</p>
+      {% if post.tags.size > 0 %}
+        <div class="post-card__tags">
+          {% for tag in post.tags %}<span class="post-card__tag">{{ tag }}</span>{% endfor %}
+        </div>
+      {% endif %}
+    </a>
+  {% endfor %}
+</div>
+{% endif %}
+
 <p>
   {{ s.projects_closing | default: f.projects_closing }}
 </p>

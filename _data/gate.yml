@@ -1,0 +1,12 @@
+# PIN gate for /post/.
+#
+# This file holds a PBKDF2-SHA256 derivation of the PIN, never the PIN itself.
+# Regenerate it with:  node tools/make-pin.js <new pin>
+#
+# Be clear-eyed about what this is: the site is static, so the check happens
+# in the browser and these values are public. It keeps casual visitors out of
+# the editor. It is not what protects publishing — that is the GitHub token,
+# which lives only in your browser and is never committed.
+salt: "FDb7VcoClYVSJBBsiDH2/A=="
+hash: "V0cZNhp6MFK6CrIqZtNBZWWeLM8B5dHstkn9raWjHEk="
+iterations: 600000
