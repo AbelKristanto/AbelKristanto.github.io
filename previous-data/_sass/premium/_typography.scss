@@ -1,0 +1,180 @@
+// =============================================================================
+// Premium Design System — Typography
+// =============================================================================
+// Defines font-family custom properties, heading styles, body text defaults,
+// and CJK locale overrides. The modular type scale (--text-xs through --text-4xl)
+// is defined in _variables.scss; this partial consumes those tokens.
+//
+// IMPORTANT: All heading and link styles are scoped to premium components or
+// #main-content to avoid conflicting with Chirpy theme's sidebar and navigation.
+
+// ---------------------------------------------------------------------------
+// Font-family custom properties
+// ---------------------------------------------------------------------------
+:root {
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-cjk: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+// ---------------------------------------------------------------------------
+// CJK locale override — switches both heading and body to CJK stack
+// ---------------------------------------------------------------------------
+[lang="zh"] {
+  --font-body: var(--font-cjk);
+  --font-heading: var(--font-cjk);
+}
+
+// ---------------------------------------------------------------------------
+// Body defaults
+// ---------------------------------------------------------------------------
+// Font-family and base text settings are safe to apply globally since Chirpy's
+// sidebar inherits from body anyway. However, we must NOT set display, padding,
+// margin, or width on body.
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// ---------------------------------------------------------------------------
+// Heading styles — scoped to #main-content to avoid breaking sidebar title
+// ---------------------------------------------------------------------------
+// Chirpy's sidebar has `h1.site-title` which should NOT be affected by our
+// premium heading sizes. We scope all heading overrides to main content area.
+
+#main-content h1,
+.hero-section h1,
+.home-section h1 {
+  font-family: var(--font-heading);
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 0.5em;
+}
+
+#main-content h2,
+.hero-section h2,
+.home-section h2 {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin-bottom: 0.5em;
+}
+
+#main-content h3,
+.hero-section h3,
+.home-section h3 {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.3;
+  margin-bottom: 0.4em;
+}
+
+#main-content h4,
+.hero-section h4,
+.home-section h4 {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+  margin-bottom: 0.4em;
+}
+
+// ---------------------------------------------------------------------------
+// Paragraph and inline text — scoped to main content
+// ---------------------------------------------------------------------------
+#main-content p {
+  margin-bottom: 1.25em;
+}
+
+small,
+.text-sm {
+  font-size: var(--text-sm);
+}
+
+.text-xs {
+  font-size: var(--text-xs);
+}
+
+.text-lg {
+  font-size: var(--text-lg);
+}
+
+.text-xl {
+  font-size: var(--text-xl);
+}
+
+.text-2xl {
+  font-size: var(--text-2xl);
+}
+
+.text-3xl {
+  font-size: var(--text-3xl);
+}
+
+.text-4xl {
+  font-size: var(--text-4xl);
+}
+
+// ---------------------------------------------------------------------------
+// Links — scoped to #main-content to avoid breaking sidebar/nav links
+// ---------------------------------------------------------------------------
+// Chirpy's sidebar links and topbar links have their own color scheme.
+// We only style links inside the main content area.
+
+#main-content a:not(.btn):not(.premium-nav__link):not(.premium-nav__brand) {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+
+  &:hover,
+  &:focus-visible {
+    color: var(--color-secondary);
+    text-decoration: underline;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Strong and emphasis
+// ---------------------------------------------------------------------------
+strong,
+b {
+  font-weight: 700;
+}
+
+em,
+i {
+  font-style: italic;
+}
+
+// ---------------------------------------------------------------------------
+// Skip-link — visually hidden until focused (keyboard accessibility)
+// ---------------------------------------------------------------------------
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.75rem 1rem;
+  background: var(--color-surface);
+  color: var(--color-primary);
+  border-radius: var(--radius-button);
+  box-shadow: var(--shadow-card);
+  text-decoration: none;
+  font-weight: 600;
+  transition: top 200ms ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}

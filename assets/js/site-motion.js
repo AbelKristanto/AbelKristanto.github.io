@@ -34,6 +34,7 @@
     initSkillBars();
     initArcade();
     initStartMenu();
+    initDrawer();
     initPageTransitions();
     return;
   }
@@ -56,6 +57,7 @@
   initSkillBars();
   initArcade();
   initStartMenu();
+  initDrawer();
   initPageTransitions();
   initVanta();
 
@@ -642,6 +644,74 @@
         items[index].click();
       }
     });
+  }
+
+  // -------------------------------------------------------------------------
+  // Navigation drawer
+  // -------------------------------------------------------------------------
+  // Lives here rather than in an inline <script> inside the include: the
+  // compress_html layout strips newlines in production, which silently
+  // truncates any inline script that contains a // comment.
+  function initDrawer() {
+    var hamburger = document.getElementById('mobile-menu-toggle');
+    var panel = document.getElementById('mobile-nav-panel');
+    var overlay = document.getElementById('mobile-nav-overlay');
+
+    if (!hamburger || !panel || !overlay) {
+      return;
+    }
+
+    // Lenis owns the scroll position, so lock through it when it is running and
+    // fall back to body overflow when smooth scrolling is off.
+    var lockScroll = function (locked) {
+      if (window.__lenis) {
+        if (locked) {
+          window.__lenis.stop();
+        } else {
+          window.__lenis.start();
+        }
+      }
+      document.body.style.overflow = locked ? 'hidden' : '';
+    };
+
+    var closeMenu = function () {
+      hamburger.setAttribute('aria-expanded', 'false');
+      panel.classList.remove('is-open');
+      overlay.classList.remove('is-open');
+      lockScroll(false);
+    };
+
+    var openMenu = function () {
+      hamburger.setAttribute('aria-expanded', 'true');
+      panel.classList.add('is-open');
+      overlay.classList.add('is-open');
+      lockScroll(true);
+    };
+
+    hamburger.addEventListener('click', function (event) {
+      event.preventDefault();
+      if (hamburger.getAttribute('aria-expanded') === 'true') {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    overlay.addEventListener('click', closeMenu);
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && hamburger.getAttribute('aria-expanded') === 'true') {
+        closeMenu();
+        hamburger.focus();
+      }
+    });
+
+    Array.prototype.forEach.call(
+      panel.querySelectorAll('.minimalist-nav__mobile-link'),
+      function (link) {
+        link.addEventListener('click', closeMenu);
+      }
+    );
   }
 
   // -------------------------------------------------------------------------

@@ -440,7 +440,7 @@
 
 .minimalist-nav__mobile-link {
   display: block;
-  padding: var(--space-4) 0;
+  padding: var(--space-3) 0;
   border-bottom: var(--border-thin) solid var(--color-border);
   color: var(--color-text);
 
@@ -451,8 +451,18 @@
   }
 }
 
+// The link list already ends on a rule, so the switcher must not draw a second
+// one immediately below it.
+.minimalist-nav__mobile-links {
+  margin-bottom: var(--space-5);
+
+  li:last-child .minimalist-nav__mobile-link {
+    border-bottom: none;
+  }
+}
+
 .minimalist-nav__mobile-lang {
-  margin-top: var(--space-6);
+  margin-top: 0;
   padding-top: var(--space-5);
 }
 
@@ -479,11 +489,40 @@
 }
 
 // ---------------------------------------------------------------------------
-// Card interiors — vertical rhythm
+// Card system — one rhythm for every card-like surface
 // ---------------------------------------------------------------------------
-// Cards were mixing component margins with prose margins, so headings sat too
-// close to their body text and the last paragraph pushed the card open at the
-// bottom. Each card now owns its spacing and drops trailing margins.
+// Before this block each card picked its own padding and each grid its own
+// gutter, so the same page mixed 16 / 20 / 32px gaps. Everything now reads from
+// the --card-* and --grid-gap tokens.
+
+// Grids: identical gutter everywhere, one step tighter on small screens.
+.quick-facts,
+.service-grid,
+.section-card-grid,
+.project-grid,
+.contact-grid,
+.quest-grid {
+  gap: var(--grid-gap);
+  margin: var(--space-8) 0;
+
+  @media (max-width: 767px) {
+    gap: var(--grid-gap-sm);
+    margin: var(--space-6) 0;
+  }
+}
+
+// Surfaces: identical padding, and no trailing margin from the last child.
+.section-card,
+.quest,
+.project-card,
+.fact-card {
+  padding: var(--card-pad);
+
+  @media (max-width: 767px) {
+    padding: var(--card-pad-sm);
+  }
+}
+
 .section-card,
 .quest,
 .project-card,
@@ -494,43 +533,31 @@
   }
 }
 
+// Card titles: same gap and separator treatment across card types.
+.section-card h3,
+.project-card h3 {
+  font-family: var(--font-pixel);
+  font-size: var(--pixel-xs);
+  line-height: 1.7;
+  letter-spacing: 0;
+  margin-bottom: var(--card-title-gap);
+  padding-bottom: var(--space-3);
+  border-bottom: var(--border-thin) solid var(--color-border);
+}
+
+.section-card,
+.project-card {
+  p {
+    margin-bottom: var(--card-text-gap);
+  }
+}
+
 .section-card {
   display: flex;
   flex-direction: column;
-  padding: var(--space-6) var(--space-6) var(--space-5);
-
-  // Actions drop to the bottom so a row of cards ends on one line.
-  > .btn,
-  > .cta-row {
-    margin-top: auto;
-    margin-bottom: 0;
-  }
-
-  > .cta-row {
-    padding-top: var(--space-4);
-  }
-
-  > .btn {
-    align-self: flex-start;
-    margin-top: auto;
-  }
-
-  h3 {
-    font-family: var(--font-pixel);
-    font-size: var(--pixel-xs);
-    line-height: 1.7;
-    letter-spacing: 0;
-    margin-bottom: var(--space-4);
-    padding-bottom: var(--space-3);
-    border-bottom: var(--border-thin) solid var(--color-border);
-  }
-
-  p {
-    margin-bottom: var(--space-4);
-  }
 
   ul {
-    margin-top: var(--space-4);
+    margin-top: var(--card-text-gap);
 
     li {
       margin-bottom: var(--space-3);
@@ -541,11 +568,25 @@
       }
     }
   }
+
+  // Actions drop to the bottom so a row of cards ends on one line.
+  > .btn,
+  > .cta-row {
+    margin-top: auto;
+    margin-bottom: 0;
+  }
+
+  > .cta-row {
+    padding-top: var(--card-text-gap);
+  }
+
+  > .btn {
+    align-self: flex-start;
+  }
 }
 
 .quest {
-  gap: var(--space-4);
-  padding: var(--space-5);
+  gap: var(--card-text-gap);
 }
 
 .quest__title {
@@ -572,20 +613,12 @@
     margin-bottom: 0;
   }
 
-  h3 {
-    margin-bottom: var(--space-3);
-    padding-bottom: var(--space-3);
-    border-bottom: var(--border-thin) solid var(--color-border);
-  }
-
   p:last-of-type {
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--card-text-gap);
   }
 }
 
 .fact-card {
-  padding: var(--space-6) var(--space-4);
-
   strong {
     margin-bottom: var(--space-3);
   }
@@ -596,7 +629,14 @@
 }
 
 .service-card {
-  gap: var(--space-4);
+  gap: var(--card-text-gap);
+}
+
+// The What I Do page stacks both classes on one element. .section-card lays out
+// in a column with margins, so the flex gap inherited from .service-card would
+// add a second gap on top of every margin.
+.section-card.service-card {
+  gap: 0;
 }
 
 .service-card__title {
@@ -607,19 +647,29 @@
   margin-top: 0;
 }
 
-.player-card__meta {
-  gap: var(--space-3);
-  margin-top: var(--space-4);
+.player-card {
+  padding: var(--card-pad-lg);
+  gap: var(--card-pad-lg);
+
+  @media (max-width: 767px) {
+    padding: var(--card-pad);
+    gap: var(--card-pad);
+  }
 }
 
 .player-card__id {
-  margin-bottom: var(--space-8);
-  padding-bottom: var(--space-6);
+  margin-bottom: var(--card-pad-lg);
+  padding-bottom: var(--card-pad);
   border-bottom: var(--border-thin) solid var(--color-border);
 }
 
+.player-card__meta {
+  gap: var(--space-3);
+  margin-top: var(--card-title-gap);
+}
+
 .skill-list {
-  gap: var(--space-5);
+  gap: var(--card-text-gap);
 }
 
 // ---------------------------------------------------------------------------

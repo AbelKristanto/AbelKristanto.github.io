@@ -1,0 +1,65 @@
+// =============================================================================
+// Premium Design System — CSS Custom Properties
+// =============================================================================
+// Defines the complete design token system: colors, gradients, glassmorphism,
+// shadows, radii, typography scale, and transitions.
+// These variables serve as the single source of truth for the visual design.
+
+:root {
+  // ---------------------------------------------------------------------------
+  // Primary palette (light theme defaults)
+  // ---------------------------------------------------------------------------
+  --color-primary: #176b6d;
+  --color-secondary: #2d4a7a;
+  --color-accent: #e85d3a;
+  --color-bg: #f8f6f2;
+  --color-surface: #ffffff;
+  --color-text: #1c1917;
+  --color-text-muted: #6b6560;
+
+  // ---------------------------------------------------------------------------
+  // Gradients (at least 3 color stops)
+  // ---------------------------------------------------------------------------
+  --gradient-hero: linear-gradient(135deg, #176b6d 0%, #2d4a7a 50%, #1a3d5c 100%);
+  --gradient-section: linear-gradient(180deg, rgba(248,246,242,0.9) 0%, rgba(255,255,255,0.95) 100%);
+  --gradient-card-hover: linear-gradient(145deg, rgba(23,107,109,0.03) 0%, rgba(45,74,122,0.03) 100%);
+
+  // ---------------------------------------------------------------------------
+  // Glassmorphism
+  // ---------------------------------------------------------------------------
+  --glass-bg: rgba(255, 255, 255, 0.78);
+  --glass-blur: 12px;
+  --glass-border: rgba(255, 255, 255, 0.3);
+
+  // ---------------------------------------------------------------------------
+  // Shadows (layered)
+  // ---------------------------------------------------------------------------
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+  --shadow-card-hover: 0 4px 8px rgba(0,0,0,0.06), 0 12px 28px rgba(0,0,0,0.05);
+
+  // ---------------------------------------------------------------------------
+  // Radii
+  // ---------------------------------------------------------------------------
+  --radius-card: 16px;
+  --radius-button: 10px;
+  --radius-input: 8px;
+
+  // ---------------------------------------------------------------------------
+  // Typography scale (clamp)
+  // ---------------------------------------------------------------------------
+  --text-xs: clamp(0.75rem, 0.7rem + 0.2vw, 0.8rem);
+  --text-sm: clamp(0.85rem, 0.8rem + 0.2vw, 0.9rem);
+  --text-base: clamp(0.98rem, 0.92rem + 0.22vw, 1.08rem);
+  --text-lg: clamp(1.1rem, 1rem + 0.35vw, 1.25rem);
+  --text-xl: clamp(1.4rem, 1.2rem + 0.6vw, 1.75rem);
+  --text-2xl: clamp(1.8rem, 1.5rem + 1vw, 2.5rem);
+  --text-3xl: clamp(2.2rem, 1.8rem + 1.5vw, 3.5rem);
+  --text-4xl: clamp(2.8rem, 2.2rem + 2vw, 4rem);
+
+  // ---------------------------------------------------------------------------
+  // Transitions
+  // ---------------------------------------------------------------------------
+  --transition-fast: 150ms ease;
+  --transition-base: 200ms ease;
+  --transition-slow: 300ms ease-out;
+}

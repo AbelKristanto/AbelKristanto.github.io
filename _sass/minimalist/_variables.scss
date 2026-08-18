@@ -33,6 +33,20 @@
   --surface-glass: rgba(253, 253, 253, 0.72);
   --spotlight-color: rgba(79, 70, 229, 0.10);
 
+  // ---------------------------------------------------------------------------
+  // Card rhythm
+  // ---------------------------------------------------------------------------
+  // One scale for every card-like surface. Individual components must use these
+  // instead of picking their own --space-* step, otherwise grids end up mixing
+  // 16px, 20px and 32px gutters on the same page.
+  --card-pad: var(--space-6);        // 24px — default card padding
+  --card-pad-lg: var(--space-8);     // 32px — large panels (player card)
+  --card-pad-sm: var(--space-5);     // 20px — dense cards on small screens
+  --grid-gap: var(--space-6);        // 24px — gutter between cards
+  --grid-gap-sm: var(--space-4);     // 16px — gutter below 768px
+  --card-title-gap: var(--space-4);  // 16px — title to body
+  --card-text-gap: var(--space-4);   // 16px — between blocks inside a card
+
   // Radii (soft edges keep the brutalist grid readable without harshness)
   --radius-sm: 2px;
   --radius-md: 6px;

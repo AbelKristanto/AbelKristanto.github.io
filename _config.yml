@@ -24,7 +24,7 @@ description: >- # used by seo meta and the atom feed
 
 # Fill in the protocol & hostname for your site.
 # e.g. 'https://username.github.io', note that it does not end with a '/'.
-url: "https://abelkristanto.github.io"
+url: "https://abelkrw.my.id"
 
 github:
   username: AbelKristanto # change to your github username
@@ -174,6 +174,7 @@ compress_html:
     envs: [development]
 
 exclude:
+  - previous-data   # archive of retired files; see previous-data/README.md
   - "*.gem"
   - "*.gemspec"
   - tools

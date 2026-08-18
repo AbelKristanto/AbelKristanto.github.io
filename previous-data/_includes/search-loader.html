@@ -1,0 +1,54 @@
+<!-- Guarded search loader for the simplified top bar -->
+
+{% capture result_elem %}
+  <article class="px-1 px-sm-2 px-lg-4 px-xl-0">
+    <header>
+      <h2><a href="{url}">{title}</a></h2>
+      <div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1">
+        {categories}
+        {tags}
+      </div>
+    </header>
+    <p>{snippet}</p>
+  </article>
+{% endcapture %}
+
+{% capture not_found %}<p class="mt-5">{{ site.data.locales[include.lang].search.no_results }}</p>{% endcapture %}
+
+<script>
+  (function() {
+    var searchInput = document.getElementById('search-input');
+    var resultsContainer = document.getElementById('search-results');
+
+    if (!searchInput || !resultsContainer || typeof SimpleJekyllSearch === 'undefined') {
+      return;
+    }
+
+    SimpleJekyllSearch({
+      searchInput: searchInput,
+      resultsContainer: resultsContainer,
+      json: '{{ '/assets/js/data/search.json' | relative_url }}',
+      searchResultTemplate: '{{ result_elem | strip_newlines }}',
+      noResultsText: '{{ not_found }}',
+      templateMiddleware: function(prop, value) {
+        if (prop === 'categories') {
+          if (value === '') {
+            return value;
+          }
+
+          return '<div class="me-sm-4"><i class="far fa-folder fa-fw"></i>' + value + '</div>';
+        }
+
+        if (prop === 'tags') {
+          if (value === '') {
+            return value;
+          }
+
+          return '<div><i class="fa fa-tag fa-fw"></i>' + value + '</div>';
+        }
+
+        return value;
+      }
+    });
+  })();
+</script>

@@ -1,0 +1,194 @@
+// =============================================================================
+// Premium Design System — Animations & Transitions
+// =============================================================================
+// Defines micro-animations and transitions for cards, scroll-reveal, page
+// transitions, buttons/links, and reduced-motion accessibility compliance.
+//
+// IMPORTANT: Animations are scoped to premium components only. We do NOT
+// apply animations to #main-wrapper, main, or generic a/button elements
+// to avoid conflicting with Chirpy theme's built-in layout and transitions.
+
+// -----------------------------------------------------------------------------
+// 1. Card Hover Transitions
+// -----------------------------------------------------------------------------
+// Cards lift upward (-2px to -6px) with increased shadow on hover.
+// Transition completes in 200ms with ease timing.
+// Scoped to premium card classes only (not Chirpy's generic .card).
+
+.section-card,
+.project-card,
+.metric-card,
+.hero-metric-card {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
+
+  &:hover,
+  &:focus-within {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-card-hover);
+  }
+}
+
+// Only apply to .card elements inside our premium sections
+.home-section .card,
+.hero-section .card {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
+
+  &:hover,
+  &:focus-within {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-card-hover);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// 2. Scroll-Reveal Base Styles
+// -----------------------------------------------------------------------------
+// Elements start hidden (opacity 0, shifted down 20px) and transition to
+// visible (opacity 1, translateY 0) when `.is-visible` is applied by JS.
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 600ms ease-out,
+    transform 600ms ease-out;
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// 3. Page Fade Transition
+// -----------------------------------------------------------------------------
+// Applied only via explicit .page-fade class, NOT to #main-wrapper or main.
+
+.page-fade {
+  animation: pageFadeIn 250ms ease forwards;
+}
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// 4. Button & Link Hover Transitions — scoped to premium components
+// -----------------------------------------------------------------------------
+// We do NOT apply transitions to generic `a` or `button` elements because
+// that would conflict with Chirpy's sidebar links, nav buttons, and search.
+
+// Premium-specific button transitions
+.hero-cta,
+.embed-container__fallback .btn-primary,
+.embed-container__fullscreen-toggle,
+.premium-nav__action-btn,
+.premium-nav__hamburger,
+.back-to-top {
+  transition:
+    color var(--transition-fast),
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+// Premium-specific link transitions (inside main content only)
+#main-content a {
+  transition: color var(--transition-fast);
+}
+
+// Premium button hover effects
+.hero-cta,
+.embed-container__fallback .btn-primary {
+  &:hover,
+  &:focus-visible {
+    transform: scale(1.03);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+// Link hover color inside main content
+#main-content a:hover,
+#main-content a:focus-visible {
+  color: var(--color-primary);
+}
+
+// -----------------------------------------------------------------------------
+// 5. Reduced Motion — Accessibility
+// -----------------------------------------------------------------------------
+// When the user prefers reduced motion, disable all transition and animation
+// durations EXCEPT opacity (required for content visibility per WCAG).
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0ms !important;
+    animation-duration: 0ms !important;
+    transition-delay: 0ms !important;
+    animation-delay: 0ms !important;
+  }
+
+  // Exception: allow opacity transitions for content visibility (scroll-reveal)
+  .reveal-on-scroll {
+    transition-property: opacity !important;
+    transition-duration: 1ms !important;
+    animation-duration: 1ms !important;
+  }
+
+  // Ensure scroll-reveal elements are immediately visible
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  // Disable page fade animation
+  .page-fade {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  // Disable card hover transforms
+  .section-card,
+  .project-card,
+  .metric-card,
+  .hero-metric-card,
+  .home-section .card,
+  .hero-section .card {
+    transform: none !important;
+
+    &:hover,
+    &:focus-within {
+      transform: none !important;
+    }
+  }
+
+  // Disable button scale transforms
+  .hero-cta,
+  .embed-container__fallback .btn-primary {
+    &:hover,
+    &:focus-visible,
+    &:active {
+      transform: none !important;
+    }
+  }
+}

@@ -1,0 +1,38 @@
+// =============================================================================
+// Premium Design System — Light Theme
+// =============================================================================
+// Light theme gradient and layered color treatments.
+// Requirement 1.4: background and surface areas use gradient or layered color
+// treatment containing at least 2 color values rather than a single flat color.
+
+:root,
+[data-theme="light"] {
+  // Layered background treatment (2+ color values)
+  --color-bg-gradient: linear-gradient(
+    180deg,
+    #f8f6f2 0%,
+    #faf9f7 100%
+  );
+
+  // Layered surface treatment (2+ color values)
+  --color-surface-gradient: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #fdfcfa 100%
+  );
+
+  // Section background with layered treatment
+  --section-bg: linear-gradient(
+    180deg,
+    rgba(248, 246, 242, 0.9) 0%,
+    rgba(255, 255, 255, 0.95) 50%,
+    rgba(250, 248, 244, 0.92) 100%
+  );
+
+  // Card surface with subtle layered treatment
+  --card-bg: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(253, 252, 250, 1) 100%
+  );
+}

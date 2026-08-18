@@ -85,60 +85,6 @@
   </div>
 </div>
 
-<script>
-(function() {
-  var hamburger = document.getElementById('mobile-menu-toggle');
-  var panel = document.getElementById('mobile-nav-panel');
-  var overlay = document.getElementById('mobile-nav-overlay');
-
-  if (!hamburger || !panel || !overlay) return;
-
-  // Lenis owns the scroll position, so lock/unlock through it when available
-  // (falls back to body overflow when smooth scrolling is off).
-  function lockScroll(locked) {
-    if (window.__lenis) {
-      locked ? window.__lenis.stop() : window.__lenis.start();
-    }
-    document.body.style.overflow = locked ? 'hidden' : '';
-  }
-
-  function openMenu() {
-    hamburger.setAttribute('aria-expanded', 'true');
-    panel.classList.add('is-open');
-    overlay.classList.add('is-open');
-    lockScroll(true);
-  }
-
-  function closeMenu() {
-    hamburger.setAttribute('aria-expanded', 'false');
-    panel.classList.remove('is-open');
-    overlay.classList.remove('is-open');
-    lockScroll(false);
-  }
-
-  hamburger.addEventListener('click', function(e) {
-    e.preventDefault();
-    if (hamburger.getAttribute('aria-expanded') === 'true') {
-      closeMenu();
-    } else {
-      openMenu();
-    }
-  });
-
-  overlay.addEventListener('click', closeMenu);
-
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && hamburger.getAttribute('aria-expanded') === 'true') {
-      closeMenu();
-      hamburger.focus();
-    }
-  });
-
-  panel.querySelectorAll('.minimalist-nav__mobile-link').forEach(function(link) {
-    link.addEventListener('click', closeMenu);
-  });
-
-  // Anchor smooth-scrolling is handled centrally in site-motion.js so it can
-  // route through Lenis instead of native scrollIntoView.
-})();
-</script>
+<!-- Drawer behaviour lives in assets/js/site-motion.js. Inline scripts are
+     unsafe here: the compress_html layout strips newlines in production, which
+     turns any // comment into a truncated script. -->

@@ -1,0 +1,19 @@
+<!-- Language Switcher — Simple inline links with globe icon -->
+<div class="lang-switcher lang-switcher--nav" role="navigation" aria-label="{{ site.data[site.active_lang].strings.language_switcher_label | default: site.data.en.strings.language_switcher_label }}">
+  <svg class="lang-switcher__globe" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <circle cx="12" cy="12" r="10"/>
+    <line x1="2" y1="12" x2="22" y2="12"/>
+    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+  </svg>
+  {% for tongue in site.languages %}
+    {% if tongue == site.active_lang %}
+      <span class="lang-switcher__link lang-switcher__link--active">{{ site.data[tongue].strings.lang_name_short }}</span>
+    {% else %}
+      <a class="lang-switcher__link"
+         {% static_href %}href="{% if tongue == site.default_lang %}{{ site.baseurl }}{{ page.url }}{% else %}{{ site.baseurl }}/{{ tongue }}{{ page.url }}{% endif %}"{% endstatic_href %}
+         hreflang="{{ tongue }}"
+         title="{{ site.data[tongue].strings.lang_name }}">{{ site.data[tongue].strings.lang_name_short }}</a>
+    {% endif %}
+    {% unless forloop.last %}<span class="lang-switcher__sep">·</span>{% endunless %}
+  {% endfor %}
+</div>
